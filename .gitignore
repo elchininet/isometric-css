@@ -1,0 +1,13 @@
+node_modules/
+.DS_Store
+**/.DS_Store
+/dist/*
+/coverage/
+/@types/
+/constants/
+/utilities/
+/browser.d.ts
+/browser.js
+/index.d.ts
+/index.js
+/browser.js.LICENSE.txt
