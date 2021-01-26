@@ -1,0 +1,23 @@
+.table {
+    border: 1px solid $gray-dark;
+    border-collapse: collapse;
+    color: $white;
+    text-align: left;
+
+    th {
+        background-color: $light;
+        color: $dark;
+    }
+
+    th,
+    td {
+        border-bottom: 1px solid $gray-dark;
+        padding: 0.75rem;   
+    }
+
+    tbody {
+        tr:nth-child(odd) {
+            background-color: $gray-dark;
+        }
+    }
+}

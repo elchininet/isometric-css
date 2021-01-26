@@ -1,7 +1,7 @@
 {
   "name": "isometric-css",
   "version": "1.0.0",
-  "description": "A JavaScript library to create and apply isometric CSS classes",
+  "description": "A JavaScript library to build ismoetric projections using CSS classes",
   "keywords": [
     "isometric",
     "projection",
@@ -40,6 +40,7 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
+    "isometric-css": "file:.yalc/isometric-css",
     "jss": "^10.5.0",
     "jss-plugin-camel-case": "^10.5.0"
   },

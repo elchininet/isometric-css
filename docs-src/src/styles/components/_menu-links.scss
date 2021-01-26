@@ -1,0 +1,17 @@
+.menu-links {
+    flex-grow: 1;
+    padding: 20px 0;
+
+    a {
+        color: $dark;
+        display: block;
+        margin-bottom: 10px;
+        text-decoration: none;
+
+        &.active {
+            color: $green;
+            cursor: default;
+            font-weight: bold;
+        }
+    }
+}

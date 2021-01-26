@@ -1,0 +1,8 @@
+.logo {
+    max-width: 300px;
+    width: 100%;
+
+    @include mobile {        
+        width: 85%;
+    }
+}

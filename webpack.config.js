@@ -37,9 +37,7 @@ module.exports = [
             libraryTarget: 'commonjs'
         },
         plugins: [
-            new CleanWebpackPlugin({
-                cleanOnceBeforeBuildPatterns: []
-            })
+            new CleanWebpackPlugin()
         ],
     },
     {

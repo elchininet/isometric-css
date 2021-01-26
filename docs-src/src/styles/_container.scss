@@ -1,0 +1,11 @@
+.container {
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 0 50px;
+    max-width: 1000px;
+    width: 100%;
+
+    @include mobile {
+        padding: 0 20px;
+    }
+}

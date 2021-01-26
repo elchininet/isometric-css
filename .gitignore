@@ -1,7 +1,11 @@
 node_modules/
+.yalc/
+yalc.lock
 .DS_Store
 **/.DS_Store
 /dist/*
+!dist/browser.js
+!dist/browser.js.LICENSE.txt
 /coverage/
 /@types/
 /constants/
