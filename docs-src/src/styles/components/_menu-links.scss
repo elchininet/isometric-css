@@ -14,4 +14,23 @@
             font-weight: bold;
         }
     }
+
+    @include mobile {
+        background: $light;
+        border-top: 1px solid $gray-dark;
+        height: calc(100vh - 80px);
+        padding: 40px;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        transform: translateX(100%);
+        transition: transform 0.25s ease-in-out;
+        width: 100vw;
+
+        &[data-open="true"] {
+            transform: translateX(0);
+        }
+
+    }
+
 }

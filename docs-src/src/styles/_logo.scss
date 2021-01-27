@@ -2,7 +2,8 @@
     max-width: 300px;
     width: 100%;
 
-    @include mobile {        
-        width: 85%;
+    @include mobile {
+        flex-shrink: 0;
+        max-width: 270px;
     }
 }

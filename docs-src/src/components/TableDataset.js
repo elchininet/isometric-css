@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Table, TableHeader, TableRow, TableColumn, TableBody } from './Table';
+import { Separtor } from './Separator';
 
 export const TableDataset = () => {
     return (
@@ -98,6 +99,7 @@ export const TableDataset = () => {
             </TableRow>
           </TableBody>
         </Table>
+        <Separtor />
       </Fragment>
     );
 };

@@ -8,10 +8,15 @@ const round = (n: number, d: number): number => {
 
 const kebab = (prop: string): string => prop.replace(/[A-Z]/g, '-$&').toLowerCase();
 
-export const cssObjectToString = (cssObject: Rule): string => {
-    const entries = Object.entries(cssObject);
-    const dclArray = entries.map(([decl, value]) => `${kebab(decl)}: ${value}`);
-    return dclArray.join(';\n') + ';';
+export const cssObjectToString = (cssObject: Rule, endColon: boolean = true): string => {
+    const entries = Object.entries<string | Record<string, string>[]>(cssObject);
+    const dclArray = entries.map(([decl, value]) => {
+        if (Array.isArray(value)) {
+            return value.map((fObject: Rule) => cssObjectToString(fObject, false));
+        }
+        return `${kebab(decl)}: ${value}`;
+    });
+    return dclArray.join(';\n') + `${endColon ? ';' : ''}`;
 };
 
 export const isometricToPoint = (right: number = 0, left: number = 0, top: number = 0): Point => {

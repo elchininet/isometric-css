@@ -1,0 +1,51 @@
+.github-button {
+    color: $gray-dark;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+
+    svg,
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    svg {
+        fill: $gray-dark;
+    }
+
+    span {
+        padding-left: 5px;
+    }
+
+    &:visited {
+        color: $gray-dark;
+    }
+
+    &:hover,
+    &:visited:hover {
+        color: $green;
+        svg {
+            fill: $green;
+        }
+    }
+
+    @include mobile {
+        align-items: center;
+        display: flex;
+        height: 32px;
+        justify-content: center;
+        width: 32px;
+
+        svg {
+            height: 20px;
+            width: 20px;
+        }
+
+        span {
+            display: none;
+        }
+    }
+
+}

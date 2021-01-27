@@ -27,10 +27,17 @@ export const TableRow = (props) => {
 };
 
 export const TableColumn = (props) => {
-    const { header = false } = props;
+    const { header = false, noPadding = false, colSpan } = props;
     const Tag = header ? 'th' : 'td';
+    const tagAttributes = {};
+    if (colSpan) {
+        tagAttributes.colSpan = colSpan;
+    }
+    if (noPadding) {
+        tagAttributes.className = 'no-padding';
+    }
     return (
-        <Tag>
+        <Tag {...tagAttributes}>
             { props.children }
         </Tag>
     );

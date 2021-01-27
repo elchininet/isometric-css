@@ -1,0 +1,60 @@
+$chevron: 24px;
+$cthick: 2px;
+$animation: 0.25s ease-in-out;
+
+.chevron {
+    background-color: transparent;
+    border: none;
+    display: none;
+    flex-shrink: 0;
+    height: $chevron;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: $chevron;
+
+    div {
+        background-color: $gray-dark;
+        height: $cthick;
+        transition: background-color $animation;
+        width: $chevron;
+
+        &::before,
+        &::after {
+            background-color: $gray-dark;
+            content: '';
+            display: block;
+            height: $cthick;
+            position: absolute;
+            transition: transform $animation;
+            width: $chevron;
+        }
+
+        &::before {
+            transform: translateY(-$chevron / 2 + $cthick);
+        }
+
+        &::after {
+            transform: translateY($chevron / 2 - $cthick);
+        }
+
+    }
+
+    &[data-open="true"] {
+        div {
+            background-color: transparent;
+
+            &:before {
+                transform: translate(0) rotate(45deg);
+            }
+
+            &:after {
+                transform: translate(0) rotate(-45deg);
+            }
+        }
+    }
+
+    @include mobile {
+        display: block;
+    }
+}

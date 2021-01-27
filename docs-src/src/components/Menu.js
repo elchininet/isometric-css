@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Github } from './Github';
+import { GithubPanel } from './GithubPanel';
 import { MenuLinks } from './MenuLinks';
 import logo from '../images/isometric-css.png';
 
@@ -14,7 +14,7 @@ export const Menu = () => {
                     src={logo}
                 />
             </Link>
-            <Github />
+            <GithubPanel />
             <MenuLinks />         
         </nav>
     );

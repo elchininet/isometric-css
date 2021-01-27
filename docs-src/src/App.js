@@ -7,6 +7,7 @@ import {
 import { Menu } from './components/Menu';
 import { KnowingTheBasicsPage } from './pages/KnowingTheBasicsPage';
 import { BrowserPage } from './pages/BrowserPage';
+import { NodePage } from './pages/NodePage';
 import { DemoPage } from './pages/DemoPage';
 
 export const App = () => {
@@ -17,6 +18,9 @@ export const App = () => {
         <Switch>
           <Route path="/browser">
             <BrowserPage />
+          </Route>
+          <Route path="/node">
+            <NodePage />
           </Route>
           <Route path="/demo">
             <DemoPage />
