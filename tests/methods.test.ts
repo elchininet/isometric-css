@@ -1,62 +1,6 @@
 import { IsometricCSS } from '../src';
-import { PLANE, PLANE_CSS, HSQRT3 } from '../src/constants';
-
-const base = 'isometric-prqriw';
-const top = 'isometric-1lrvt5v';
-const front = 'isometric-pna9ky';
-const side = 'isometric-t1dg2y';
-const ruleNameReg = /^\.(isometric-.+)$/;
-
-describe('Test CSS Rules names and values', (): void => {
-
-    it('Number of CSS Rules', (): void => {
-
-        expect(document.styleSheets[0]).toBeDefined();
-        expect(document.styleSheets[0].cssRules.length).toBe(4);
-
-    });
-
-    it('CSS Rules names and values', (): void => {
-
-        for (let i = 0; i < 4; i++) {
-
-            const rule = document.styleSheets[0].cssRules[i] as CSSStyleRule;
-            const className = rule.selectorText.replace(ruleNameReg, '$1');
-
-            expect(rule.selectorText).toMatch(ruleNameReg);
-            expect([base, top, front, side]).toContain(className);
-
-            switch (className) {
-
-                case base:
-                    expect(rule.style).toHaveProperty('position', 'absolute');
-                    expect(rule.style).toHaveProperty('transform-origin', '0 0');
-                    expect(rule.style).toHaveProperty('-ms-transform-origin', '0 0');
-                    expect(rule.style).toHaveProperty('-webkit-transform-origin', '0 0');
-                    break;
-                case top:
-                    expect(rule.style).toHaveProperty('transform', PLANE_CSS[PLANE.TOP]);
-                    expect(rule.style).toHaveProperty('-webkit-transform', PLANE_CSS[PLANE.TOP]);
-                    expect(rule.style).toHaveProperty('-ms-transform', PLANE_CSS[PLANE.TOP]);
-                    break;
-                case front:
-                    expect(rule.style).toHaveProperty('transform', PLANE_CSS[PLANE.FRONT]);
-                    expect(rule.style).toHaveProperty('-webkit-transform', PLANE_CSS[PLANE.FRONT]);
-                    expect(rule.style).toHaveProperty('-ms-transform', PLANE_CSS[PLANE.FRONT]);
-                    break;
-                case side:
-                    expect(rule.style).toHaveProperty('transform', PLANE_CSS[PLANE.SIDE]);
-                    expect(rule.style).toHaveProperty('-webkit-transform', PLANE_CSS[PLANE.SIDE]);
-                    expect(rule.style).toHaveProperty('-ms-transform', PLANE_CSS[PLANE.SIDE]);
-                    break;                   
-
-            }
-
-        }
-
-    });
-
-});
+import { HSQRT3 } from '../src/constants';
+import { base, top, front, side } from './constants';
 
 describe('Test methods', (): void => {
 
@@ -103,6 +47,18 @@ describe('Test methods', (): void => {
         expect(element.classList.length).toBe(2);
         expect(element.classList.contains(base)).toBeTruthy();
         expect(element.classList.contains(side)).toBeTruthy();
+
+        IsometricCSS.resetElement(element);
+
+        IsometricCSS.setPlane(element, 'fake' as 'top');
+
+        expect(element.classList.length).toBe(0);
+
+        element.classList.add(base);
+
+        IsometricCSS.setPlane(element, 'top');
+
+        expect(element.classList.length).toBe(2);
 
     });
 
@@ -168,6 +124,90 @@ describe('Test methods', (): void => {
 
         expect(style).toHaveProperty('left', '0px');
         expect(style).toHaveProperty('top', '-100px');
+
+        IsometricCSS.resetElement(element);
+
+        IsometricCSS.setPosition(element, {
+            right: 0,
+            left: 0,
+            top: 0
+        });
+
+        IsometricCSS.setPosition(element, {
+            right: 100
+        });
+
+        expect(element.classList.length).toBe(2);
+
+        style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('left', `${HSQRT3 * 100}px`);
+        expect(style).toHaveProperty('top', '50px');
+
+    });
+
+    it('setTexture', (): void => {
+        
+        IsometricCSS.setTexture(element, {
+            url: '/images/test-image.png'
+        });
+
+        expect(element.classList.contains(base)).toBeTruthy();
+
+        let style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
+        expect(style).toHaveProperty('background-size', 'cover');
+        expect(style).toHaveProperty('image-rendering', '');
+
+        IsometricCSS.resetElement(element);
+
+        expect(element.classList.length).toBe(0);
+
+        IsometricCSS.setTexture(element, {
+            url: '/images/test-image.png',
+            size: '50px 50px'
+        });
+
+        style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
+        expect(style).toHaveProperty('background-size', '50px 50px');
+        expect(style).toHaveProperty('image-rendering', '');
+
+        IsometricCSS.resetElement(element);
+
+        IsometricCSS.setTexture(element, {
+            url: '/images/test-image.png',
+            size: '100px 100px',
+            pixelated: true
+        });
+
+        style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
+        expect(style).toHaveProperty('background-size', '100px 100px');
+        expect(style).toHaveProperty('image-rendering', 'pixelated');
+
+        IsometricCSS.resetElement(element);
+
+        IsometricCSS.setTexture(element, {
+            url: '/images/test-image.png'
+        });
+
+        IsometricCSS.setTexture(element, {
+            url: '/images/test-image2.png',
+            size: '100px 100px',
+            pixelated: true
+        });
+
+        expect(element.classList.length).toBe(2);
+
+        style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('background-image', 'url(/images/test-image2.png)');
+        expect(style).toHaveProperty('background-size', '100px 100px');
+        expect(style).toHaveProperty('image-rendering', 'pixelated');
 
     });
 
