@@ -28,7 +28,7 @@
     ]
   },
   "dependencies": {
-    "isometric-css": "^1.0.0",
+    "isometric-css": "^1.0.2",
     "outdent": "^0.8.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

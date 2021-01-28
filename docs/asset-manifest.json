@@ -5,11 +5,11 @@
     "main.js.map": "./static/js/main.363a264d.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.b62c7875.js",
     "runtime-main.js.map": "./static/js/runtime-main.b62c7875.js.map",
-    "static/js/2.209a616c.chunk.js": "./static/js/2.209a616c.chunk.js",
-    "static/js/2.209a616c.chunk.js.map": "./static/js/2.209a616c.chunk.js.map",
+    "static/js/2.4c2a677a.chunk.js": "./static/js/2.4c2a677a.chunk.js",
+    "static/js/2.4c2a677a.chunk.js.map": "./static/js/2.4c2a677a.chunk.js.map",
     "index.html": "./index.html",
     "static/css/main.3b0c2346.chunk.css.map": "./static/css/main.3b0c2346.chunk.css.map",
-    "static/js/2.209a616c.chunk.js.LICENSE.txt": "./static/js/2.209a616c.chunk.js.LICENSE.txt",
+    "static/js/2.4c2a677a.chunk.js.LICENSE.txt": "./static/js/2.4c2a677a.chunk.js.LICENSE.txt",
     "static/media/fork.681fbd3a.svg": "./static/media/fork.681fbd3a.svg",
     "static/media/github.85b1fb7e.svg": "./static/media/github.85b1fb7e.svg",
     "static/media/grass_block_side.f48abe15.png": "./static/media/grass_block_side.f48abe15.png",
@@ -22,7 +22,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.b62c7875.js",
-    "static/js/2.209a616c.chunk.js",
+    "static/js/2.4c2a677a.chunk.js",
     "static/css/main.3b0c2346.chunk.css",
     "static/js/main.363a264d.chunk.js"
   ]
