@@ -8,12 +8,12 @@ const linksData = [
         label: 'Knowing the basics'
     },
     {
-        link: '/browser',
-        label: 'Using the library in the browser'
+        link: '/using-the-library',
+        label: 'Using the library'
     },
     {
-        link: '/node',
-        label: 'Library in Node'
+        link: '/library-api',
+        label: 'Library API'
     },
     {
         link: '/demo',

@@ -1,7 +1,7 @@
 {
   "name": "isometric-css",
   "version": "1.0.0",
-  "description": "A JavaScript library to build ismoetric projections using CSS classes",
+  "description": "A JavaScript library to build isometric projections using HTML elements and CSS classes",
   "keywords": [
     "isometric",
     "projection",
@@ -22,13 +22,16 @@
   "files": [
     "@types/**/*",
     "constants/**/*",
+    "dom/**/*",
     "utilities/**/*",
-    "browser.d.ts",
-    "browser.js",
     "index.d.ts",
     "index.js",
-    "browser.js.LICENSE.txt"
+    "index.js.LICENSE.txt"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elchininet/isometric-css"
+  },
   "author": "ElChiniNet",
   "private": false,
   "sideEffects": false,
@@ -40,8 +43,8 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "isometric-css": "file:.yalc/isometric-css",
-    "jss": "^10.5.0",
+    "@emotion/hash": "^0.8.0",
+    "jss": "^10.5.1",
     "jss-plugin-camel-case": "^10.5.0"
   },
   "devDependencies": {

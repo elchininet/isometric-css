@@ -5,7 +5,13 @@ const tsconfig = require('./tsconfig');
 const { compilerOptions: { baseUrl, paths } } = tsconfig;
 const aliasReg = (str) => str.replace(/^(.*)\/\*$/, '$1');
 
-const common = {
+module.exports = {
+    entry: './src/index.ts',
+    output: {
+        filename: 'index.js',
+        path: path.resolve(__dirname, './dist'),
+        libraryTarget: 'commonjs',
+    },
     mode: 'production',
     optimization: {
         usedExports: true
@@ -24,29 +30,8 @@ const common = {
                 loader: 'ts-loader'
             }
         ]
-    }
-};
-
-module.exports = [
-    {
-        ...common,
-        entry: './src/index.ts',
-        output: {
-            filename: 'index.js',
-            path: path.resolve(__dirname, './dist'),
-            libraryTarget: 'commonjs'
-        },
-        plugins: [
-            new CleanWebpackPlugin()
-        ],
     },
-    {
-        ...common,
-        entry: './src/browser.ts',
-        output: {
-            filename: 'browser.js',
-            path: path.resolve(__dirname, './dist'),
-            libraryTarget: 'window'
-        },
-    }
-];
+    plugins: [
+        new CleanWebpackPlugin()
+    ],
+};

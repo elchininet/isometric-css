@@ -1,10 +1,10 @@
 .github-panel {
-    border-bottom: 1px solid $gray-dark;
+    border-bottom: 1px solid $gray;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     margin-left: -20px;
-    padding: 20px 20px;
+    padding: 15px 20px;
     width: calc(100% + 40px);
 
     a {

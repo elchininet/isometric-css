@@ -2,20 +2,13 @@
   "name": "docs-src",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "outdent": "^0.8.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
-    "react-syntax-highlighter": "^15.4.3"
-  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp -r ./build/. ../docs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "./",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -33,6 +26,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "isometric-css": "^1.0.0",
+    "outdent": "^0.8.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "react-syntax-highlighter": "^15.4.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",

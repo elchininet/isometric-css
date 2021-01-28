@@ -23,11 +23,8 @@ export type Rule = {
     fallbacks?: Record<string, string>[];
 };
 
-export interface Rules {
-    [key: string]: Rule;
-}
-
-export interface ElementID {
-    id: string;
-    element: HTMLElement;
+export interface Texture {
+    url: string;
+    size?: string;
+    pixelated?: boolean;
 }

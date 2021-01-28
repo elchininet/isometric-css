@@ -4,9 +4,10 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    padding: 30px 20px;
+    padding: 20px;
     position: fixed;
     width: 300px;
+    z-index: 100;
 
     @include mobile {
         align-items: center;

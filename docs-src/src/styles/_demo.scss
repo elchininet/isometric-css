@@ -21,8 +21,14 @@
 }
 
 .world {
+    height: 200px;
     left: 50%;
     position: relative;
+
+    @include mobile {
+        transform-origin: 0 0;
+        transform: scale(0.9);
+    }
 }
 
 .floor {
@@ -33,4 +39,8 @@
 .plane {
     height: 50px;
     width: 50px;
+}
+
+.demo-wrapper {
+    overflow: hidden;
 }

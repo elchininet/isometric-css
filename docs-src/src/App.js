@@ -6,21 +6,21 @@ import {
 } from "react-router-dom";
 import { Menu } from './components/Menu';
 import { KnowingTheBasicsPage } from './pages/KnowingTheBasicsPage';
-import { BrowserPage } from './pages/BrowserPage';
-import { NodePage } from './pages/NodePage';
+import { UsingTheLibrary } from './pages/UsingTheLibrary';
+import { LibraryApiPage } from './pages/LibraryApiPage';
 import { DemoPage } from './pages/DemoPage';
 
 export const App = () => {
   return (
-    <Router>
+    <Router basename={'/isometric-css'}>
       <Menu />
       <div className="page">
         <Switch>
-          <Route path="/browser">
-            <BrowserPage />
+          <Route path="/using-the-library">
+            <UsingTheLibrary />
           </Route>
-          <Route path="/node">
-            <NodePage />
+          <Route path="/library-api">
+            <LibraryApiPage />
           </Route>
           <Route path="/demo">
             <DemoPage />

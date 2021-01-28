@@ -1,5 +1,6 @@
+import hash from '@emotion/hash';
 import { Point, Plane, Rule } from '@types'; 
-import { HSQRT3, DECIMALS, PLANE_CSS } from '@constants';
+import { NAMESPACE, HSQRT3, DECIMALS, PLANE_CSS } from '@constants';
 
 const round = (n: number, d: number): number => {
     const exp = Math.pow(10, d);
@@ -32,10 +33,6 @@ export const getPlaneObject = (plane: Plane): Rule => ({
     MsTransform: PLANE_CSS[plane],
 });
 
-export const getPlaneString = (plane: Plane): string => cssObjectToString(
-    getPlaneObject(plane)
-);
-
 export const getPosition = (
     right: number,
     left: number,
@@ -47,14 +44,6 @@ export const getPosition = (
         top: `${point.y}px`,
     };
 };
-
-export const getPositionString = (
-    right: number,
-    left: number,
-    top: number
-): string => cssObjectToString(
-    getPosition(right, left, top)
-);
 
 export const getBackground = (
     url: string,
@@ -75,10 +64,10 @@ export const getBackground = (
     return styles;
 };
 
-export const getBackgroundString = (
-    url: string,
-    size: string = 'cover',
-    pixelated: boolean = false
-): string => cssObjectToString(
-    getBackground(url, size, pixelated)
-);
+export const hashObject = (obj: Rule, namespace: boolean = true): string => {
+    const objStr = cssObjectToString(obj);
+    if (namespace) {
+        return `${NAMESPACE}-${hash(objStr)}`;
+    }
+    return hash(objStr);
+};

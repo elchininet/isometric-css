@@ -1,28 +1,27 @@
-import { PLANE, PLANE_BASE_CSS } from '@constants';
+import { TYPE_UNDEFINED } from '@constants';
 import {
-    getPosition,
-    getPositionString,
-    cssObjectToString,
-    getPlaneObject,
-    getPlaneString,
-    getBackground,
-    getBackgroundString
-} from '@utilities';
-
-export const Isometric = {
-    base: PLANE_BASE_CSS,
-    top: getPlaneObject(PLANE.TOP),
-    front: getPlaneObject(PLANE.FRONT),
-    side: getPlaneObject(PLANE.SIDE),
-    getPosition,
-    getBackground,
-};
+    processDOMElements,
+    processElement,
+    setPlane,
+    setPosition,
+    setTexture,
+    resetElement
+} from '@dom'; 
 
 export const IsometricCSS = {
-    base: cssObjectToString(PLANE_BASE_CSS),
-    top: getPlaneString(PLANE.TOP),
-    front: getPlaneString(PLANE.FRONT),
-    side: getPlaneString(PLANE.SIDE),
-    getPosition: getPositionString,
-    getBackground: getBackgroundString,
+    processDOM: processDOMElements,
+    processElement,
+    setPlane,
+    setPosition,
+    setTexture,
+    resetElement,
 };
+
+if (typeof window !== TYPE_UNDEFINED) {
+    window.IsometricCSS = IsometricCSS;
+    window.addEventListener('DOMContentLoaded', IsometricCSS.processDOM);
+}
+
+declare global {
+    interface Window { IsometricCSS: typeof IsometricCSS; }
+}

@@ -1,75 +1,15 @@
 <p align="center">
     <a href="https://github.com/elchininet/isometric-css">
-        <img src="./docs-src/images/isometric-css.png?raw=true" width="400" title="isometric" />
+        <img src="./docs-src/src/images/isometric-css.png?raw=true" width="400" title="isometric" />
     </a>
     <br>
-    A JavaScript library to build isometric projections using CSS classes
+    A JavaScript library to build isometric projections using HTML elements and CSS classes
 </p>
 
-## Demo / Tutorial
+## Documentation / Demo
 
 https://elchininet.github.io/isometric-css/
 
-## Installation
+## Introduction
 
-#### Using NPM
-
-```
-npm install isometric-css --save
-```
-
-#### Using Yarn
-
-```
-yarn add isometric-css
-```
-
-#### In the browser
-
-It is possible to use the library directly in the browser:
-
-1. Copy the JavaScript file `browser.js`, located in the `dist` folder
-2. Put it in the folder that you prefer in your web server
-3. Include it in your HTML file
-
-```javascript
-<script src="wherever/you/installed/browser.js" />
-```
-
-#### Importing using CommonJS
-
-```javascript
-// Importing the library to work with the isometric classes
-const { Isometric, IsometricCSS } = require('isometric-css');
-
-// Use the library in the browser
-require('isometric-css/browser');
-```
-
-#### Importing using ES6 modules
-
-```javascript
-// Importing the library to work with the isometric classes
-import { Isometric, IsometricCSS } from 'isometric-css';
-
-// Use the library in the browser
-import 'isometric-css/browser';
-```
-
-#### Using in the browser
-
-```javascript
-/* Use it directly in your JavaScript code */
-Isometric;
-
-/* Or access to the global variable if there is a variable with this name in the same scope */
-window.Isometric;
-```
-
-## Scripts
-
-#### build
-
-`npm run build`
-
-Transpiles the TypeScript code and creates two bundles in the `dist` folder (`index.js` for Node environments and `browser.js` to use directly in the browser).
+To give the apperance of an <a href="https://en.wikipedia.org/wiki/Isometric_projection" target="_blank" rel="noreferrer noopener">isometric projection</a> to an HTML element, it is needed to apply <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform" target="_blank" rel="noreferrer noopener">CSS transformations</a> to it. This transformations could be complex to manage, and even more when we have multiple elements and we want to translate them to specific isometric positions. The **isometric-css** library can help us in this task, it will create, using the power of <a href="https://cssinjs.org" target="_blank" rel="noreferrer noopener">JSS</a>, the necessary CSS rules to transform the HTML elements. You can either apply the transformation through declarative <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*" target="_blank" rel="noreferrer noopener">data attributes</a> in the HTML code or use the library API methods to apply this transformations to the elements dynamically using JavaScript.

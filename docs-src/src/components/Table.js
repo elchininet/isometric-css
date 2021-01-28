@@ -27,14 +27,23 @@ export const TableRow = (props) => {
 };
 
 export const TableColumn = (props) => {
-    const { header = false, noPadding = false, colSpan } = props;
+    const { header = false, noPadding = false, noBorder = false, paddingBig = false, colSpan } = props;
     const Tag = header ? 'th' : 'td';
     const tagAttributes = {};
     if (colSpan) {
         tagAttributes.colSpan = colSpan;
     }
-    if (noPadding) {
-        tagAttributes.className = 'no-padding';
+    if (noPadding || noBorder || paddingBig) {
+        tagAttributes.className = '';
+        if (noPadding) {
+            tagAttributes.className += 'no-padding';
+        }
+        if (noBorder) {
+            tagAttributes.className += ' no-border';
+        }
+        if (paddingBig) {
+            tagAttributes.className += ' padding-big';
+        }
     }
     return (
         <Tag {...tagAttributes}>
