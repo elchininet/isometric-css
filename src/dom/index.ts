@@ -48,7 +48,7 @@ export const resetElement = (element: HTMLElement): void => {
     element.classList.remove(sheet.classes.front);
     element.classList.remove(sheet.classes.side);
     if (element.dataset.classes) {
-        const classes = element.dataset.classes.match(/[^\{\}]+/g);
+        const classes = element.dataset.classes.match(/[^{}]+/g);
         classes.forEach((name: string): void => {
             element.classList.remove(sheet.classes[name]);
         });
@@ -139,7 +139,7 @@ export const setPosition = (
 export const setTexture = (
     element: HTMLElement,
     texture: Texture
-) => {
+): void => {
     if (!element.classList.contains(sheet.classes.base)) {
         element.classList.add(sheet.classes.base);
     }
@@ -153,7 +153,7 @@ export const setTexture = (
     );
 };
 
-export const processDOMElements = () => {
+export const processDOMElements = (): void => {
     if (IS_BROWSER) {
         Array.prototype.forEach.call(document.querySelectorAll(`.${NAMESPACE}`), (element: Element): void => {
             if (element instanceof HTMLElement) {

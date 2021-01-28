@@ -9,7 +9,7 @@ const round = (n: number, d: number): number => {
 
 const kebab = (prop: string): string => prop.replace(/[A-Z]/g, '-$&').toLowerCase();
 
-export const cssObjectToString = (cssObject: Rule, endColon: boolean = true): string => {
+export const cssObjectToString = (cssObject: Rule, endColon = true): string => {
     const entries = Object.entries<string | Record<string, string>[]>(cssObject);
     const dclArray = entries.map(([decl, value]) => {
         if (Array.isArray(value)) {
@@ -20,7 +20,7 @@ export const cssObjectToString = (cssObject: Rule, endColon: boolean = true): st
     return dclArray.join(';\n') + `${endColon ? ';' : ''}`;
 };
 
-export const isometricToPoint = (right: number = 0, left: number = 0, top: number = 0): Point => {
+export const isometricToPoint = (right = 0, left = 0, top = 0): Point => {
     return {
         x: round((right - left) * HSQRT3, DECIMALS),
         y: round(((right + left) / 2 - top), DECIMALS),
@@ -47,8 +47,8 @@ export const getPosition = (
 
 export const getBackground = (
     url: string,
-    size: string = 'cover',
-    pixelated: boolean = false
+    size = 'cover',
+    pixelated = false
 ): Rule => {
     const styles: Rule = {
         backgroundImage: `url(${url})`,
@@ -64,7 +64,7 @@ export const getBackground = (
     return styles;
 };
 
-export const hashObject = (obj: Rule, namespace: boolean = true): string => {
+export const hashObject = (obj: Rule, namespace = true): string => {
     const objStr = cssObjectToString(obj);
     if (namespace) {
         return `${NAMESPACE}-${hash(objStr)}`;

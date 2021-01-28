@@ -38,7 +38,9 @@
   "scripts": {
     "build": "webpack && tscpaths -p tsconfig.json -s ./src -o ./dist",
     "copy": "cp -r ./dist/. ./",
+    "lint": "eslint src/**/*.ts",
     "prepare": "yarn build && yarn copy",
+    "prepublishOnly": "npm run lint",
     "version": "git add .",
     "postversion": "git push && git push --tags"
   },
@@ -49,7 +51,10 @@
   },
   "devDependencies": {
     "@types/node": "^14.14.22",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
     "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^7.18.0",
     "ts-loader": "^8.0.14",
     "tscpaths": "^0.0.9",
     "typescript": "^4.1.3",
