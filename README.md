@@ -6,6 +6,8 @@
     A JavaScript library to build isometric projections using HTML elements and CSS classes
 </p>
 
+[![Build Status](https://travis-ci.com/elchininet/isometric-css.svg?branch=master)](https://travis-ci.com/elchininet/isometric-css) &nbsp; [![Coverage Status](https://coveralls.io/repos/github/elchininet/isometric-css/badge.svg?branch=master)](https://coveralls.io/github/elchininet/isometric-css?branch=master)
+
 ## Documentation / Demo
 
 https://elchininet.github.io/isometric-css/
