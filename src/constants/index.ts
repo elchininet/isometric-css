@@ -23,3 +23,8 @@ export const PLANE_CSS = {
 };
 
 export const TYPE_UNDEFINED = 'undefined';
+
+export enum CLASS_TYPE {
+    POSITION,
+    BACKGROUND
+}

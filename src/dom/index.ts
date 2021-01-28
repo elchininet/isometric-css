@@ -1,7 +1,7 @@
 import jss, { StyleSheet, Rule as JssRule } from 'jss';
 import camelCase from 'jss-plugin-camel-case';
 import { Rule, IsometricPoint, Texture } from '@types'; 
-import { TYPE_UNDEFINED, NAMESPACE, PLANE_BASE_CSS, PLANE } from '@constants';
+import { TYPE_UNDEFINED, NAMESPACE, PLANE_BASE_CSS, PLANE, CLASS_TYPE } from '@constants';
 import { getBackground, getPlaneObject, getPosition, hashObject } from '@utilities';
 
 jss.setup({
@@ -42,18 +42,61 @@ const removeDataAttributes = (element: HTMLElement, attributes: string[]): void 
     });
 };
 
+const getClasses = (element: HTMLElement): string[] => element.dataset.classes
+    ? element.dataset.classes.match(/[^{}]+/g)
+    : [];
+
+const removeClass = (element: HTMLElement, type: CLASS_TYPE): void => {
+
+    const classes = getClasses(element);
+
+    if (!IS_BROWSER || !classes.length) return;
+    
+    let found = false;
+
+    classes.some((className: string): boolean => {
+
+        const rule = sheet.getRule(className);
+        
+        switch (type) {
+            case CLASS_TYPE.POSITION:
+                // @ts-ignore
+                if ( rule.style.left || rule.style.top) {
+                    found = true;
+                }
+                break;
+            case CLASS_TYPE.BACKGROUND:
+                // @ts-ignore
+                if (rule.style['background-image']) {
+                    found = true;
+                }
+                break;
+        }
+
+        if (found) {
+            element.classList.remove(sheet.classes[className]);
+            element.dataset.classes = element.dataset.classes.replace(`{${className}}`, '');
+        }
+
+        return found;
+
+    });
+
+};
+
 export const resetElement = (element: HTMLElement): void => {
     element.classList.remove(sheet.classes.base);
     element.classList.remove(sheet.classes.top);
     element.classList.remove(sheet.classes.front);
     element.classList.remove(sheet.classes.side);
-    if (element.dataset.classes) {
-        const classes = element.dataset.classes.match(/[^{}]+/g);
-        classes.forEach((name: string): void => {
-            element.classList.remove(sheet.classes[name]);
-        });
-        removeDataAttributes(element, ['classes']);
-    }
+    
+    const classes = getClasses(element);
+
+    classes.forEach((name: string): void => {
+        element.classList.remove(sheet.classes[name]);
+    });
+
+    removeDataAttributes(element, ['classes']);
 };
 
 export const processElement = (element: HTMLElement): void => {
@@ -125,7 +168,8 @@ export const setPosition = (
 ): void => {
     if (!element.classList.contains(sheet.classes.base)) {
         element.classList.add(sheet.classes.base);
-    }   
+    }
+    removeClass(element, CLASS_TYPE.POSITION);
     addRuleToElement(
         element,
         getPosition(
@@ -143,6 +187,7 @@ export const setTexture = (
     if (!element.classList.contains(sheet.classes.base)) {
         element.classList.add(sheet.classes.base);
     }
+    removeClass(element, CLASS_TYPE.BACKGROUND);
     addRuleToElement(
         element,
         getBackground(
