@@ -19,6 +19,9 @@ module.exports = {
         sourceType: 'module'
     },
     plugins: ['@typescript-eslint'],
+    ignorePatterns: [
+        'jest.config.js'
+    ],
     rules: {
         quotes: ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
         semi: ['error', 'always'],
