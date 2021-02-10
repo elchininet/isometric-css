@@ -11,8 +11,8 @@
       "paths": {
         "@types": ["@types"],
         "@constants": ["constants"],
-        "@utilities": ["utilities"],
-        "@dom": ["dom"]
+        "@classes/*": ["classes/*"],
+        "@utilities/*": ["utilities/*"]
       }
     },
     "include": ["src/**/*.ts"],

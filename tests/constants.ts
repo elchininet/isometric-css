@@ -1,5 +1,3 @@
-export const base = 'isometric-prqriw';
-export const top = 'isometric-1lrvt5v';
-export const front = 'isometric-pna9ky';
-export const side = 'isometric-t1dg2y';
-export const ruleNameReg = /^\.(isometric-.+)$/;
+export const top = 'translate(-50%, -50%) matrix(0.707107,-0.408248,0.707107,0.408248,0,0) scale(1.224745) translate(-50%, 50%)';
+export const front = 'translate(-50%, -50%) matrix(0.707107,-0.408248,0,0.816496,0,0) scale(1.224745) translate(-50%, -50%)';
+export const side = 'translate(-50%, -50%) matrix(0.707107,0.408248,0,0.816496,0,0) scale(1.224745) translate(50%, -50%)';

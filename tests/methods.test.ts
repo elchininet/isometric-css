@@ -1,6 +1,6 @@
 import { IsometricCSS } from '../src';
-import { HSQRT3 } from '../src/constants';
-import { base, top, front, side } from './constants';
+import { HSQRT3, VIEW } from '../src/constants';
+import { top, front, side } from './constants';
 
 describe('Test methods', (): void => {
 
@@ -19,46 +19,67 @@ describe('Test methods', (): void => {
         }        
     });
 
-    it('setPlane', (): void => {
+    it('setView', (): void => {
 
-        // setPlane top
-        IsometricCSS.setPlane(element, 'top');
+        // setView top
+        IsometricCSS.setView(element, 'top');
 
-        expect(element.classList.length).toBe(2);
-        expect(element.classList.contains(base)).toBeTruthy();
-        expect(element.classList.contains(top)).toBeTruthy();
+        expect(element.classList.length).toBe(1);
+
+        let style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('transform-origin', '50% 50%');
+        expect(style).toHaveProperty('position', 'absolute');
+        expect(style).toHaveProperty('transform', top);
 
         IsometricCSS.resetElement(element);
 
         expect(element.classList.length).toBe(0);
 
-        // setPlane front
-        IsometricCSS.setPlane(element, 'front');
+        style = getComputedStyle(element);
 
-        expect(element.classList.length).toBe(2);
-        expect(element.classList.contains(base)).toBeTruthy();
-        expect(element.classList.contains(front)).toBeTruthy();
+        expect(style).toHaveProperty('transform-origin', '');
+        expect(style).toHaveProperty('position', '');
+        expect(style).toHaveProperty('transform', '');
+
+        // setView front
+        IsometricCSS.setView(element, 'front');
+
+        expect(element.classList.length).toBe(1);
+
+        style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('transform-origin', '50% 50%');
+        expect(style).toHaveProperty('position', 'absolute');
+        expect(style).toHaveProperty('transform', front);
 
         IsometricCSS.resetElement(element);
 
-        // setPlane front
-        IsometricCSS.setPlane(element, 'side');
+        // setView front
+        IsometricCSS.setView(element, 'side');
 
-        expect(element.classList.length).toBe(2);
-        expect(element.classList.contains(base)).toBeTruthy();
-        expect(element.classList.contains(side)).toBeTruthy();
+        expect(element.classList.length).toBe(1);
+
+        style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('transform-origin', '50% 50%');
+        expect(style).toHaveProperty('position', 'absolute');
+        expect(style).toHaveProperty('transform', side);
 
         IsometricCSS.resetElement(element);
 
-        IsometricCSS.setPlane(element, 'fake' as 'top');
+        IsometricCSS.setView(element, 'fake' as 'top');
 
         expect(element.classList.length).toBe(0);
 
-        element.classList.add(base);
+        IsometricCSS.setView(element, 'top');
+        IsometricCSS.setView(element, 'front');
 
-        IsometricCSS.setPlane(element, 'top');
+        expect(element.classList.length).toBe(1);
 
-        expect(element.classList.length).toBe(2);
+        style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('transform', front);
 
     });
 
@@ -70,15 +91,6 @@ describe('Test methods', (): void => {
             top: 0
         });
 
-        expect(element.classList.contains(base)).toBeTruthy();
-
-        let style = getComputedStyle(element);
-
-        expect(style).toHaveProperty('left', '0px');
-        expect(style).toHaveProperty('left', '0px');
-
-        IsometricCSS.resetElement(element);
-
         expect(element.classList.length).toBe(0);
 
         IsometricCSS.setPosition(element, {
@@ -87,7 +99,7 @@ describe('Test methods', (): void => {
             top: 100
         });
 
-        style = getComputedStyle(element);
+        let style = getComputedStyle(element);
 
         expect(style).toHaveProperty('left', '0px');
         expect(style).toHaveProperty('left', '0px');
@@ -128,21 +140,124 @@ describe('Test methods', (): void => {
         IsometricCSS.resetElement(element);
 
         IsometricCSS.setPosition(element, {
-            right: 0,
-            left: 0,
-            top: 0
-        });
-
-        IsometricCSS.setPosition(element, {
             right: 100
         });
 
-        expect(element.classList.length).toBe(2);
+        IsometricCSS.setPosition(element, {
+            top: 100
+        });
+
+        expect(element.classList.length).toBe(1);
 
         style = getComputedStyle(element);
 
+        IsometricCSS.resetElement(element);
+
+        IsometricCSS.setPosition(element, {
+            right: 100,
+            top: 100
+        });
+
+        const style2 = getComputedStyle(element);
+        
         expect(style).toHaveProperty('left', `${HSQRT3 * 100}px`);
-        expect(style).toHaveProperty('top', '50px');
+        expect(style).toHaveProperty('top', '-50px');
+        expect(style2).toHaveProperty('left', `${HSQRT3 * 100}px`);
+        expect(style2).toHaveProperty('top', '-50px');
+
+    });
+
+    it('setRotation', (): void => {
+
+        IsometricCSS.setRotation(element, {
+            axis: 'top',
+            value: 45
+        });
+
+        const style = getComputedStyle(element);
+
+        expect(element.classList.length).toBe(1);
+        expect(style).toHaveProperty('transform', '');
+
+        IsometricCSS.resetElement(element);
+
+        const views = [VIEW.top, VIEW.front, VIEW.side];
+        const angles = ['30', '60', '90'];
+
+        const values = {
+            top: {
+                top: {
+                    '30': 'translate(-50%, -50%) matrix(0.965926,-0.149429,0.258819,0.557677,0,0) scale(1.224745) translate(-50%, 50%)',
+                    '60': 'translate(-50%, -50%) matrix(0.965926,0.149429,-0.258819,0.557677,0,0) scale(1.224745) translate(-50%, 50%)',
+                    '90': 'translate(-50%, -50%) matrix(0.707107,0.408248,-0.707107,0.408248,0,0) scale(1.224745) translate(-50%, 50%)'
+                },
+                front: {
+                    '30': 'translate(-50%, -50%) matrix(0.612372,0.054695,0.707107,0.408248,0,0) scale(1.224745) translate(-50%, 50%)',
+                    '60': 'translate(-50%, -50%) matrix(0.353554,0.502983,0.707107,0.408248,0,0) scale(1.224745) translate(-50%, 50%)',
+                    '90': 'translate(-50%, -50%) matrix(0,0.816497,0.707107,0.408248,0,0) scale(1.224745) translate(-50%, 50%)'
+                },
+                side: {
+                    '30': 'translate(-50%, -50%) matrix(0.707107,-0.408248,0.612372,0.761802,0,0) scale(1.224745) translate(-50%, 50%)',
+                    '60': 'translate(-50%, -50%) matrix(0.707107,-0.408248,0.353554,0.911231,0,0) scale(1.224745) translate(-50%, 50%)',
+                    '90': 'translate(-50%, -50%) matrix(0.707107,-0.408248,0,0.816497,0,0) scale(1.224745) translate(-50%, 50%)'
+                }
+            },
+            front: {
+                top: {
+                    '30': 'translate(-50%, -50%) matrix(0.965925,-0.149429,0,0.816496,0,0) scale(1.224745) translate(-50%, -50%)',
+                    '60': 'translate(-50%, -50%) matrix(0.965926,0.149429,0,0.816496,0,0) scale(1.224745) translate(-50%, -50%)',
+                    '90': 'translate(-50%, -50%) matrix(0.707107,0.408249,0,0.816496,0,0) scale(1.224745) translate(-50%, -50%)'
+                },
+                front: {
+                    '30': 'translate(-50%, -50%) matrix(0.612372,0.054695,-0.353554,0.91123,0,0) scale(1.224745) translate(-50%, -50%)',
+                    '60': 'translate(-50%, -50%) matrix(0.353553,0.502982,-0.612372,0.761801,0,0) scale(1.224745) translate(-50%, -50%)',
+                    '90': 'translate(-50%, -50%) matrix(0,0.816496,-0.707107,0.408248,0,0) scale(1.224745) translate(-50%, -50%)'
+                },
+                side: {
+                    '30': 'translate(-50%, -50%) matrix(0.707107,-0.408248,-0.353554,0.502982,0,0) scale(1.224745) translate(-50%, -50%)',
+                    '60': 'translate(-50%, -50%) matrix(0.707107,-0.408248,-0.612372,0.054695,0,0) scale(1.224745) translate(-50%, -50%)',
+                    '90': 'translate(-50%, -50%) matrix(0.707107,-0.408248,-0.707107,-0.408248,0,0) scale(1.224745) translate(-50%, -50%)'
+                }
+            },
+            side: {
+                top: {
+                    '30': 'translate(-50%, -50%) matrix(0.258819,0.557677,0,0.816496,0,0) scale(1.224745) translate(50%, -50%)',
+                    '60': 'translate(-50%, -50%) matrix(-0.258819,0.557678,0,0.816496,0,0) scale(1.224745) translate(50%, -50%)',
+                    '90': 'translate(-50%, -50%) matrix(-0.707107,0.408249,0,0.816496,0,0) scale(1.224745) translate(50%, -50%)'
+                },
+                front: {
+                    '30': 'translate(-50%, -50%) matrix(0.707107,0.408248,-0.353553,0.911231,0,0) scale(1.224745) translate(50%, -50%)',
+                    '60': 'translate(-50%, -50%) matrix(0.707107,0.408248,-0.612372,0.761802,0,0) scale(1.224745) translate(50%, -50%)',
+                    '90': 'translate(-50%, -50%) matrix(0.707107,0.408248,-0.707107,0.408249,0,0) scale(1.224745) translate(50%, -50%)'
+                },
+                side: {
+                    '30': 'translate(-50%, -50%) matrix(0.612372,0.761801,-0.353553,0.502982,0,0) scale(1.224745) translate(50%, -50%)',
+                    '60': 'translate(-50%, -50%) matrix(0.353554,0.91123,-0.612372,0.054695,0,0) scale(1.224745) translate(50%, -50%)',
+                    '90': 'translate(-50%, -50%) matrix(0,0.816496,-0.707107,-0.408248,0,0) scale(1.224745) translate(50%, -50%)'
+                }
+            },
+        };
+
+        type Angle = '30' | '60' | '90';
+
+        views.forEach((v) => {
+            views.forEach((ra) => {
+                angles.forEach((rv) => {
+
+                    IsometricCSS.setView(element, v);
+                    IsometricCSS.setRotation(element, {
+                        axis: ra,
+                        value: +rv
+                    });
+
+                    const style = getComputedStyle(element);
+
+                    expect(element.classList.length).toBe(1);
+                    expect(style).toHaveProperty('transform', values[v][ra][rv as Angle]);
+
+                });
+            });
+        });
 
     });
 
@@ -152,7 +267,7 @@ describe('Test methods', (): void => {
             url: '/images/test-image.png'
         });
 
-        expect(element.classList.contains(base)).toBeTruthy();
+        expect(element.classList.length).toBe(1);
 
         let style = getComputedStyle(element);
 
@@ -187,7 +302,7 @@ describe('Test methods', (): void => {
 
         expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
         expect(style).toHaveProperty('background-size', '100px 100px');
-        expect(style).toHaveProperty('image-rendering', 'pixelated');
+        expect(style).toHaveProperty('image-rendering', 'crisp-edges');
 
         IsometricCSS.resetElement(element);
 
@@ -201,13 +316,13 @@ describe('Test methods', (): void => {
             pixelated: true
         });
 
-        expect(element.classList.length).toBe(2);
+        expect(element.classList.length).toBe(1);
 
         style = getComputedStyle(element);
 
         expect(style).toHaveProperty('background-image', 'url(/images/test-image2.png)');
         expect(style).toHaveProperty('background-size', '100px 100px');
-        expect(style).toHaveProperty('image-rendering', 'pixelated');
+        expect(style).toHaveProperty('image-rendering', 'crisp-edges');
 
     });
 

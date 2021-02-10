@@ -1,0 +1,1 @@
+export const kebab = (prop: string): string => prop.replace(/[A-Z]/g, '-$&').toLowerCase();

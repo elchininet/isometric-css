@@ -46,9 +46,7 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "@emotion/hash": "^0.8.0",
-    "jss": "^10.5.1",
-    "jss-plugin-camel-case": "^10.5.0"
+    "@emotion/hash": "^0.8.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",

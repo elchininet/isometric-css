@@ -10,7 +10,7 @@ yalc.lock
 /coverage/
 /@types/
 /constants/
-/dom/
+/classes/
 /utilities/
 /index.d.ts
 /index.js
