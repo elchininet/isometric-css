@@ -1,5 +1,5 @@
 import { ElementData, Plane, View, IsometricPosition, Rotation, Texture } from '@types';
-import { VIEW } from '@constants';
+import { VIEW, AXIS } from '@constants';
 import { getPlaneFromElement, resetElementIsometricData } from '@utilities/dom';
 import { Styles } from '@classes/styles';
 
@@ -108,9 +108,9 @@ class Store {
     public setElementRotation(element: HTMLElement, rotation: Rotation): void {
         if (
             (
-                rotation.axis === VIEW.top ||
-                rotation.axis === VIEW.front ||
-                rotation.axis === VIEW.side
+                rotation.axis === AXIS.right ||
+                rotation.axis === AXIS.left ||
+                rotation.axis === AXIS.top
             ) &&
             +rotation.value
         ) {

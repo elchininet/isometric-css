@@ -5,6 +5,10 @@ import { Chevron } from './Chevron';
 const linksData = [
     {
         link: '/',
+        label: 'Live Demo'
+    },
+    {
+        link: '/knowing-the-basics',
         label: 'Knowing the basics'
     },
     {
@@ -16,9 +20,9 @@ const linksData = [
         label: 'Library API'
     },
     {
-        link: '/demo',
-        label: 'Example demo'
-    }
+        link: '/code-example',
+        label: 'Code example'
+    }    
 ];
 
 export const MenuLinks = () => {

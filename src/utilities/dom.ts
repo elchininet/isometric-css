@@ -1,4 +1,4 @@
-import { Plane, View } from '@types';
+import { Plane, View, Axis } from '@types';
 import { NAMESPACE } from '@constants';
 
 export const getPlaneFromElement = (element: HTMLElement): Plane => {
@@ -10,7 +10,7 @@ export const getPlaneFromElement = (element: HTMLElement): Plane => {
     const left = +(element.dataset.left || 0);
     const top = +(element.dataset.top || 0);
     const rotationAxis = element.dataset.rotationAxis
-        ? element.dataset.rotationAxis as View
+        ? element.dataset.rotationAxis as Axis
         : null;
     const rotationValue = +(element.dataset.rotationValue || 0);
     const textureUrl = element.dataset.texture;

@@ -1,5 +1,5 @@
 import { Matrix, View, Rotation } from '@types';
-import { VIEW, ROT_45, ROT_60, ROT_CMA } from '@constants';
+import { VIEW, AXIS, ROT_45, ROT_60, ROT_CMA } from '@constants';
 import { sincos, radian } from '@utilities/math';
 
 export const multiplyMatrix = (m1: Matrix, m2: Matrix): Matrix => (
@@ -85,59 +85,59 @@ export const getViewMatrix = (view: View, rotation?: Rotation): Matrix | null =>
     switch(view) {
         case VIEW.top: {
             switch(rotation.axis) {
-                case VIEW.top:
+                case AXIS.top:
                     return multiplyMatrix(
                         topMatrix,
                         rotateZ(value)
                     );
-                case VIEW.front:
-                    return multiplyMatrix(
-                        topMatrix,
-                        rotateY(value)
-                    );
-                default:
+                case AXIS.left:
                     return multiplyMatrix(
                         topMatrix,
                         rotateX(-value)
                     );
+                default:
+                    return multiplyMatrix(
+                        topMatrix,
+                        rotateY(value)
+                    );                    
             }
         }
         case VIEW.front: {
             switch(rotation.axis) {
-                case VIEW.top:
+                case AXIS.top:
                     return multiplyMatrix(
                         frontMatrix,
                         rotateY(value)
                     );
-                case VIEW.front:
+                case AXIS.left:                    
                     return multiplyMatrix(
                         frontMatrix,
-                        rotateZ(value)
+                        rotateX(value)
                     );
                 default:
                     return multiplyMatrix(
                         frontMatrix,
-                        rotateX(value)
+                        rotateZ(value)
                     );
             }
         }
         case VIEW.side: {
             switch(rotation.axis) {
-                case VIEW.top:
+                case AXIS.top:
                     return multiplyMatrix(
                         sideMatrix,
                         rotateY(value)
                     );
-                case VIEW.front:
-                    return multiplyMatrix(
-                        sideMatrix,
-                        rotateX(-value)
-                    );
-                default:
+                case AXIS.left:
                     return multiplyMatrix(
                         sideMatrix,
                         rotateZ(value)
                     );
+                default:
+                    return multiplyMatrix(
+                        sideMatrix,
+                        rotateX(-value)
+                    );                    
             }
         }
         default:

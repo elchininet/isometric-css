@@ -8,6 +8,7 @@ import { Menu } from './components/Menu';
 import { KnowingTheBasicsPage } from './pages/KnowingTheBasicsPage';
 import { UsingTheLibrary } from './pages/UsingTheLibrary';
 import { LibraryApiPage } from './pages/LibraryApiPage';
+import { CodeExamplePage } from './pages/CodeExamplePage';
 import { DemoPage } from './pages/DemoPage';
 
 export const App = () => {
@@ -16,17 +17,20 @@ export const App = () => {
       <Menu />
       <div className="page">
         <Switch>
+        <Route path="/knowing-the-basics">
+            <KnowingTheBasicsPage />
+          </Route>
           <Route path="/using-the-library">
             <UsingTheLibrary />
           </Route>
           <Route path="/library-api">
             <LibraryApiPage />
           </Route>
-          <Route path="/demo">
-            <DemoPage />
+          <Route path="/code-example">
+            <CodeExamplePage />
           </Route>
           <Route path="/">
-            <KnowingTheBasicsPage />
+            <DemoPage />
           </Route>
         </Switch>
       </div>

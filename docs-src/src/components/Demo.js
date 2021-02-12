@@ -1,47 +1,66 @@
-import React from 'react';
-import floorImage from '../images/gray_wool.png';
-import blockSide from '../images/grass_block_side.png';
-import blockTop from '../images/green_wool.png';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { Houses } from '../components/demo/Houses';
+import { Floor } from '../components/demo/Floor';
+import { FenceSide } from '../components/demo/FenceSide';
+import { FenceFront } from '../components/demo/FenceFront';
 
 export const Demo = () => {
 
+    const [scale, setScale] = useState(1);
+    const [ready, setReady] = useState(false);
+    const container = useRef();
+    const delay = useRef();
+
+    const resize = useCallback(() => {
+
+        clearTimeout(delay.current);
+
+        delay.current = setTimeout(() => {
+
+            const width = container.current.clientWidth;
+            
+            setScale(
+                Math.min(
+                    Math.round((width / 780) * 1000) / 1000, 1
+                )
+            );
+
+        }, 50);        
+
+    }, []);
+
+    const transform = useMemo(() => ({
+        transform: `scale(${scale})`,
+        WebkitTransform: `scale(${scale})`,
+        MsTransform: `scale(${scale})`
+    }), [scale]);
+
+    useEffect(() => {
+        resize();
+        setReady(true);
+        window.addEventListener('resize', resize);
+        return () => {
+            window.removeEventListener('resize', resize);
+        };
+    }, [resize]);
+
     return (
         <div className="container">
-            <div className="demo-wrapper">
-                <div className="world">
-                    <div
-                        className="isometric floor"
-                        data-plane="top"
-                        data-texture={floorImage}
-                        data-texture-size="50px 50px"
-                        data-texture-pixelated="true"
-                    />
-                    <div
-                        className="isometric"
-                        data-right="75"
-                        data-left="75"
-                    >
+            <div className="demo-wrapper" ref={container} data-ready={ready}>
+                <div className="world" style={transform}>
+                    <div className="coords">
                         <div
-                            className="isometric plane"
-                            data-plane="top"
-                            data-top="50"
-                            data-texture={blockTop}
-                            data-texture-pixelated="true"
+                            className="isometric grass"
+                            data-view="top"
+                            data-top="-10"
                         />
-                        <div
-                            className="isometric plane"
-                            data-plane="front"
-                            data-right="50"
-                            data-texture={blockSide}
-                            data-texture-pixelated="true"
-                        />
-                        <div
-                            className="isometric plane"
-                            data-plane="side"
-                            data-left="50"
-                            data-texture={blockSide}
-                            data-texture-pixelated="true"
-                        />
+                        <Floor />
+                        <FenceSide right={10} left={10} /> 
+                        <FenceFront right={10} left={220}/>
+                        <Houses right={45} left={40} />
+                        <FenceFront right={435} left={220}/>
+                        <FenceSide right={10} left={220} /> 
+                           
                     </div>
                 </div>
             </div>

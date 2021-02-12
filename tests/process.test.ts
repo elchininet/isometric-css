@@ -88,7 +88,7 @@ describe('Test process elements', (): void => {
         expect(element.dataset.top).toBe(undefined);
 
         element.dataset.view = 'top';
-        element.dataset.rotationAxis = 'front';
+        element.dataset.rotationAxis = 'right';
         element.dataset.rotationValue = '30';
         
         IsometricCSS.processElement(element);

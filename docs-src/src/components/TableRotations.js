@@ -1,127 +1,92 @@
 import React, { Fragment } from 'react';
 import { Table, TableHeader, TableRow, TableColumn, TableBody } from './Table';
-import { Separtor } from './Separator';
 
-export const TableDataset = () => {
+export const TableRotations = () => {
     return (
       <Fragment>
         <Table>
           <TableHeader>
             <TableRow>
               <TableColumn header>
-                Data attribute
+                Initial plane view
               </TableColumn>
               <TableColumn header>
-                Posible values
+                Rotation
               </TableColumn>
               <TableColumn header>
-                Description
+                Final plane view
               </TableColumn>
             </TableRow>
           </TableHeader>
           <TableBody>
             <TableRow>
               <TableColumn>
-                data-view
+                front
               </TableColumn>
               <TableColumn>
-                top | front | side
+                90º left
               </TableColumn>
               <TableColumn>
-                Defines the plane view
-              </TableColumn>
-            </TableRow>
-            <TableRow>
-              <TableColumn>
-                data-right
-              </TableColumn>
-              <TableColumn>
-                number
-              </TableColumn>
-              <TableColumn>
-                Position in the right axis
+                top
               </TableColumn>
             </TableRow>
             <TableRow>
               <TableColumn>
-                data-left
+                front
               </TableColumn>
               <TableColumn>
-                number
+                -90º top
               </TableColumn>
               <TableColumn>
-                Position in the left axis
-              </TableColumn>
-            </TableRow>
-            <TableRow>
-              <TableColumn>
-                data-top
-              </TableColumn>
-              <TableColumn>
-                number
-              </TableColumn>
-              <TableColumn>
-                Position in the top axis
+                side
               </TableColumn>
             </TableRow>
             <TableRow>
               <TableColumn>
-                data-texture
+                side
               </TableColumn>
               <TableColumn>
-                string
+                -90 right
               </TableColumn>
               <TableColumn>
-                Image url that will be used as the plane texture
-              </TableColumn>
-            </TableRow>
-            <TableRow>
-              <TableColumn>
-                data-texture-size
-              </TableColumn>
-              <TableColumn>
-                  cover | number% number%
-              </TableColumn>
-              <TableColumn>
-                Size of the texture
+                top
               </TableColumn>
             </TableRow>
             <TableRow>
               <TableColumn>
-                data-texture-pixelated
+                side
               </TableColumn>
               <TableColumn>
-                  true | false
+                90º top
               </TableColumn>
               <TableColumn>
-                  Sets if the texture should be pixelated or not
-              </TableColumn>
-            </TableRow>
-            <TableRow>
-              <TableColumn>
-                data-rotation-axis
-              </TableColumn>
-              <TableColumn>
-                right | left | top
-              </TableColumn>
-              <TableColumn>
-                  Sets the rotation axis of the plane
+                front
               </TableColumn>
             </TableRow>
             <TableRow>
               <TableColumn>
-                data-rotation-value
+                top
               </TableColumn>
               <TableColumn>
-                number
+                90º right
               </TableColumn>
               <TableColumn>
-                Rotation angle in degrees
+                side
+              </TableColumn>
+            </TableRow>
+            <TableRow>
+              <TableColumn>
+                top
+              </TableColumn>
+              <TableColumn>
+                  -90º left
+              </TableColumn>
+              <TableColumn>
+                front
               </TableColumn>
             </TableRow>
           </TableBody>
         </Table>
-        <Separtor />
       </Fragment>
     );
 };

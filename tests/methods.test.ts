@@ -1,5 +1,5 @@
 import { IsometricCSS } from '../src';
-import { HSQRT3, VIEW } from '../src/constants';
+import { HSQRT3, VIEW, AXIS } from '../src/constants';
 import { top, front, side } from './constants';
 
 describe('Test methods', (): void => {
@@ -182,6 +182,7 @@ describe('Test methods', (): void => {
         IsometricCSS.resetElement(element);
 
         const views = [VIEW.top, VIEW.front, VIEW.side];
+        const axis = [AXIS.top, AXIS.left, AXIS.right];
         const angles = ['30', '60', '90'];
 
         const values = {
@@ -191,12 +192,12 @@ describe('Test methods', (): void => {
                     '60': 'translate(-50%, -50%) matrix(0.965926,0.149429,-0.258819,0.557677,0,0) scale(1.224745) translate(-50%, 50%)',
                     '90': 'translate(-50%, -50%) matrix(0.707107,0.408248,-0.707107,0.408248,0,0) scale(1.224745) translate(-50%, 50%)'
                 },
-                front: {
+                right: {
                     '30': 'translate(-50%, -50%) matrix(0.612372,0.054695,0.707107,0.408248,0,0) scale(1.224745) translate(-50%, 50%)',
                     '60': 'translate(-50%, -50%) matrix(0.353554,0.502983,0.707107,0.408248,0,0) scale(1.224745) translate(-50%, 50%)',
                     '90': 'translate(-50%, -50%) matrix(0,0.816497,0.707107,0.408248,0,0) scale(1.224745) translate(-50%, 50%)'
                 },
-                side: {
+                left: {
                     '30': 'translate(-50%, -50%) matrix(0.707107,-0.408248,0.612372,0.761802,0,0) scale(1.224745) translate(-50%, 50%)',
                     '60': 'translate(-50%, -50%) matrix(0.707107,-0.408248,0.353554,0.911231,0,0) scale(1.224745) translate(-50%, 50%)',
                     '90': 'translate(-50%, -50%) matrix(0.707107,-0.408248,0,0.816497,0,0) scale(1.224745) translate(-50%, 50%)'
@@ -208,12 +209,12 @@ describe('Test methods', (): void => {
                     '60': 'translate(-50%, -50%) matrix(0.965926,0.149429,0,0.816496,0,0) scale(1.224745) translate(-50%, -50%)',
                     '90': 'translate(-50%, -50%) matrix(0.707107,0.408249,0,0.816496,0,0) scale(1.224745) translate(-50%, -50%)'
                 },
-                front: {
+                right: {
                     '30': 'translate(-50%, -50%) matrix(0.612372,0.054695,-0.353554,0.91123,0,0) scale(1.224745) translate(-50%, -50%)',
                     '60': 'translate(-50%, -50%) matrix(0.353553,0.502982,-0.612372,0.761801,0,0) scale(1.224745) translate(-50%, -50%)',
                     '90': 'translate(-50%, -50%) matrix(0,0.816496,-0.707107,0.408248,0,0) scale(1.224745) translate(-50%, -50%)'
                 },
-                side: {
+                left: {
                     '30': 'translate(-50%, -50%) matrix(0.707107,-0.408248,-0.353554,0.502982,0,0) scale(1.224745) translate(-50%, -50%)',
                     '60': 'translate(-50%, -50%) matrix(0.707107,-0.408248,-0.612372,0.054695,0,0) scale(1.224745) translate(-50%, -50%)',
                     '90': 'translate(-50%, -50%) matrix(0.707107,-0.408248,-0.707107,-0.408248,0,0) scale(1.224745) translate(-50%, -50%)'
@@ -225,12 +226,12 @@ describe('Test methods', (): void => {
                     '60': 'translate(-50%, -50%) matrix(-0.258819,0.557678,0,0.816496,0,0) scale(1.224745) translate(50%, -50%)',
                     '90': 'translate(-50%, -50%) matrix(-0.707107,0.408249,0,0.816496,0,0) scale(1.224745) translate(50%, -50%)'
                 },
-                front: {
+                right: {
                     '30': 'translate(-50%, -50%) matrix(0.707107,0.408248,-0.353553,0.911231,0,0) scale(1.224745) translate(50%, -50%)',
                     '60': 'translate(-50%, -50%) matrix(0.707107,0.408248,-0.612372,0.761802,0,0) scale(1.224745) translate(50%, -50%)',
                     '90': 'translate(-50%, -50%) matrix(0.707107,0.408248,-0.707107,0.408249,0,0) scale(1.224745) translate(50%, -50%)'
                 },
-                side: {
+                left: {
                     '30': 'translate(-50%, -50%) matrix(0.612372,0.761801,-0.353553,0.502982,0,0) scale(1.224745) translate(50%, -50%)',
                     '60': 'translate(-50%, -50%) matrix(0.353554,0.91123,-0.612372,0.054695,0,0) scale(1.224745) translate(50%, -50%)',
                     '90': 'translate(-50%, -50%) matrix(0,0.816496,-0.707107,-0.408248,0,0) scale(1.224745) translate(50%, -50%)'
@@ -241,7 +242,7 @@ describe('Test methods', (): void => {
         type Angle = '30' | '60' | '90';
 
         views.forEach((v) => {
-            views.forEach((ra) => {
+            axis.forEach((ra) => {
                 angles.forEach((rv) => {
 
                     IsometricCSS.setView(element, v);
@@ -251,7 +252,7 @@ describe('Test methods', (): void => {
                     });
 
                     const style = getComputedStyle(element);
-
+                    
                     expect(element.classList.length).toBe(1);
                     expect(style).toHaveProperty('transform', values[v][ra][rv as Angle]);
 

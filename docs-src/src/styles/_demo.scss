@@ -1,46 +1,125 @@
-.res-height {
-    height: 240px;
-    position: relative;
-    padding-bottom: 20px;
-    padding-top: 20px;
+.demo-wrapper {
+    background: $white;
+    opacity: 0;
+    transition: opacity .25s ease-in-out;
+    transition-delay: 0.35s; 
 
-    &::before {
-        background-color: $white;
-        bottom: 0;
-        content: '';
-        left: 50px;
-        position: absolute;
-        right: 50px;
-        top: 0;
-
-        @include mobile {
-            left: 20px;
-            right: 20px;
-        }
+    &[data-ready="true"] {
+        opacity: 1;
     }
+
 }
 
 .world {
-    height: 200px;
-    left: 50%;
+    height: 485px;
+    margin: 0 auto;
     position: relative;
-
-    @include mobile {
-        transform-origin: 0 0;
-        transform: scale(0.9);
-    }
+    transform-origin: top left;
+    width: 780px;
 }
 
-.floor {
-    height: 200px;
-    width: 200px;
+.coords {
+    left: 50%;
+    position: absolute;
+    top: 20px;
 }
 
-.plane {
-    height: 50px;
-    width: 50px;
+.dark {
+    filter: brightness(70%);
 }
 
-.demo-wrapper {
-    overflow: hidden;
+.darker {
+    filter: brightness(50%);
+}
+
+.grass {
+    background-color: #517211;
+    height: 450px;
+    width: 450px;
+}
+
+.houses-front {
+    height: 139px;
+    width: 150px;
+}
+
+.houses-side {
+    height: 180px;
+    width: 361px;
+}
+
+.houses-top {
+    height: 361px;
+    width: 150px;
+}
+
+.houses-roof {
+    height: 55px;
+    width: 150px;
+}
+
+.balcony-side {
+    height: 15px;
+    width: 17px;
+}
+
+.balcony-front {
+    height: 15px;
+    width: 5px;
+}
+
+.big-balcony-side {
+    height: 15px;
+    width: 8px;
+}
+
+.big-balcony-front {
+    height: 15px;
+    width: 47px;
+}
+
+.big-balcony-bottom {
+    background-color: #CCC;
+    height: 8px;
+    width: 46px;
+}
+
+.floor-top {
+    height: 450px;
+    width: 230px;
+}
+
+.floor-front {
+    background-color: #7e7d73;
+    height: 10px;
+    width: 230px;
+}
+
+.floor-side {
+    height: 10px;
+    width: 450px;
+}
+
+.fence-pole-side {
+    background-color: $white;
+    height: 26px;
+    width: 2px;
+}
+
+.fence-pole-top {
+    background-color: $white;
+    height: 2px;
+    width: 2px;
+}
+
+.fence-side {
+    background-color: #EEE;
+    height: 83px;
+    width: 2px;
+}
+
+.fence-front {
+    background-color: #EEE;
+    height: 2px;
+    width: 103px;
 }

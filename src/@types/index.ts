@@ -1,6 +1,7 @@
-import { VIEW } from '@constants';
+import { VIEW, AXIS } from '@constants';
 
 export type View = keyof typeof VIEW;
+export type Axis = keyof typeof AXIS;
 
 export type Fallbacks = Record<string, string | number>[];
 
@@ -28,7 +29,7 @@ export interface IsometricPosition {
 }
 
 export interface Rotation {
-    axis: View;
+    axis: Axis;
     value: number;
 }
 

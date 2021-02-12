@@ -12,4 +12,10 @@ export enum VIEW {
     side = 'side'
 }
 
+export enum AXIS {
+    right = 'right',
+    left = 'left',
+    top = 'top'
+}
+
 export const TYPE_UNDEFINED = 'undefined';

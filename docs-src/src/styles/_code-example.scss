@@ -1,0 +1,46 @@
+.res-height {
+    height: 240px;
+    position: relative;
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+    &::before {
+        background-color: $white;
+        bottom: 0;
+        content: '';
+        left: 50px;
+        position: absolute;
+        right: 50px;
+        top: 0;
+
+        @include mobile {
+            left: 20px;
+            right: 20px;
+        }
+    }
+}
+
+.code-example-world {
+    height: 200px;
+    left: 50%;
+    position: relative;
+
+    @include mobile {
+        transform-origin: 0 0;
+        transform: scale(0.9);
+    }
+}
+
+.floor {
+    height: 200px;
+    width: 200px;
+}
+
+.plane {
+    height: 50px;
+    width: 50px;
+}
+
+.code-example-wrapper {
+    overflow: hidden;
+}

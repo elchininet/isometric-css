@@ -23,7 +23,7 @@ export const LibraryApiPage = () => {
                 `}        
             </Code>
             <Paragraph>
-                When the page loads, all the elements with the <em>isometric</em> class will be transformed taking into account their <Link href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">data attributes</Link>. These attributes will be interpreted, some CSS rules will be created under the hood, applied to these elements, and inserted in the page header. Each data attribute has its own purpose, the next table describes them. If you want to check how to implement this, you can check the <RouterLink to="/demo">Example demo</RouterLink> section.
+                When the page loads, all the elements with the <em>isometric</em> class will be transformed taking into account their <Link href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">data attributes</Link>. These attributes will be interpreted, some CSS rules will be created under the hood, applied to these elements, and inserted in the page header. Each data attribute has its own purpose, the next table describes them. If you want to check how to implement this, you can check the <RouterLink to="/code-example">Code Example</RouterLink> section.
             </Paragraph>
             <TableDataset />
             <Paragraph title="Methods">
@@ -43,19 +43,19 @@ export const LibraryApiPage = () => {
                 IsometricCSS.processElement(element: HTMLElement): void;       
             </Code>
 
-            <Paragraph title="setPlane" titleLevel={4}>
-                Apply the necessary class to transform the element to a specific isometric plane.
+            <Paragraph title="setView" titleLevel={4}>
+                Apply the necessary CSS transformations to set the plane view.
             </Paragraph>
             <Code language="typescript">
                 {outdent`
-                    type Plane = 'top' | 'front' | 'side';
+                    type View = 'top' | 'front' | 'side';
 
-                    IsometricCSS.setPlane(element: HTMLElement, plane: Plane): void;
+                    IsometricCSS.setPlane(element: HTMLElement, view: View): void;
                 `}    
             </Code>
 
             <Paragraph title="setPosition" titleLevel={4}>
-                Apply the necessary class to positionate an element in the screen taking into account an isometric coordinate.
+                Apply the necessary CSS to positionate an element in the screen taking into account an isometric coordinate.
             </Paragraph>
             <Code language="typescript">
                 {outdent`
@@ -69,8 +69,22 @@ export const LibraryApiPage = () => {
                 `}    
             </Code>
 
+            <Paragraph title="setRotation" titleLevel={4}>
+                Apply the necessary CSS to set the rotation of a plane.
+            </Paragraph>
+            <Code language="typescript">
+                {outdent`
+                    interface Rotation {
+                        axis: 'right' | 'left' | 'top';
+                        value: number;
+                    };
+
+                    IsometricCSS.setRotation(element: HTMLElement, rotation: Rotation): void;
+                `}    
+            </Code>
+
             <Paragraph title="setTexture" titleLevel={4}>
-                Apply the necessary class to set the texture of an element using background CSS properties.
+                Apply the necessary CSS to set the texture of an element using background CSS properties.
             </Paragraph>
             <Code language="typescript">
                 {outdent`
