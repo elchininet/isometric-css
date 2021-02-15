@@ -28,7 +28,7 @@
     ]
   },
   "dependencies": {
-    "isometric-css": "file:.yalc/isometric-css",
+    "isometric-css": "^2.0.0",
     "outdent": "^0.8.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
