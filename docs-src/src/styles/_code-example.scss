@@ -21,9 +21,9 @@
 }
 
 .code-example-world {
-    height: 200px;
     left: 50%;
     position: relative;
+    top: 20%;
 
     @include mobile {
         transform-origin: 0 0;
@@ -42,5 +42,6 @@
 }
 
 .code-example-wrapper {
+    height: 250px;
     overflow: hidden;
 }

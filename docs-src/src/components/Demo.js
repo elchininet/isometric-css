@@ -48,7 +48,7 @@ export const Demo = () => {
         <div className="container">
             <div className="demo-wrapper" ref={container} data-ready={ready}>
                 <div className="world" style={transform}>
-                    <div className="coords">
+                    <div className="coords isometric">
                         <div
                             className="isometric grass"
                             data-view="top"
@@ -59,8 +59,7 @@ export const Demo = () => {
                         <FenceFront right={10} left={220}/>
                         <Houses right={45} left={40} />
                         <FenceFront right={435} left={220}/>
-                        <FenceSide right={10} left={220} /> 
-                           
+                        <FenceSide right={10} left={220} />                            
                     </div>
                 </div>
             </div>

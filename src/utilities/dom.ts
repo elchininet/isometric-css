@@ -1,5 +1,24 @@
-import { Plane, View, Axis } from '@types';
+import { Plane, Rotation, View, Axis } from '@types';
 import { NAMESPACE } from '@constants';
+
+export const getParentRotations = (element: HTMLElement): Rotation[] => {
+    const rotations: Rotation[] = [];
+    while (element.parentElement && element.parentElement !== document.documentElement) {
+        const parent = element.parentElement;
+        if (
+            parent.classList.contains(NAMESPACE) &&
+            !parent.dataset.view &&
+            parent.dataset.rotationAxis
+        ) {
+            rotations.push({
+                axis: parent.dataset.rotationAxis as Axis,
+                value: +(parent.dataset.rotationValue || 0)
+            });
+        }
+        element = element.parentElement;
+    }
+    return rotations;
+};
 
 export const getPlaneFromElement = (element: HTMLElement): Plane => {
 
@@ -16,9 +35,10 @@ export const getPlaneFromElement = (element: HTMLElement): Plane => {
     const textureUrl = element.dataset.texture;
     const textureSize = element.dataset.textureSize || 'cover';
     const texturePixelated = element.dataset.texturePixelated === 'true';
+    const parentRotations = getParentRotations(element);
 
-    const plane: Plane = {};
-
+    const plane: Plane = { parentRotations };
+    
     if (view) {
         plane.view = view;
     }

@@ -44,6 +44,7 @@ export interface Plane {
     position?: IsometricPosition;
     rotation?: Rotation;
     texture?: Texture;
+    parentRotations: Rotation[];
 }
 
 export interface ElementData {
