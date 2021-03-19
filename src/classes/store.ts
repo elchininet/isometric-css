@@ -1,6 +1,6 @@
 import { ElementData, Plane, View, IsometricPosition, Rotation, Texture } from '@types';
 import { VIEW, AXIS } from '@constants';
-import { getPlaneFromElement, resetElementIsometricData } from '@utilities/dom';
+import { getPlaneFromElement, resetElementIsometricData, getParentRotations } from '@utilities/dom';
 import { Styles } from '@classes/styles';
 
 class Store {
@@ -89,7 +89,7 @@ class Store {
             this.process(element,
                 elementData
                     ? { ...elementData.plane, view }
-                    : { view }
+                    : { view, parentRotations: getParentRotations(element) }
             );
         }        
     }
@@ -100,7 +100,7 @@ class Store {
             this.process(element,
                 elementData
                     ? { ...elementData.plane, position: { ...elementData.plane.position, ...position } }
-                    : { position }
+                    : { position, parentRotations: getParentRotations(element) }
             );
         }
     }
@@ -118,7 +118,7 @@ class Store {
             this.process(element,
                 elementData
                     ? { ...elementData.plane, rotation }
-                    : { rotation }
+                    : { rotation, parentRotations: getParentRotations(element) }
             );
         }
     }
@@ -139,7 +139,7 @@ class Store {
             this.process(element,
                 elementData
                     ? { ...elementData.plane, texture: { ...elementData.plane.texture, ...texture } }
-                    : { texture }
+                    : { texture, parentRotations: getParentRotations(element) }
             );
         }        
     }

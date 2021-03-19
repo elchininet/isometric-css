@@ -16,6 +16,12 @@ export const Houses = (props) => {
             data-top={top}
         >
             <div
+                className="isometric houses-top"
+                data-view="top"
+                data-texture={topTexture}
+                data-top={139}
+            />
+            <div
                 className="isometric houses-side"
                 data-view="side"
                 data-texture={sideTexture}
@@ -29,12 +35,7 @@ export const Houses = (props) => {
                 data-texture-pixelated="true"
                 data-right="361"
             />
-            <div
-                className="isometric houses-top"
-                data-view="top"
-                data-texture={topTexture}
-                data-top={139}
-            />
+            
             <div
                 className="isometric houses-roof dark"
                 data-view="top"

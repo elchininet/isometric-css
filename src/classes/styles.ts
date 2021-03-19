@@ -32,9 +32,17 @@ export class Styles {
             : null;
     }
 
-    private getTransform(view: View, rotation?: Rotation): string | null {
+    private getTransform(
+        view: View,
+        parentRotations: Rotation[],
+        rotation?: Rotation
+    ): string | null {
 
-        const matrix = getViewMatrix(view, rotation);
+        const matrix = getViewMatrix(
+            view,
+            parentRotations,
+            rotation            
+        );
 
         if (!matrix) return null;
 
@@ -74,7 +82,11 @@ export class Styles {
 
     private tranformPlaneToRule(plane: Plane): Rule {
 
-        const transform = this.getTransform(plane.view, plane.rotation);
+        const transform = this.getTransform(
+            plane.view,
+            plane.parentRotations,
+            plane.rotation            
+        );
 
         const rule: Rule = transform
             ? {
@@ -89,7 +101,10 @@ export class Styles {
             };
 
         if (plane.position) {
-            const position = isometricToPoint(plane.position);
+            const position = isometricToPoint(
+                plane.position,
+                plane.parentRotations                
+            );
             rule.left = `${position.x}px`;
             rule.top = `${position.y}px`;
         }

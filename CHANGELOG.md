@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.0] - 2021-03-19
+
+- Implemented the rotation of groups containing planes
+
 ## [2.0.0] - 2021-02-10
 
 - Breaking change: The library has been rewritten completely

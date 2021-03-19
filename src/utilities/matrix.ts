@@ -65,82 +65,80 @@ export const sideMatrix = multiplyMatrices(
     rotateZ(-ROT_45)
 );
 
-export const getViewMatrix = (view: View, rotation?: Rotation): Matrix | null => {
-
-    if (!rotation) {
-        switch(view) {
-            case VIEW.top:
-                return topMatrix;
-            case VIEW.front:
-                return frontMatrix;
-            case VIEW.side:
-                return sideMatrix;
-            default:
-                return null;
-        }
-    }
-
+export const rotationToRotationMatrix = (view: View, rotation: Rotation): Matrix | null => {
     const value = radian(rotation.value);
-
     switch(view) {
         case VIEW.top: {
             switch(rotation.axis) {
                 case AXIS.top:
-                    return multiplyMatrix(
-                        topMatrix,
-                        rotateZ(value)
-                    );
+                    return rotateZ(value);
                 case AXIS.left:
-                    return multiplyMatrix(
-                        topMatrix,
-                        rotateX(-value)
-                    );
+                    return rotateX(-value);
+                case AXIS.right:
+                    return rotateY(value);
                 default:
-                    return multiplyMatrix(
-                        topMatrix,
-                        rotateY(value)
-                    );                    
+                    return null;
             }
         }
         case VIEW.front: {
             switch(rotation.axis) {
                 case AXIS.top:
-                    return multiplyMatrix(
-                        frontMatrix,
-                        rotateY(value)
-                    );
+                    return rotateY(value);
                 case AXIS.left:                    
-                    return multiplyMatrix(
-                        frontMatrix,
-                        rotateX(value)
-                    );
+                    return rotateX(value);
+                case AXIS.right:
+                    return rotateZ(value);
                 default:
-                    return multiplyMatrix(
-                        frontMatrix,
-                        rotateZ(value)
-                    );
+                    return null;
             }
         }
         case VIEW.side: {
             switch(rotation.axis) {
                 case AXIS.top:
-                    return multiplyMatrix(
-                        sideMatrix,
-                        rotateY(value)
-                    );
+                    return rotateY(value);
                 case AXIS.left:
-                    return multiplyMatrix(
-                        sideMatrix,
-                        rotateZ(value)
-                    );
+                    return rotateZ(value);
+                case AXIS.right:
+                    return rotateX(-value);
                 default:
-                    return multiplyMatrix(
-                        sideMatrix,
-                        rotateX(-value)
-                    );                    
+                    return null;
             }
         }
         default:
             return null;
     }
+};
+
+export const getViewMatrix = (
+    view: View,
+    parentRotations: Rotation[],
+    rotation?: Rotation
+): Matrix | null => {
+    
+    const rotationMatrices: Matrix[]  = [];
+
+    parentRotations.forEach((rotation: Rotation): void => {
+        const matrix = rotationToRotationMatrix(view, rotation);
+        if (matrix) rotationMatrices.push(matrix);
+    });
+
+    const rotationMatrix = rotation
+        ? rotationToRotationMatrix(view, rotation)
+        : null;
+        
+    if (rotationMatrix) rotationMatrices.push(rotationMatrix);    
+    
+    switch(view) {
+        case VIEW.top: {
+            return multiplyMatrices(topMatrix, ...rotationMatrices);
+        }
+        case VIEW.front: {
+            return multiplyMatrices(frontMatrix, ...rotationMatrices);
+        }
+        case VIEW.side: {
+            return multiplyMatrices(sideMatrix, ...rotationMatrices);
+        }
+    }
+
+    return null;
 };
