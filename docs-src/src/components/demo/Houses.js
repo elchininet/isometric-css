@@ -19,6 +19,7 @@ export const Houses = (props) => {
                 className="isometric houses-top"
                 data-view="top"
                 data-texture={topTexture}
+                data-texture-pixelated="true"
                 data-top={139}
             />
             <div

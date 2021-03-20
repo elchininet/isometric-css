@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { Logo } from '../components/demo/Logo';
 import { Houses } from '../components/demo/Houses';
 import { Floor } from '../components/demo/Floor';
 import { FenceSide } from '../components/demo/FenceSide';
@@ -55,6 +56,7 @@ export const Demo = () => {
                             data-top="-10"
                         />
                         <Floor />
+                        <Logo right={75} left={342} top={-10} />
                         <FenceSide right={10} left={10} /> 
                         <FenceFront right={10} left={220}/>
                         <Houses right={45} left={40} />
