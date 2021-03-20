@@ -1,9 +1,9 @@
 <p align="center">
     <a href="https://github.com/elchininet/isometric-css">
-        <img src="./docs-src/src/images/isometric-css.png?raw=true" width="400" title="isometric-css" />
+        <img src="https://raw.githubusercontent.com/elchininet/isometric-css/master/docs-src/src/images/isometric-css.png" width="550" title="isometric-css" />
     </a>
     <br>
-    A lightweight JavaScript library to build isometric projections using CSS classes
+    A lightweight JavaScript library to build isometric projections through declarative HTML attributes
 </p>
 
 [![Build Status](https://travis-ci.com/elchininet/isometric-css.svg?branch=master)](https://travis-ci.com/elchininet/isometric-css) &nbsp; [![Coverage Status](https://coveralls.io/repos/github/elchininet/isometric-css/badge.svg?branch=master)](https://coveralls.io/github/elchininet/isometric-css?branch=master)
