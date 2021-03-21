@@ -34,7 +34,7 @@ export const KnowingTheBasicsPage = () => {
                 <Graphics.PlanesSteps />
             </Graphic> 
             <Paragraph>
-                In the <em>Step 1</em>, the front plane has been moved 100px to the right; in the <em>Step 2</em>, the side plane has been moved 100px to the left; and in the <em>Step 3</em>, the top plane has been moved 100px to the top. The result it is shown at the end.
+                In <em>Step 1</em>, the front plane has been moved 100px to the right; in <em>Step 2</em>, the side plane has been moved 100px to the left; and in <em>Step 3</em>, the top plane has been moved 100px to the top. The result it is shown at the end.
             </Paragraph>
             <Paragraph>
                 Let's check how to rotate the planes.
@@ -43,7 +43,13 @@ export const KnowingTheBasicsPage = () => {
                 <Graphics.PlaneRotations />
             </Graphic>
             <Paragraph>
-                The planes can be rotated clockwise in any of the three axis and taking as the center of rotation the isometric origin {'{'}0, 0, 0{'}'}. This means that rotating any plane it is possible to change its plane view:
+                The planes can be rotated clockwise in any of the three axis and taking as the center of rotation the isometric origin {'{'}0, 0, 0{'}'}. In the next image, all the planes have been rotated, the front plane has been rotated 30º in the top axis, the side plane has been rotated 30º in the right axis, and the top panel has been rotated 30º in the left axis.
+            </Paragraph>
+            <Graphic>
+                <Graphics.PlanesRotated />
+            </Graphic>
+            <Paragraph>
+                This means that any plane, no matter its view, can be rotated into another view. The next table shows this:
             </Paragraph>
             <TableRotations />
         </Fragment>

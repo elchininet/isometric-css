@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "./static/css/main.a5a50604.chunk.css",
-    "main.js": "./static/js/main.e6110567.chunk.js",
-    "main.js.map": "./static/js/main.e6110567.chunk.js.map",
+    "main.js": "./static/js/main.a1682765.chunk.js",
+    "main.js.map": "./static/js/main.a1682765.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.b62c7875.js",
     "runtime-main.js.map": "./static/js/runtime-main.b62c7875.js.map",
     "static/js/2.57d7ea25.chunk.js": "./static/js/2.57d7ea25.chunk.js",
@@ -27,6 +27,7 @@
     "static/media/houses-side.cfaa85c2.png": "./static/media/houses-side.cfaa85c2.png",
     "static/media/houses-top.6d66bd69.png": "./static/media/houses-top.6d66bd69.png",
     "static/media/isometric-css.3b2790ca.png": "./static/media/isometric-css.3b2790ca.png",
+    "static/media/planes-rotated.e68a87d5.svg": "./static/media/planes-rotated.e68a87d5.svg",
     "static/media/planes-rotations.37da676d.svg": "./static/media/planes-rotations.37da676d.svg",
     "static/media/planes-steps.c95a26ca.svg": "./static/media/planes-steps.c95a26ca.svg",
     "static/media/planes.1e832267.svg": "./static/media/planes.1e832267.svg",
@@ -39,6 +40,6 @@
     "static/js/runtime-main.b62c7875.js",
     "static/js/2.57d7ea25.chunk.js",
     "static/css/main.a5a50604.chunk.css",
-    "static/js/main.e6110567.chunk.js"
+    "static/js/main.a1682765.chunk.js"
   ]
 }
