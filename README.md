@@ -8,14 +8,14 @@
 
 [![Build Status](https://travis-ci.com/elchininet/isometric-css.svg?branch=master)](https://travis-ci.com/elchininet/isometric-css) &nbsp; [![Coverage Status](https://coveralls.io/repos/github/elchininet/isometric-css/badge.svg?branch=master)](https://coveralls.io/github/elchininet/isometric-css?branch=master) &nbsp; [![npm version](https://badge.fury.io/js/isometric-css.svg)](https://badge.fury.io/js/isometric-css)
 
-## Documentation / Demo
+## Isometric-CSS
+
+[Isometric-CSS](https://elchininet.github.io/isometric-css/) is a lightweight `JavaScript` library to easily build <a href="https://en.wikipedia.org/wiki/Isometric_projection" target="_blank" rel="noreferrer noopener">isometric projections</a> through declarative HTML attributes, so no `JavaScript` knowledge is required. You just need to add the `isometric` class and specific <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*" target="_blank" rel="noreferrer noopener">data attributes</a> to the elements, and on page-load CSS rules will be created and applied to give them the desired transformation. It is also possible to transform the elements dynamically using the `JavaScript` API (read the [API section](https://elchininet.github.io/isometric-css/library-api) for more details).
+
+## Documentation
 
 https://elchininet.github.io/isometric-css/
 
 <a href="https://elchininet.github.io/isometric-css/">
     <img src="./docs-src/src/images/isometric.png?raw=true" width="838" title="isometric-css" />
 </a>
-
-## Introduction
-
-To give the apperance of an <a href="https://en.wikipedia.org/wiki/Isometric_projection" target="_blank" rel="noreferrer noopener">isometric projection</a> to an HTML element, it is needed to apply <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform" target="_blank" rel="noreferrer noopener">CSS transformations</a> to it. This transformations could be complex to manage, and even more when we have multiple elements and we want to translate or rotate them. The **isometric-css** library can help you with this task, it will create the necessary CSS rules to transform the HTML elements and attach them to the page automatically. You can either apply the transformation through declarative <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*" target="_blank" rel="noreferrer noopener">data attributes</a> in the HTML code or use the library API methods to apply the transformations to the elements dynamically using JavaScript.
