@@ -26,5 +26,13 @@ module.exports = {
         quotes: ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
         semi: ['error', 'always'],
         '@typescript-eslint/ban-ts-comment': 'off'
-    }
+    },
+    overrides: [
+        {
+            files: ['*webpack.config.js'],
+            rules: {
+                '@typescript-eslint/no-var-requires': 'off'
+            }
+        }
+    ]
 };
