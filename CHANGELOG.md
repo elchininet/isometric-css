@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.1] - 2021-03-21
+
+- Fix error using the library directly from the browser
+
 ## [2.1.0] - 2021-03-19
 
 - Implemented the rotation of groups containing planes
