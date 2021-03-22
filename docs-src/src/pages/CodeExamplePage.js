@@ -52,7 +52,7 @@ export const CodeExamplePage = () => {
                         data-texture="images/gray_wool.png"
                         data-texture-size="50px 50px"
                         data-texture-pixelated="true"
-                      />
+                      ></div>
                       <div class="isometric">
                         <div
                           class="isometric plane"
@@ -60,21 +60,21 @@ export const CodeExamplePage = () => {
                           data-top="50"
                           data-texture="images/green_wool.png"
                           data-texture-pixelated="true"
-                        />
+                        ></div>
                         <div
                           class="isometric plane"
                           data-view="front"
                           data-right="50"
                           data-texture="images/grass_block_side.png"
                           data-texture-pixelated="true"
-                        />
+                        ></div>
                         <div
                           class="isometric plane"
                           data-view="side"
                           data-left="50"
                           data-texture="images/grass_block_side.png"
                           data-texture-pixelated="true"
-                        />
+                        ></div>
                       </div>
                     </div>
                 `} 
@@ -95,7 +95,7 @@ export const CodeExamplePage = () => {
                         data-texture="/static/media/gray_wool.bae7fb6f.png"
                         data-texture-size="50px 50px"
                         data-texture-pixelated="true"
-                      />
+                      ></div>
                       <div
                         class="isometric"
                         data-right="75"
@@ -119,7 +119,7 @@ export const CodeExamplePage = () => {
                         data-texture="/static/media/gray_wool.bae7fb6f.png"
                         data-texture-size="50px 50px"
                         data-texture-pixelated="true"
-                      />
+                      ></div>
                       <div
                         class="isometric"
                         data-right="75"
@@ -145,7 +145,7 @@ export const CodeExamplePage = () => {
                         data-texture="/static/media/gray_wool.bae7fb6f.png"
                         data-texture-size="50px 50px"
                         data-texture-pixelated="true"
-                      />
+                      ></div>
                       <div
                         class="isometric"
                         data-right="75"
