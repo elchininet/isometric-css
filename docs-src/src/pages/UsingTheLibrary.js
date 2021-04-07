@@ -50,7 +50,7 @@ export const UsingTheLibrary = () => {
                 {outdent`
                     <body>
                         ...
-                        <script src="wherever/you/installed/index-file-renamed.js" />
+                        <script src="wherever/you/installed/index-file-renamed.js"></script>
                     </body>
                 `}        
             </Code>
