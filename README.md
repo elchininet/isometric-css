@@ -17,5 +17,5 @@
 https://elchininet.github.io/isometric-css/
 
 <a href="https://elchininet.github.io/isometric-css/">
-    <img src="./docs-src/src/images/isometric.png?raw=true" width="838" title="isometric-css" />
+    <img src="https://raw.githubusercontent.com/elchininet/isometric-css/master/docs-src/src/images/isometric.png" width="838" title="isometric-css" />
 </a>
