@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.2] - 2021-04-27
+
+- Removed @emotion/hash dependency
+
 ## [2.1.1] - 2021-03-21
 
 - Fix error using the library directly from the browser
