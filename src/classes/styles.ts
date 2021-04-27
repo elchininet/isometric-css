@@ -1,4 +1,4 @@
-import hash from '@emotion/hash';
+import { hash } from '@utilities/string';
 import { Plane, View, Rotation, Rule, Fallbacks, RuleData } from '@types';
 import { VIEW, SCALE, NAMESPACE } from '@constants';
 import { kebab } from '@utilities/string';
