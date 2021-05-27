@@ -16,7 +16,7 @@ export const validString = (input: unknown): boolean =>
     input &&
     typeof input === 'string' &&
     input.trim().length > 0;
-export const validNumberGreaterThanZero = (input: unknown): boolean => validNumber(input) && +input > 0;
+export const validNumberNonZero = (input: unknown): boolean => validNumber(input) && +input !== 0;
 export const validUndefined = (input: unknown): boolean => typeof input === 'undefined';
 export const validBoolean = (input: boolean): boolean => typeof input === 'boolean';
 export const undefinedOrValidString = (input: string): boolean => validUndefined(input) || validString(input);
@@ -42,9 +42,9 @@ export const validView = (view: View): boolean => (
 export const validPosition = (position: IsometricPosition): boolean => (
     position &&
     (
-        validNumberGreaterThanZero(position.right) ||
-        validNumberGreaterThanZero(position.left) ||
-        validNumberGreaterThanZero(position.top)
+        validNumberNonZero(position.right) ||
+        validNumberNonZero(position.left) ||
+        validNumberNonZero(position.top)
     )
 );
 
