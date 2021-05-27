@@ -176,7 +176,7 @@ describe('Test methods', (): void => {
 
         const style = getComputedStyle(element);
 
-        expect(element.classList.length).toBe(1);
+        expect(element.classList.length).toBe(0);
         expect(style).toHaveProperty('transform', '');
 
         IsometricCSS.resetElement(element);
@@ -326,5 +326,142 @@ describe('Test methods', (): void => {
         expect(style).toHaveProperty('image-rendering', 'crisp-edges');
 
     });
+
+    it('setAnimation', (): void => {
+        
+        IsometricCSS.setAnimation(element, {
+            position: {
+                right: 50,
+                left: 100
+            }
+        });
+
+        expect(element.classList.length).toBe(1);
+
+        let style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('animation-name', 'isometric-tbi0wv');
+        expect(style).toHaveProperty('animation-duration', '1000ms');
+        expect(style).toHaveProperty('animation-timing-function', 'linear');
+        expect(style).toHaveProperty('animation-iteration-count', 'infinite');
+        expect(style).toHaveProperty('animation-direction', 'normal');
+        expect(style).toHaveProperty('animation-fill-mode', 'both');
+
+        IsometricCSS.resetElement(element);
+
+        expect(element.classList.length).toBe(0);
+
+        IsometricCSS.setAnimation(element, {
+            position: {
+                right: 50,
+                left: 100
+            },
+            duration: 5000,
+            easing: 'ease-in-out',
+            repeat: 10,
+            bounce: true
+        });
+
+        style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('animation-name', 'isometric-tbi0wv');
+        expect(style).toHaveProperty('animation-duration', '5000ms');
+        expect(style).toHaveProperty('animation-timing-function', 'ease-in-out');
+        expect(style).toHaveProperty('animation-iteration-count', '20');
+        expect(style).toHaveProperty('animation-direction', 'alternate');
+
+        IsometricCSS.resetElement(element);
+
+        IsometricCSS.setAnimation(element, {
+            position: {
+                right: 50,
+                left: 100
+            }
+        });
+
+        IsometricCSS.setAnimation(element, {
+            position: {
+                right: 100,
+                left: 100
+            },
+            bounce: true
+        });
+
+        style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('animation-direction', 'alternate');
+
+        IsometricCSS.resetElement(element);
+        
+        IsometricCSS.setPosition(element, {
+            right: 100
+        });
+
+        IsometricCSS.setAnimation(element, {
+            position: {
+                right: 100,
+                left: 100
+            }
+        });
+
+        style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('left', `${HSQRT3 * 100}px`);
+        expect(style).toHaveProperty('top', '50px');
+
+    });
+
+    it('resetAnimation', (): void => {
+
+        IsometricCSS.resetAnimation(element);
+
+        expect(element.classList.length).toBe(0);
+
+        IsometricCSS.setAnimation(element, {
+            position: {
+                right: 50,
+                left: 100
+            }
+        });
+
+        const classes = element.className;
+
+        expect(element.classList.length).toBe(1);
+
+        IsometricCSS.resetAnimation(element);
+
+        expect(element.classList.length).toBe(1);
+        expect(element.className).toBe(classes);
+
+    });
+
+    it('pauseAnimation and resumeAnimation', (): void => {
+
+        IsometricCSS.setAnimation(element, {
+            position: {
+                right: 50,
+                left: 100
+            }
+        });
+
+        IsometricCSS.pauseAnimation(element);
+
+        expect(element.dataset.animationRunning).toBe('false');
+        
+        IsometricCSS.resumeAnimation(element);
+
+        expect(element.dataset.animationRunning).toBe('true');
+
+        IsometricCSS.resetElement(element);
+
+        IsometricCSS.pauseAnimation(element);
+
+        expect(element.dataset.animationRunning).toBeUndefined();
+
+        IsometricCSS.resumeAnimation(element);
+
+        expect(element.dataset.animationRunning).toBeUndefined();
+
+    }); 
 
 });

@@ -1,5 +1,5 @@
 import { IsometricCSS } from '../src';
-import { IsometricPosition, Rotation, Texture } from '../src/@types';
+import { IsometricPosition, Rotation, Texture, Animation } from '../src/@types';
 import { HSQRT3 } from '../src/constants';
 import { top } from './constants';
 
@@ -121,6 +121,28 @@ describe('Test stylesheet', (): void => {
             size: 'cover',
             pixelated: 'none'
         } as unknown as Texture);
+        IsometricCSS.setAnimation(elementA, 5 as unknown as Animation);
+        IsometricCSS.setAnimation(elementA, {
+            position: {
+                right: 20,
+                left: 100
+            },
+            repeat: true
+        } as unknown as Animation);
+        IsometricCSS.setAnimation(elementA, {
+            position: {
+                right: 20,
+                left: 100
+            },
+            bounce: 5
+        } as unknown as Animation);
+        IsometricCSS.setAnimation(elementA, {
+            position: {
+                right: 20,
+                left: 100
+            },
+            duration: 'all'
+        } as unknown as Animation);
 
         expect(elementA.classList.length).toBe(0);
 

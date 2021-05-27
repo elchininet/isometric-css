@@ -1,5 +1,14 @@
-import { Point, Rotation, SinCos, IsometricPosition } from '@types'; 
-import { DECIMALS, HSQRT3, AXIS } from '@constants';
+import {
+    Point,
+    Rotation,
+    SinCos,
+    IsometricPosition
+} from '@types'; 
+import {
+    DECIMALS,
+    HSQRT3,
+    AXIS
+} from '@constants';
 
 export const round = (n: number): number => {
     const exp = Math.pow(10, DECIMALS);

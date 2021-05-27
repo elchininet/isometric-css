@@ -1,12 +1,25 @@
 import { hash } from '@utilities/string';
-import { Plane, View, Rotation, Rule, Fallbacks, RuleData } from '@types';
-import { VIEW, SCALE, NAMESPACE } from '@constants';
+import {
+    Plane,
+    View,
+    Rotation,
+    Rule,
+    Fallbacks,
+    Keyframes,
+    RuleData
+} from '@types';
+import {
+    VIEW,
+    SCALE,
+    NAMESPACE
+} from '@constants';
 import { kebab } from '@utilities/string';
 import { isometricToPoint, round } from '@utilities/math';
 import { getViewMatrix } from '@utilities/matrix';
 
 export class Styles {
 
+    private _globalStyle: HTMLStyleElement = null;
     private _style: HTMLStyleElement = null;
     
     private scale = round(SCALE);
@@ -66,22 +79,55 @@ export class Styles {
 
     }
 
-    private declarationString(declarations: Rule): string {
-        const entries = Object.entries<string | number | Fallbacks>(declarations);
-        return entries.reduce((decl: string, entry: [string, string | number | Fallbacks]): string => {
-            if (Array.isArray(entry[1])) {
-                const fallbacks = entry[1].map((fallback: Rule): string => {
-                    return this.declarationString(fallback);
-                }).join('\n');
-                return `${decl}\n    ${fallbacks}`;
-            } else {
-                return `${decl}\n    ${kebab(entry[0])}: ${entry[1]};`;
-            }
-        }, '');
+    private insertGlobalStyles(): void {
+        this._globalStyle.sheet.insertRule(
+            `[data-animation][data-animation-running="false"] {
+                animation-play-state: paused;
+            }`
+        );
     }
 
-    private tranformPlaneToRule(plane: Plane): Rule {
+    private init(): void {
+        const head = document.getElementsByTagName('head')[0];
+        this._globalStyle = document.createElement('style');
+        this._style = document.createElement('style');
+        this._globalStyle.dataset.isometricGlobal = '';
+        this._style.dataset.isometric = '';
+        head.appendChild(this._globalStyle);
+        head.appendChild(this._style);
+        this.insertGlobalStyles();
+    }
 
+    private getKeyframes(plane: Plane): Keyframes | null {
+        if (plane.animation) {
+            const initialPosition = plane.position
+                ? isometricToPoint(
+                    plane.position,
+                    plane.parentRotations
+                )
+                : {
+                    x: 0,
+                    y: 0
+                };
+            const finalPosition = isometricToPoint(
+                plane.animation.position,
+                plane.parentRotations
+            );
+            return {
+                from: {
+                    left: `${initialPosition.x}px`,
+                    top: `${initialPosition.y}px` 
+                },
+                to: {
+                    left: `${finalPosition.x}px`,
+                    top: `${finalPosition.y}px`
+                }
+            };
+        }
+        return null;
+    }
+
+    private getRule(plane: Plane, keyframesName: string): Rule {
         const transform = this.getTransform(
             plane.view,
             plane.parentRotations,
@@ -96,9 +142,15 @@ export class Styles {
                 MsTransform: transform,
                 WebkitTransform: transform
             }
-            : {
-                ...this.baseDeclarations
-            };
+            : (
+                plane.position ||
+                plane.texture ||
+                (
+                    plane.animation && keyframesName
+                )
+            )
+                ? { ...this.baseDeclarations }
+                : {};
 
         if (plane.position) {
             const position = isometricToPoint(
@@ -123,37 +175,83 @@ export class Styles {
             }
         }
 
+        if (plane.animation && keyframesName) {
+            rule.animationName = keyframesName;
+            rule.animationDuration = plane.animation.duration
+                ? `${plane.animation.duration}ms`
+                : '1000ms';
+            rule.animationTimingFunction = plane.animation.easing || 'linear';
+            rule.animationIterationCount = plane.animation.repeat
+                ? (
+                    plane.animation.bounce
+                        ? `${plane.animation.repeat * 2}`
+                        : `${plane.animation.repeat}`
+                )
+                : 'infinite';
+            rule.animationDirection = plane.animation.bounce
+                ? 'alternate'
+                : 'normal';
+            rule.animationFillMode = 'both';
+        }
+        
         return rule;
-
     }
 
-    private init(): void {
-        this._style = document.createElement('style');
-        this._style.dataset.isometric = '';
-        document.getElementsByTagName('head')[0].appendChild(this._style);      
-    }
-
-    public getRule(plane: Plane): Rule {
-        return this.tranformPlaneToRule(plane);
-    }
-
-    public getDeclarationString(rule: Rule): string {
-        return this.declarationString(rule);
+    public getDeclarationString(rule: Rule | Keyframes): string {
+        const entries = Object.entries<string | number | Rule | Fallbacks>(rule);
+        return entries.reduce((decl: string, entry: [string, string | number | Rule | Fallbacks]): string => {
+            if (Array.isArray(entry[1])) {
+                const fallbacks = entry[1].map((fallback: Rule): string => {
+                    return this.getDeclarationString(fallback);
+                }).join('\n');
+                return `${decl}${fallbacks}`;
+            } else if (typeof entry[1] === 'object') {
+                return `${decl}\n${kebab(entry[0])} {${this.getDeclarationString(entry[1])}\n}`;
+            } else {
+                return `${decl}\n    ${kebab(entry[0])}: ${entry[1]};`;
+            }
+        }, '');
     }
 
     public getSelector(declaration: string): string {
         return `${NAMESPACE}-${hash(declaration)}`;
     }
 
-    public getRuleData(plane: Plane): RuleData {
-        const rule = this.getRule(plane);
-        const declaration = this.getDeclarationString(rule);
-        const selector = this.getSelector(declaration);
-        return {
-            rule,
-            declaration,
-            selector
-        };
+    public getRuleData(plane: Plane): RuleData | null {
+
+        const keyframes = this.getKeyframes(plane);
+        const declarationKeyframes = keyframes
+            ? this.getDeclarationString(keyframes)
+            : null;
+        const keyframesName = declarationKeyframes
+            ? this.getSelector(declarationKeyframes)
+            : null;
+
+        const rule = this.getRule(plane, keyframesName);
+
+        if (Object.keys(rule).length) {
+
+            const declaration = this.getDeclarationString(rule);
+            const selector = this.getSelector(declaration);
+            
+            const data: RuleData = {
+                rule,
+                declaration,
+                selector
+            };
+
+            if (keyframes) {
+                data.keyframes = keyframes;
+                data.keyframesDeclaration = declarationKeyframes;
+                data.keyframesName = keyframesName;
+            }
+
+            return data;
+
+        }
+
+        return null;
+        
     }
 
     public insert(selector: string, declaration: string): void {
@@ -161,12 +259,26 @@ export class Styles {
         this.sheet.insertRule(`.${selector} {\n${declaration}\n}`);
     }
 
+    public insertKeyframes(selector: string, declaration: string): void {
+        this.sheet.insertRule(`@keyframes ${selector} {\n${declaration}\n}`);
+    }
+
     public remove(selector: string): void {     
-        Array.prototype.some.call(this.sheet.cssRules, (rule: CSSStyleRule, index: number): boolean => {
-            if (rule && rule.selectorText.slice(1) === selector) {
+        Array.prototype.some.call(this.sheet.cssRules, (rule: CSSStyleRule | CSSKeyframesRule, index: number): boolean => {           
+            if (
+                'name' in rule &&                
+                rule.name === selector
+            ) {
                 this.sheet.deleteRule(index);
                 return true;
             }
+            if (
+                'selectorText' in rule &&
+                rule.selectorText.slice(1) === selector
+            ) {
+                this.sheet.deleteRule(index);
+                return true;
+            }         
             return false;
         });
     }

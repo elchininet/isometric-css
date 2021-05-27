@@ -1,5 +1,15 @@
-import { Matrix, View, Rotation } from '@types';
-import { VIEW, AXIS, ROT_45, ROT_60, ROT_CMA } from '@constants';
+import {
+    Matrix,
+    View,
+    Rotation
+} from '@types';
+import {
+    VIEW,
+    AXIS,
+    ROT_45,
+    ROT_60,
+    ROT_CMA
+} from '@constants';
 import { sincos, radian } from '@utilities/math';
 
 export const multiplyMatrix = (m1: Matrix, m2: Matrix): Matrix => (

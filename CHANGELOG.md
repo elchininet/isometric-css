@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.2.0] - 2021-05-27
+
+- Add support for animating positions
+
 ## [2.1.2] - 2021-04-27
 
 - Removed @emotion/hash dependency
