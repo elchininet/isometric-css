@@ -1,4 +1,10 @@
-import { View, IsometricPosition, Rotation, Texture } from '@types';
+import {
+    View,
+    IsometricPosition,
+    Rotation,
+    Texture,
+    Animation
+} from '@types';
 import { TYPE_UNDEFINED, NAMESPACE } from '@constants';
 import Store from '@classes/store';
 
@@ -32,6 +38,22 @@ export const IsometricCSS = {
 
     setTexture(element: HTMLElement, texture: Texture): void {
         Store.setElementTexture(element, texture);
+    },
+
+    setAnimation(element: HTMLElement, animation: Animation): void {
+        Store.setElementAnimation(element, animation);
+    },
+
+    resetAnimation(element: HTMLElement): void {
+        Store.resetAnimation(element);
+    },
+
+    pauseAnimation(element: HTMLElement): void {
+        Store.pauseAnimation(element);
+    },
+
+    resumeAnimation(element: HTMLElement): void {
+        Store.resumeAnimation(element);
     }
 
 };

@@ -25,6 +25,11 @@ describe('Test DOMContentLoaded', (): void => {
         element.dataset.texture = '/images/test-image.png';
         element.dataset.textureSize = '50px 50px';
         element.dataset.texturePixelated = 'true';
+        element.dataset.animation = 'right: 50, left: 100';
+        element.dataset.animationDuration = '5000';
+        element.dataset.animationEasing = 'ease-in-out';
+        element.dataset.animationRepeat = '10';
+        element.dataset.animationBounce = 'true';
 
         window.document.dispatchEvent(new Event('DOMContentLoaded', {
             bubbles: true,
@@ -40,6 +45,11 @@ describe('Test DOMContentLoaded', (): void => {
         expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
         expect(style).toHaveProperty('background-size', '50px 50px');
         expect(style).toHaveProperty('image-rendering', 'crisp-edges');
+        expect(style).toHaveProperty('animation-name', 'isometric-zfpm2x');
+        expect(style).toHaveProperty('animation-duration', '5000ms');
+        expect(style).toHaveProperty('animation-timing-function', 'ease-in-out');
+        expect(style).toHaveProperty('animation-iteration-count', '20');
+        expect(style).toHaveProperty('animation-direction', 'alternate');
         expect(window).toHaveProperty('IsometricCSS');
         expect(window.IsometricCSS).toHaveProperty('processDOM');
         expect(window.IsometricCSS).toHaveProperty('processElement');
@@ -91,7 +101,7 @@ describe('Test DOMContentLoaded', (): void => {
             front: 'translate(-50%, -50%) matrix(0.612372,0.054695,-0.353554,0.91123,0,0) scale(1.224745) translate(-50%, -50%)',
             side: 'translate(-50%, -50%) matrix(0.707107,0.408248,-0.353553,0.911231,0,0) scale(1.224745) translate(50%, -50%)'
         }
-    }; 
+    };
 
     axis.forEach((a) => {
 
@@ -216,6 +226,61 @@ describe('Test DOMContentLoaded', (): void => {
         expect(topStyle1.transform).toBe(topStyle2.transform);
         expect(frontStyle1.transform).toBe(frontStyle2.transform);
         expect(sideStyle1.transform).toBe(sideStyle2.transform);
+
+    });
+
+    it('Default values', (): void => {
+
+        element.classList.add(NAMESPACE);
+        element.dataset.animation = 'right: 50, left: 100';
+
+        window.document.dispatchEvent(new Event('DOMContentLoaded', {
+            bubbles: true,
+            cancelable: true
+        }));
+
+        expect(element.classList.length).toBe(2);
+
+        const style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('animation-duration', '1000ms');
+        expect(style).toHaveProperty('animation-timing-function', 'linear');
+        expect(style).toHaveProperty('animation-iteration-count', 'infinite');
+        expect(style).toHaveProperty('animation-direction', 'normal');
+
+    });
+
+    it('Keep iteration without bounce', (): void => {
+
+        element.classList.add(NAMESPACE);
+        element.dataset.animation = 'right: 50, left: 100';
+        element.dataset.animationRepeat = '10';
+
+        window.document.dispatchEvent(new Event('DOMContentLoaded', {
+            bubbles: true,
+            cancelable: true
+        }));
+
+        expect(element.classList.length).toBe(2);
+
+        const style = getComputedStyle(element);
+
+        expect(style).toHaveProperty('animation-iteration-count', '10');
+        expect(style).toHaveProperty('animation-direction', 'normal');
+
+    });
+
+    it('Do not set the animation if the animation format is wrong', (): void => {
+
+        element.classList.add(NAMESPACE);
+        element.dataset.animation = 'rights: 50, left: 100.';
+
+        window.document.dispatchEvent(new Event('DOMContentLoaded', {
+            bubbles: true,
+            cancelable: true
+        }));
+
+        expect(element.classList.length).toBe(1);
 
     });
 

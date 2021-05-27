@@ -1,5 +1,17 @@
-import { Plane, Rotation, View, Axis } from '@types';
-import { NAMESPACE } from '@constants';
+import {
+    Plane,
+    Rotation,
+    View,
+    Axis,
+    Animation,
+    IsometricPosition
+} from '@types';
+import {
+    NAMESPACE,
+    PROPS_REG_EXP,
+    EASING_REG_EXP
+} from '@constants';
+import { validNumber } from '@utilities/validator';
 
 export const getParentRotations = (element: HTMLElement): Rotation[] => {
     const rotations: Rotation[] = [];
@@ -20,22 +32,70 @@ export const getParentRotations = (element: HTMLElement): Rotation[] => {
     return rotations;
 };
 
+export const getAnimation = (
+    str: string | undefined,
+    duration: string | undefined,
+    easing: string | undefined,
+    repeat: string | undefined,
+    bounce: string | undefined
+): Animation | null => {
+    if (str) {
+        const position: IsometricPosition = {};
+        let match;
+        while((match = PROPS_REG_EXP.exec(str)) !== null) {
+            const prop = match[1] as Axis;
+            const value = +match[2];
+            position[prop] = value;
+        }
+        
+        if (Object.keys(position).length) {
+            
+            const animation: Animation = {
+                position,
+                repeat: repeat && +repeat > 0
+                    ? +repeat
+                    : 0,
+                bounce: bounce && bounce.trim() === 'true'
+            };
+
+            if (easing && EASING_REG_EXP.test(easing.trim())) {
+                animation.easing = easing.trim();
+            }
+
+            if (validNumber(duration)) {
+                animation.duration = +duration;
+            }
+            
+            return animation;
+        }
+    }    
+    return null;
+};
+
 export const getPlaneFromElement = (element: HTMLElement): Plane => {
 
-    const view = element.dataset.view
-        ? element.dataset.view as View
+    const dataset = element.dataset;
+    const view = dataset.view
+        ? dataset.view as View
         : null;
-    const right = +(element.dataset.right || 0);
-    const left = +(element.dataset.left || 0);
-    const top = +(element.dataset.top || 0);
-    const rotationAxis = element.dataset.rotationAxis
-        ? element.dataset.rotationAxis as Axis
+    const right = +(dataset.right || 0);
+    const left = +(dataset.left || 0);
+    const top = +(dataset.top || 0);
+    const rotationAxis = dataset.rotationAxis
+        ? dataset.rotationAxis as Axis
         : null;
-    const rotationValue = +(element.dataset.rotationValue || 0);
-    const textureUrl = element.dataset.texture;
-    const textureSize = element.dataset.textureSize || 'cover';
-    const texturePixelated = element.dataset.texturePixelated === 'true';
+    const rotationValue = +(dataset.rotationValue || 0);
+    const textureUrl = dataset.texture;
+    const textureSize = dataset.textureSize || 'cover';
+    const texturePixelated = dataset.texturePixelated === 'true';
     const parentRotations = getParentRotations(element);
+    const animation = getAnimation(
+        dataset.animation,
+        dataset.animationDuration,
+        dataset.animationEasing,
+        dataset.animationRepeat,
+        dataset.animationBounce
+    );
 
     const plane: Plane = { parentRotations };
     
@@ -62,6 +122,10 @@ export const getPlaneFromElement = (element: HTMLElement): Plane => {
         };
     }
 
+    if (animation) {
+        plane.animation = animation;
+    }
+
     return plane;
 };
 
@@ -82,6 +146,12 @@ export const resetElementIsometricData = (element: HTMLElement): void => {
         'rotationValue',
         'texture',
         'textureSize',
-        'texturePixelated'
+        'texturePixelated',
+        'animation',
+        'animationDuration',
+        'animationEasing',
+        'animationRepeat',
+        'animationBounce',
+        'animationRunning'
     ]);
 };

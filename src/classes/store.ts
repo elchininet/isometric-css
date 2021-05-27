@@ -1,6 +1,24 @@
-import { ElementData, Plane, View, IsometricPosition, Rotation, Texture } from '@types';
-import { VIEW, AXIS } from '@constants';
-import { getPlaneFromElement, resetElementIsometricData, getParentRotations } from '@utilities/dom';
+import {
+    ElementData,
+    Plane,
+    View,
+    IsometricPosition,
+    Rotation,
+    Texture,
+    Animation
+} from '@types';
+import {
+    getPlaneFromElement,
+    resetElementIsometricData,
+    getParentRotations
+} from '@utilities/dom';
+import {
+    validView,
+    validPosition,
+    validRotation,
+    validTexture,
+    validAnimation
+} from '@utilities/validator';
 import { Styles } from '@classes/styles';
 
 class Store {
@@ -8,12 +26,19 @@ class Store {
     constructor() {
         this._elements = new Map<HTMLElement, ElementData>();
         this._classes = new Map<string, HTMLElement[]>();
+        this._keyframes = new Map<string, HTMLElement[]>();
         this._styles = new Styles();
     }
 
     private _elements: Map<HTMLElement, ElementData>;
     private _classes: Map<string, HTMLElement[]>;
+    private _keyframes: Map<string, HTMLElement[]>;
     private _styles: Styles;
+    
+    private hasAnimation(element: HTMLElement): boolean {
+        const elementData = this._elements.get(element);
+        return !!(elementData && elementData.keyframesName);
+    }
 
     private removeClasses(element: HTMLElement, selector: string): void {
 
@@ -34,23 +59,57 @@ class Store {
 
     }
 
+    private removeKeyframes(element: HTMLElement, keyframesName: string): void {
+
+        const elements = this._keyframes.get(keyframesName);
+
+        const index = elements.findIndex((e: HTMLElement): boolean => e === element);
+
+        elements.splice(index, 1);
+
+        if (elements.length === 0) {
+
+            this._keyframes.delete(keyframesName);
+            this._styles.remove(keyframesName);
+
+        }
+
+    }
+
     private process(element: HTMLElement, plane: Plane): void {
 
         const elementData = this._elements.get(element);
         const ruleData = this._styles.getRuleData(plane);
         
+        if (!ruleData) return;
+
+        const newElementData: ElementData = {
+            plane,
+            selector: ruleData.selector,
+            rule: ruleData.rule
+        };
+
         if (elementData) {
             
-            if (elementData.selector === ruleData.selector) return;
+            if (
+                elementData.selector === ruleData.selector &&
+                elementData.keyframesName === ruleData.keyframesName
+            ) {
+                return;
+            }
 
             this.removeClasses(element, elementData.selector);
+
+            if (elementData.keyframesName) {
+                this.removeKeyframes(element, elementData.keyframesName);
+            }            
 
         }
 
         element.classList.add(ruleData.selector);
 
         const elements = this._classes.get(ruleData.selector);
-
+        
         if (elements) {            
             elements.push(element);
         } else {
@@ -58,11 +117,26 @@ class Store {
             this._classes.set(ruleData.selector, [element]);
         }
 
-        this._elements.set(element, {
-            plane,
-            selector: ruleData.selector,
-            rule: ruleData.rule
-        });
+        if (
+            ruleData.keyframesName &&
+            ruleData.keyframesDeclaration
+        ) {
+
+            const keyframes = this._keyframes.get(ruleData.keyframesName);
+
+            if (keyframes) {
+                keyframes.push(element);
+            } else {
+                this._styles.insertKeyframes(ruleData.keyframesName, ruleData.keyframesDeclaration);
+                this._keyframes.set(ruleData.keyframesName, [element]);
+            }
+
+            newElementData.keyframes = ruleData.keyframes;
+            newElementData.keyframesName = ruleData.keyframesName;
+
+        }
+
+        this._elements.set(element, newElementData);
 
     }
 
@@ -77,14 +151,13 @@ class Store {
         if (!elementData) return;
         this._elements.delete(element);
         this.removeClasses(element, elementData.selector);
+        if (elementData.keyframesName) {
+            this.removeKeyframes(element, elementData.keyframesName);
+        }        
     }
 
     public setElementView(element: HTMLElement, view: View): void {
-        if (
-            view === VIEW.top ||
-            view === VIEW.front ||
-            view === VIEW.side
-        ) {
+        if (validView(view)) {
             const elementData = this._elements.get(element);
             this.process(element,
                 elementData
@@ -95,7 +168,7 @@ class Store {
     }
 
     public setElementPosition(element: HTMLElement, position: IsometricPosition): void {
-        if (+position.right || +position.left || +position.top) {
+        if (validPosition(position)) {
             const elementData = this._elements.get(element);
             this.process(element,
                 elementData
@@ -106,14 +179,7 @@ class Store {
     }
 
     public setElementRotation(element: HTMLElement, rotation: Rotation): void {
-        if (
-            (
-                rotation.axis === AXIS.right ||
-                rotation.axis === AXIS.left ||
-                rotation.axis === AXIS.top
-            ) &&
-            +rotation.value
-        ) {
+        if (validRotation(rotation)) {
             const elementData = this._elements.get(element);
             this.process(element,
                 elementData
@@ -124,17 +190,7 @@ class Store {
     }
 
     public setElementTexture(element: HTMLElement, texture: Texture): void {
-        if (
-            typeof texture.url === 'string' &&
-            (
-                !texture.size ||
-                typeof texture.size === 'string'
-            ) &&
-            (
-                !texture.pixelated ||
-                typeof texture.pixelated === 'boolean'
-            )
-        ) {
+        if (validTexture(texture)) {
             const elementData = this._elements.get(element);
             this.process(element,
                 elementData
@@ -142,6 +198,46 @@ class Store {
                     : { texture, parentRotations: getParentRotations(element) }
             );
         }        
+    }
+
+    public setElementAnimation(element: HTMLElement, animation: Animation): void {
+        if (validAnimation(animation)) {
+            const elementData = this._elements.get(element);
+            this.process(element,
+                elementData
+                    ? {
+                        ...elementData.plane,
+                        animation: elementData.plane.animation
+                            ? {
+                                ...elementData.plane.animation,
+                                ...animation
+                            }
+                            : animation 
+                    }
+                    : { animation, parentRotations: getParentRotations(element) }
+            );
+        } 
+    }
+
+    public resetAnimation(element: HTMLElement): void {
+        if (this.hasAnimation(element)) {
+            const classes = element.className;
+            element.className = '';
+            element.offsetWidth;
+            element.className = classes;
+        }
+    }
+
+    public pauseAnimation(element: HTMLElement): void {
+        if (this.hasAnimation(element)) {
+            element.dataset.animationRunning = 'false';
+        }
+    }
+
+    public resumeAnimation(element: HTMLElement): void {
+        if (this.hasAnimation(element)) {
+            element.dataset.animationRunning = 'true';
+        }
     }
 
 }
