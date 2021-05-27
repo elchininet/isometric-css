@@ -21,5 +21,6 @@ module.exports = {
     moduleFileExtensions: ['ts', 'js'],
     collectCoverageFrom: [
         'src/**/*.ts'
-    ]
+    ],
+    testEnvironment: 'jsdom'
 };
