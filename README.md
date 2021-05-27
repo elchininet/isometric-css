@@ -12,7 +12,7 @@
 
 [Isometric-CSS](https://elchininet.github.io/isometric-css/) is a lightweight `JavaScript` library to easily build <a href="https://en.wikipedia.org/wiki/Isometric_projection" target="_blank" rel="noreferrer noopener">isometric projections</a> through declarative HTML attributes, so no `JavaScript` knowledge is required. You just need to add the `isometric` class and specific <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*" target="_blank" rel="noreferrer noopener">data attributes</a> to the elements, and on page-load CSS rules will be created and applied to give them the desired transformation or animations. It is also possible to transform or animate the elements dynamically using the `JavaScript` API (read the [API section](https://elchininet.github.io/isometric-css/library-api) for more details).
 
-## Documentation
+## Demo and Documentation
 
 https://elchininet.github.io/isometric-css/
 
