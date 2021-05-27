@@ -45,7 +45,7 @@ describe('Test DOMContentLoaded', (): void => {
         expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
         expect(style).toHaveProperty('background-size', '50px 50px');
         expect(style).toHaveProperty('image-rendering', 'crisp-edges');
-        expect(style).toHaveProperty('animation-name', 'isometric-zfpm2x');
+        expect(style).toHaveProperty('animation-name', 'isometric-1hprtht');
         expect(style).toHaveProperty('animation-duration', '5000ms');
         expect(style).toHaveProperty('animation-timing-function', 'ease-in-out');
         expect(style).toHaveProperty('animation-iteration-count', '20');

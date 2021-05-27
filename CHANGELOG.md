@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.2.1] - 2021-05-27
+
+- Fix a bug animation elements already positioned
+
 ## [2.2.0] - 2021-05-27
 
 - Add support for animating positions

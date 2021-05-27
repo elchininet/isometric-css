@@ -100,27 +100,23 @@ export class Styles {
 
     private getKeyframes(plane: Plane): Keyframes | null {
         if (plane.animation) {
-            const initialPosition = plane.position
-                ? isometricToPoint(
-                    plane.position,
-                    plane.parentRotations
-                )
-                : {
-                    x: 0,
-                    y: 0
-                };
-            const finalPosition = isometricToPoint(
-                plane.animation.position,
+            const initialPosition = plane.position || { right: 0, left: 0, top: 0 };
+            const initialCoords = isometricToPoint(
+                initialPosition,
+                plane.parentRotations
+            );
+            const finalCoords = isometricToPoint(
+                { ...initialPosition, ...plane.animation.position },
                 plane.parentRotations
             );
             return {
                 from: {
-                    left: `${initialPosition.x}px`,
-                    top: `${initialPosition.y}px` 
+                    left: `${initialCoords.x}px`,
+                    top: `${initialCoords.y}px` 
                 },
                 to: {
-                    left: `${finalPosition.x}px`,
-                    top: `${finalPosition.y}px`
+                    left: `${finalCoords.x}px`,
+                    top: `${finalCoords.y}px`
                 }
             };
         }
