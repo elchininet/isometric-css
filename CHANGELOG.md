@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.2.1] - 2021-05-28
+## [2.2.2] - 2021-05-28
 
 - Fix a bug with animation positions with negative values
 
