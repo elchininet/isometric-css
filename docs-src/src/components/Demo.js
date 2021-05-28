@@ -56,7 +56,14 @@ export const Demo = () => {
                             data-top="-10"
                         />
                         <Floor />
-                        <Logo right={75} left={342} top={-10} />
+                        <Logo
+                            right={75}
+                            left={260}
+                            top={-10}
+                            animation={{
+                                left: 400
+                            }}
+                        />
                         <FenceSide right={10} left={10} /> 
                         <FenceFront right={10} left={220}/>
                         <Houses right={45} left={40} />

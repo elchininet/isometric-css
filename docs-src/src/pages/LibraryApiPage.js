@@ -98,6 +98,50 @@ export const LibraryApiPage = () => {
                 `}    
             </Code>
 
+            <Paragraph title="setAnimation" titleLevel={4}>
+                Set an animation in the element
+            </Paragraph>
+            <Code language="typescript">
+                {outdent`
+                    interface IsometricPosition {
+                        right?: number;
+                        left?: number;
+                        top?: number;
+                    }
+
+                    interface Animation {
+                        position: IsometricPosition;
+                        duration?: number;
+                        easing?: string;
+                        repeat?: number;
+                        bounce?: boolean;
+                    };
+
+                    IsometricCSS.setAnimation(element: HTMLElement, animation: Animation): void;
+                `}                   
+            </Code>
+
+            <Paragraph title="resetAnimation" titleLevel={4}>
+                If the animation is finished, this method resets it so it can be started again (if there is any)
+            </Paragraph>
+            <Code language="typescript">
+                IsometricCSS.resetAnimation(element: HTMLElement): void;                  
+            </Code>
+
+            <Paragraph title="pauseAnimation" titleLevel={4}>
+                Pauses the animation (if there is any)
+            </Paragraph>
+            <Code language="typescript">
+                IsometricCSS.pauseAnimation(element: HTMLElement): void;                  
+            </Code>
+
+            <Paragraph title="resumeAnimation" titleLevel={4}>
+                Resumes the animation (if there is any)
+            </Paragraph>
+            <Code language="typescript">
+                IsometricCSS.resumeAnimation(element: HTMLElement): void;                  
+            </Code>
+
             <Paragraph title="resetElement" titleLevel={4}>
                 Removes all the data attributes and classes created by the library.
             </Paragraph>

@@ -5,7 +5,7 @@ import blockTop from '../images/textures/green_wool.png';
 
 export const CodeDemo = (props) => {
 
-    const { moved, rotated, doubleRotated } = props;
+    const { moved, rotated, doubleRotated, animation } = props;
     const attrs = {
         className: 'isometric'
     };
@@ -16,6 +16,13 @@ export const CodeDemo = (props) => {
     if (rotated) {
         attrs['data-rotation-axis'] = 'top';
         attrs['data-rotation-value'] = '30';
+    }
+
+    if (animation) {
+        attrs['data-animation'] = 'right: 180 left: 10';
+        attrs['data-animation-repeat'] = '0';
+        attrs['data-animation-easing'] = 'ease-in-out';
+        attrs['data-animation-bounce'] = 'true';
     }
 
     const Wrapper = doubleRotated ? 'div' : React.Fragment;
