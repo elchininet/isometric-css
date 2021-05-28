@@ -41,7 +41,7 @@ export const CodeExamplePage = () => {
                 `} 
             </Code>
             <Paragraph>
-                Now, let's create our HTML markup adding to each element that should be transformed the <em>isometric</em> class and the data attributes with the information of these transformations. Elements with the <em>isometric</em> class and without the <em>data-view</em> parameter are taken as groups:
+                Now, let’s create our HTML markup adding to each element that should be transformed the <em>isometric</em> class and the data attributes with the information of these transformations. Elements with the <em>isometric</em> class and without the <em>data-view</em> parameter are taken as groups:
             </Paragraph>
             <Code language="markup">
                 {outdent`
@@ -84,7 +84,7 @@ export const CodeExamplePage = () => {
             </Paragraph>
             <CodeDemo />
             <Paragraph>
-                Let's give a position to the group element, 75 in the right and 75 in the left:
+                Let’s give a position to the group element, 75 in the right and 75 in the left:
             </Paragraph>
             <Code language="markup">
                 {outdent`
@@ -108,7 +108,7 @@ export const CodeExamplePage = () => {
             </Code>
             <CodeDemo moved />
             <Paragraph>
-                Let's rotate the group:
+                Let’s rotate the group:
             </Paragraph>
             <Code language="markup">
                 {outdent`
@@ -166,7 +166,37 @@ export const CodeExamplePage = () => {
             </Code>
             <CodeDemo moved rotated doubleRotated />
             <Paragraph>
-                Now it's your turn to experiment with the library 😉
+                Let’s add an animation in the root element
+            </Paragraph>
+            <Code language="markup">
+                {outdent`
+                    <div class="code-example-world">
+                      <div
+                        class="isometric floor"
+                        data-view="top"
+                        data-texture="/static/media/gray_wool.bae7fb6f.png"
+                        data-texture-size="50px 50px"
+                        data-texture-pixelated="true"
+                      ></div>
+                      <div
+                        class="isometric"
+                        data-right="75"
+                        data-left="75"
+                        data-rotation-axis="top"
+                        data-rotation-value="30"
+                        data-animation="right: 180 left: 10"
+                        data-animation-repeat="0"
+                        data-animation-easing="ease-in-out"
+                        data-animation-bounce="true"
+                      >
+                        ...
+                      </div>
+                    </div>
+                `}
+            </Code>
+            <CodeDemo moved rotated doubleRotated animation />
+            <Paragraph>
+                Now it’s your turn for experimenting with the library 😉
             </Paragraph>
         </Fragment>
     );
