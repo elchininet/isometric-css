@@ -5,11 +5,11 @@
     "main.js.map": "./static/js/main.f5e65834.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.a7686614.js",
     "runtime-main.js.map": "./static/js/runtime-main.a7686614.js.map",
-    "static/js/2.fe25e7fc.chunk.js": "./static/js/2.fe25e7fc.chunk.js",
-    "static/js/2.fe25e7fc.chunk.js.map": "./static/js/2.fe25e7fc.chunk.js.map",
+    "static/js/2.cad6d3e6.chunk.js": "./static/js/2.cad6d3e6.chunk.js",
+    "static/js/2.cad6d3e6.chunk.js.map": "./static/js/2.cad6d3e6.chunk.js.map",
     "index.html": "./index.html",
     "static/css/main.51c833c8.chunk.css.map": "./static/css/main.51c833c8.chunk.css.map",
-    "static/js/2.fe25e7fc.chunk.js.LICENSE.txt": "./static/js/2.fe25e7fc.chunk.js.LICENSE.txt",
+    "static/js/2.cad6d3e6.chunk.js.LICENSE.txt": "./static/js/2.cad6d3e6.chunk.js.LICENSE.txt",
     "static/media/balcony-front.c9bc11c6.png": "./static/media/balcony-front.c9bc11c6.png",
     "static/media/balcony-side.de15160e.png": "./static/media/balcony-side.de15160e.png",
     "static/media/big-balcony-front.fc60f75e.png": "./static/media/big-balcony-front.fc60f75e.png",
@@ -38,7 +38,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.a7686614.js",
-    "static/js/2.fe25e7fc.chunk.js",
+    "static/js/2.cad6d3e6.chunk.js",
     "static/css/main.51c833c8.chunk.css",
     "static/js/main.f5e65834.chunk.js"
   ]
