@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.2.3] - 2021-06-06
+
+- Fix a bug related to data animation properties parser
+- Fix a bug related to parent rotation storing when using JavaScript methods
+
 ## [2.2.2] - 2021-05-28
 
 - Fix a bug with animation positions with negative values

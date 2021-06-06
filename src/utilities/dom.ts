@@ -18,7 +18,6 @@ export const getParentRotations = (element: HTMLElement): Rotation[] => {
     while (element.parentElement && element.parentElement !== document.documentElement) {
         const parent = element.parentElement;
         if (
-            parent.classList.contains(NAMESPACE) &&
             !parent.dataset.view &&
             parent.dataset.rotationAxis
         ) {
