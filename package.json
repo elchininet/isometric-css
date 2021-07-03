@@ -36,7 +36,7 @@
   "private": false,
   "sideEffects": false,
   "scripts": {
-    "build": "webpack && tscpaths -p tsconfig.json -s ./src -o ./dist",
+    "build": "webpack && tsconfig-replace-paths -p tsconfig.json -s ./src -o ./dist",
     "copy": "cp -r ./dist/. ./",
     "lint": "eslint src/**/*.ts",
     "test": "jest --verbose",
@@ -56,7 +56,7 @@
     "jest": "^27.0.1",
     "ts-jest": "^27.0.1",
     "ts-loader": "^9.2.2",
-    "tscpaths": "^0.0.9",
+    "tsconfig-replace-paths": "^0.0.5",
     "typescript": "^4.3.2",
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0"
