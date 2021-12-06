@@ -6,7 +6,7 @@
     A lightweight JavaScript library to build isometric projections through declarative HTML attributes
 </p>
 
-[![Build Status](https://travis-ci.com/elchininet/isometric-css.svg?branch=master)](https://travis-ci.com/elchininet/isometric-css) &nbsp; [![Coverage Status](https://coveralls.io/repos/github/elchininet/isometric-css/badge.svg?branch=master)](https://coveralls.io/github/elchininet/isometric-css?branch=master) &nbsp; [![npm version](https://badge.fury.io/js/isometric-css.svg)](https://badge.fury.io/js/isometric-css)
+[![Build Status](https://travis-ci.com/elchininet/isometric-css.svg?branch=master)](https://app.travis-ci.com/elchininet/isometric-css) &nbsp; [![Coverage Status](https://coveralls.io/repos/github/elchininet/isometric-css/badge.svg?branch=master)](https://coveralls.io/github/elchininet/isometric-css?branch=master) &nbsp; [![npm version](https://badge.fury.io/js/isometric-css.svg)](https://badge.fury.io/js/isometric-css)
 
 ## Isometric-CSS
 
