@@ -4,7 +4,7 @@ yalc.lock
 .DS_Store
 **/.DS_Store
 /dist/*
-/docs-src/build/*
+/docs-src/build
 !dist/index.js
 !dist/index.js.LICENSE.txt
 /coverage/
