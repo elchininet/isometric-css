@@ -38,7 +38,7 @@
     "react-syntax-highlighter": "^15.4.5"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "node-sass": "^7.0.0",
