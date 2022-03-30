@@ -1,17 +1,7 @@
 node_modules/
-.yalc/
-yalc.lock
 .DS_Store
 **/.DS_Store
-/dist/*
 /docs-src/build
-!dist/index.js
-!dist/index.js.LICENSE.txt
 /coverage/
-/@types/
-/constants/
-/classes/
-/utilities/
 /index.d.ts
 /index.js
-/index.js.LICENSE.txt
