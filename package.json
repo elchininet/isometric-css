@@ -20,13 +20,8 @@
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
-    "@types/**/*",
-    "constants/**/*",
-    "dom/**/*",
-    "utilities/**/*",
     "index.d.ts",
-    "index.js",
-    "index.js.LICENSE.txt"
+    "index.js"
   ],
   "repository": {
     "type": "git",
@@ -36,29 +31,29 @@
   "private": false,
   "sideEffects": false,
   "scripts": {
-    "build": "webpack && tsconfig-replace-paths -p tsconfig.json -s ./src -o ./dist",
-    "copy": "cp -r ./dist/. ./",
+    "build": "yarn clean && rollup --config rollup.config.js && yarn copy",
+    "clean": "rimraf dist index.js index.d.ts",
+    "copy": "mkdir dist && cp index.js dist/index.js",
     "lint": "eslint src/**/*.ts",
     "test": "jest --verbose",
-    "prepare": "yarn build && yarn copy",
+    "prepare": "yarn build",
     "prepublishOnly": "npm run lint",
     "version": "git add .",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.9.2",
-    "@typescript-eslint/eslint-plugin": "^4.31.1",
-    "@typescript-eslint/parser": "^4.31.1",
-    "clean-webpack-plugin": "^4.0.0",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.23",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
     "coveralls": "^3.1.1",
-    "eslint": "^7.32.0",
-    "jest": "^27.2.0",
-    "ts-jest": "^27.0.5",
-    "ts-loader": "^9.2.5",
-    "tsconfig-replace-paths": "^0.0.5",
-    "typescript": "^4.4.3",
-    "webpack": "^5.53.0",
-    "webpack-cli": "^4.8.0"
+    "eslint": "^8.12.0",
+    "jest": "^27.5.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.70.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-ts": "^2.0.5",
+    "ts-jest": "^27.1.4",
+    "typescript": "^4.6.3"
   }
 }
