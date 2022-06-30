@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route
 } from "react-router-dom";
 import { Menu } from './components/Menu';
@@ -16,23 +16,28 @@ export const App = () => {
     <Router basename={'/isometric-css'}>
       <Menu />
       <div className="page">
-        <Switch>
-        <Route path="/knowing-the-basics">
-            <KnowingTheBasicsPage />
-          </Route>
-          <Route path="/using-the-library">
-            <UsingTheLibrary />
-          </Route>
-          <Route path="/library-api">
-            <LibraryApiPage />
-          </Route>
-          <Route path="/code-example">
-            <CodeExamplePage />
-          </Route>
-          <Route path="/">
-            <DemoPage />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route
+            path="/knowing-the-basics"
+            element={<KnowingTheBasicsPage/>}
+          />
+          <Route
+            path="/using-the-library"
+            element={<UsingTheLibrary />}
+          />
+          <Route
+            path="/library-api"
+            element={<LibraryApiPage />}
+          />
+          <Route
+            path="/code-example"
+            element={<CodeExamplePage />}
+          />
+          <Route
+            path="/"
+            element={<DemoPage />}
+          />
+        </Routes>
       </div>
     </Router>
   );
