@@ -1,6 +1,6 @@
 {
   "name": "isometric-css",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "A lightweight JavaScript library to build isometric projections through declarative HTML attributes",
   "keywords": [
     "isometric",
