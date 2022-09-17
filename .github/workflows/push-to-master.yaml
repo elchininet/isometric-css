@@ -1,9 +1,0 @@
-on:
-  push:
-    branches:
-      - master
-
-jobs:
-  checks:
-    uses: ./.github/workflows/lint-and-coverage.yaml
-    secrets: inherit
