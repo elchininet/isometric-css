@@ -1,0 +1,8 @@
+name: Testing
+on:
+  pull_request:
+
+jobs:
+  checks:
+    uses: ./.github/workflows/lint-and-coverage.yaml
+    secrets: inherit

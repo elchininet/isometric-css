@@ -1,0 +1,33 @@
+name: Deploying
+on:
+  push:
+    branches:
+      - refs/tags/*
+
+jobs:
+  checks:
+    uses: ./.github/workflows/lint-and-coverage.yaml
+    secrets: inherit
+  deploy:
+    runs-on: ubuntu-latest
+    needs: checks
+    container:
+      image: node:16
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set-up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'yarn'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Build
+        run: |
+          yarn install --frozen-lockfile --ignore-scripts --prefer-offline
+          yarn build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_API_TOKEN }}
+
+
