@@ -1,7 +1,10 @@
-name: Lint and Coverage
+name: Lint and coverage
 
 on:
-  workflow_call:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   lint:
