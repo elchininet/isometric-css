@@ -22,6 +22,6 @@ jobs:
       - name: Publish
         run: |
           yarn install --frozen-lockfile --ignore-scripts --prefer-offline
-          npm publish
+          yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_API_TOKEN }}
