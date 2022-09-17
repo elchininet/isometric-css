@@ -1,9 +1,10 @@
-name: Push to master
+name: Run checks
 
 on:
   push:
     branches:
       - master
+  pull_request:
 
 jobs:
   checks:
