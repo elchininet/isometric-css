@@ -6,12 +6,8 @@ on:
       - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
-  checks:
-    uses: ./.github/workflows/lint-and-coverage.yaml
-    secrets: inherit
   deploy:
     runs-on: ubuntu-latest
-    needs: checks
     container:
       image: node:16
     steps:
@@ -23,11 +19,10 @@ jobs:
           node-version: '16'
           cache: 'yarn'
           registry-url: 'https://registry.npmjs.org'
-      - name: Build
+      - name: Publish
         run: |
           yarn install --frozen-lockfile --ignore-scripts --prefer-offline
-          yarn build
-      - run: npm publish
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_API_TOKEN }}
 
