@@ -41,7 +41,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.2.1",
-    "node-sass": "^7.0.3",
+    "node-sass": "^9.0.0",
     "rimraf": "^3.0.2"
   }
 }
