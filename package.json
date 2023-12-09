@@ -32,10 +32,12 @@
   "sideEffects": false,
   "scripts": {
     "build": "rollup --config rollup.config.js --bundleConfigAsCjs",
-    "lint": "eslint \"src/**/*.ts\"",
-    "test": "jest --verbose",
+    "test:ts": "tsc --noEmit",
+    "test:lint": "eslint \"src/**/*.ts\"",
+    "test:unit": "jest --verbose",
+    "test:all": "yarn test:ts && yarn test:lint && yarn test:unit",
     "prepare": "yarn build",
-    "prepublishOnly": "yarn lint && yarn test",
+    "prepublishOnly": "yarn test:all",
     "version": "git add .",
     "postversion": "git push && git push --tags"
   },
