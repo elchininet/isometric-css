@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "./static/css/main.8d232dca.css",
-    "main.js": "./static/js/main.259409f7.js",
+    "main.css": "./static/css/main.0cca3e69.css",
+    "main.js": "./static/js/main.f346375d.js",
     "static/media/planes-steps.svg": "./static/media/planes-steps.c95a26cab8e0d3d2914ea1b3976db8d5.svg",
     "static/media/planes.svg": "./static/media/planes.1e832267f9d94b10af6509c31236ff83.svg",
     "static/media/planes-rotated.svg": "./static/media/planes-rotated.e68a87d5aa6489a3c166e66171739f34.svg",
     "static/media/planes-rotations.svg": "./static/media/planes-rotations.37da676d0f96300f2fafb78cd95fff06.svg",
     "static/media/isometric-css.png": "./static/media/isometric-css.3b2790ca04d7f80f66d9.png",
     "static/media/houses-side.png": "./static/media/houses-side.cfaa85c2f62ba687795c.png",
+    "static/media/front.png": "./static/media/front.5fa69047d5141002b0f6.png",
+    "static/media/top-middle.png": "./static/media/top-middle.35c7cbff8a798d779a31.png",
+    "static/media/top.png": "./static/media/top.e6a994e66d10bb2a2bec.png",
+    "static/media/top-bottom.png": "./static/media/top-bottom.fe428393432822910ed4.png",
     "index.html": "./index.html",
     "static/media/github.svg": "./static/media/github.85b1fb7e7849af2d42f19cbfad17793d.svg",
-    "static/media/front.png": "./static/media/front.e28f03a1b45c888648f7.png",
     "static/media/houses-front.png": "./static/media/houses-front.f6caf0e54979ed8269fc.png",
     "static/media/balcony-side.png": "./static/media/balcony-side.de15160eff44802c5bf1.png",
     "static/media/star.svg": "./static/media/star.e8d5b7542591e5f9e17378e9b780dcb9.svg",
     "static/media/balcony-front.png": "./static/media/balcony-front.c9bc11c69a9e4681439d.png",
     "static/media/houses-top.png": "./static/media/houses-top.6d66bd69f6a388191646.png",
     "static/media/houses-roof.png": "./static/media/houses-roof.496c6340950da5f779f3.png",
-    "static/media/top.png": "./static/media/top.3554b94b5a9cbc85fe92.png",
-    "static/media/top-middle.png": "./static/media/top-middle.7a53160ce57e94bcad85.png",
-    "static/media/top-bottom.png": "./static/media/top-bottom.542cd3b51766f58a6455.png",
     "static/media/floor-top.png": "./static/media/floor-top.c4cbd9fecdc3e7857643.png",
     "static/media/fork.svg": "./static/media/fork.681fbd3a9ad5b0ac0e9370e63f9ffa75.svg",
     "static/media/big-balcony-front.png": "./static/media/big-balcony-front.fc60f75ed2b7b91dcd57.png",
@@ -28,11 +28,11 @@
     "static/media/green_wool.png": "./static/media/green_wool.efa789af57e1aab4bcec.png",
     "static/media/gray_wool.png": "./static/media/gray_wool.bae7fb6fbe278c0ad87a.png",
     "static/media/grass_block_side.png": "./static/media/grass_block_side.f48abe152e0062160225.png",
-    "main.8d232dca.css.map": "./static/css/main.8d232dca.css.map",
-    "main.259409f7.js.map": "./static/js/main.259409f7.js.map"
+    "main.0cca3e69.css.map": "./static/css/main.0cca3e69.css.map",
+    "main.f346375d.js.map": "./static/js/main.f346375d.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d232dca.css",
-    "static/js/main.259409f7.js"
+    "static/css/main.0cca3e69.css",
+    "static/js/main.f346375d.js"
   ]
 }
