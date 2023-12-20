@@ -1,0 +1,31 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    commit-message:
+      prefix: "[Dependencies]"
+    groups:
+      dependencies-dev:
+        dependency-type: "development"
+    labels:
+      - dependencies
+    versioning-strategy: increase
+  - package-ecosystem: "npm"
+    directory: "/docs-src/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    commit-message:
+      prefix: "[Demo Dependencies]"
+    groups:
+      dependencies-prod:
+        dependency-type: "production"
+      dependencies-dev:
+        dependency-type: "development"
+    labels:
+      - dependencies
+      - demo
+    versioning-strategy: increase
