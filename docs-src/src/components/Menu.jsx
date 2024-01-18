@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { GithubPanel } from './GithubPanel';
 import { MenuLinks } from './MenuLinks';
 import logo from '../images/isometric-css.png';

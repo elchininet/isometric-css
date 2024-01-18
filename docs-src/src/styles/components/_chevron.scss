@@ -1,4 +1,7 @@
+@use 'sass:math';
+
 $chevron: 24px;
+$half-chevron: math.div($chevron, 2);
 $cthick: 2px;
 $animation: 0.25s ease-in-out;
 
@@ -31,11 +34,11 @@ $animation: 0.25s ease-in-out;
         }
 
         &::before {
-            transform: translateY(-$chevron / 2 + $cthick);
+            transform: translateY(-1 * $half-chevron + $cthick);
         }
 
         &::after {
-            transform: translateY($chevron / 2 - $cthick);
+            transform: translateY($half-chevron - $cthick);
         }
 
     }
