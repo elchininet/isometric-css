@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route
-} from "react-router-dom";
+} from 'react-router-dom';
 import { Menu } from './components/Menu';
 import { KnowingTheBasicsPage } from './pages/KnowingTheBasicsPage';
 import { UsingTheLibrary } from './pages/UsingTheLibrary';

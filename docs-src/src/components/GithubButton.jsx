@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from './Link';
-import { ReactComponent as Github } from '../images/svg/github.svg';
-import { ReactComponent as Fork } from '../images/svg/fork.svg';
-import { ReactComponent as Star } from '../images/svg/star.svg';
+import Github from '../images/svg/github.svg?react';
+import Fork from '../images/svg/fork.svg?react';
+import Star from '../images/svg/star.svg?react';
 
 const BUTTONS = {
     github: {

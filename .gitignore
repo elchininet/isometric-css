@@ -1,7 +1,7 @@
 node_modules/
 .DS_Store
 **/.DS_Store
-/docs-src/build
+/docs-src/dist
 /coverage/
 /index.d.ts
 /index.js
