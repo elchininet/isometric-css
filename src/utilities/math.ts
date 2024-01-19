@@ -3,7 +3,7 @@ import {
     Rotation,
     SinCos,
     IsometricPosition
-} from '@types'; 
+} from '@types';
 import {
     DECIMALS,
     HSQRT3,
@@ -11,7 +11,7 @@ import {
 } from '@constants';
 
 export const round = (n: number): number => {
-    const exp = Math.pow(10, DECIMALS);
+    const exp = 10 ** DECIMALS;
     return Math.round(n * exp) / exp;
 };
 
@@ -23,7 +23,7 @@ export const sincos = (r: number): SinCos => ({
 });
 
 export const rotatePoint = (x: number, y: number, rotate: number): Point => {
-    const hypotenuse = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+    const hypotenuse = Math.sqrt(x ** 2 + y ** 2);
     const angle = Math.atan2(y, x) + radian(rotate);
     return {
         x: Math.cos(angle) * hypotenuse,
@@ -60,6 +60,6 @@ export const isometricToPoint = (position: IsometricPosition, rotations: Rotatio
     }
     return {
         x: round((right - left) * HSQRT3),
-        y: round(((right + left) / 2 - top)),
+        y: round((right + left) / 2 - top),
     };
 };

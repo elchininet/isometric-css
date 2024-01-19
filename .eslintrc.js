@@ -18,14 +18,17 @@ module.exports = {
         ecmaVersion: 2018,
         sourceType: 'module'
     },
-    plugins: ['@typescript-eslint'],
+    plugins: [
+        '@typescript-eslint'
+    ],
     ignorePatterns: [
         'jest.config.js'
     ],
     rules: {
-        quotes: ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
+        quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: true }],
         semi: ['error', 'always'],
-        '@typescript-eslint/ban-ts-comment': 'off'
+        '@typescript-eslint/ban-ts-comment': 'off',
+        'no-trailing-spaces': [2, { skipBlankLines: true }]
     },
     overrides: [
         {

@@ -44,7 +44,7 @@ class Store {
 
         element.classList.remove(selector);
 
-        const elements = this._classes.get(selector);        
+        const elements = this._classes.get(selector);
 
         const index = elements.findIndex((e: HTMLElement): boolean => e === element);
 
@@ -102,7 +102,7 @@ class Store {
 
             if (elementData.keyframesName) {
                 this.removeKeyframes(element, elementData.keyframesName);
-            }            
+            }
 
         }
 
@@ -110,7 +110,7 @@ class Store {
 
         const elements = this._classes.get(ruleData.selector);
         
-        if (elements) {            
+        if (elements) {
             elements.push(element);
         } else {
             this._styles.insert(ruleData.selector, ruleData.declaration);
@@ -150,10 +150,16 @@ class Store {
         const elementData = this._elements.get(element);
         if (!elementData) return;
         this._elements.delete(element);
-        this.removeClasses(element, elementData.selector);
+        this.removeClasses(
+            element,
+            elementData.selector
+        );
         if (elementData.keyframesName) {
-            this.removeKeyframes(element, elementData.keyframesName);
-        }        
+            this.removeKeyframes(
+                element,
+                elementData.keyframesName
+            );
+        }
     }
 
     public setElementView(element: HTMLElement, view: View): void {
@@ -161,10 +167,16 @@ class Store {
             const elementData = this._elements.get(element);
             this.process(element,
                 elementData
-                    ? { ...elementData.plane, view }
-                    : { view, parentRotations: getParentRotations(element) }
+                    ? {
+                        ...elementData.plane,
+                        view
+                    }
+                    : {
+                        view,
+                        parentRotations: getParentRotations(element)
+                    }
             );
-        }        
+        }
     }
 
     public setElementPosition(element: HTMLElement, position: IsometricPosition): void {
@@ -172,8 +184,17 @@ class Store {
             const elementData = this._elements.get(element);
             this.process(element,
                 elementData
-                    ? { ...elementData.plane, position: { ...elementData.plane.position, ...position } }
-                    : { position, parentRotations: getParentRotations(element) }
+                    ? {
+                        ...elementData.plane,
+                        position: {
+                            ...elementData.plane.position,
+                            ...position
+                        }
+                    }
+                    : {
+                        position,
+                        parentRotations: getParentRotations(element)
+                    }
             );
         }
     }
@@ -183,8 +204,14 @@ class Store {
             const elementData = this._elements.get(element);
             this.process(element,
                 elementData
-                    ? { ...elementData.plane, rotation }
-                    : { rotation, parentRotations: getParentRotations(element) }
+                    ? {
+                        ...elementData.plane,
+                        rotation
+                    }
+                    : {
+                        rotation,
+                        parentRotations: getParentRotations(element)
+                    }
             );
         }
     }
@@ -194,10 +221,19 @@ class Store {
             const elementData = this._elements.get(element);
             this.process(element,
                 elementData
-                    ? { ...elementData.plane, texture: { ...elementData.plane.texture, ...texture } }
-                    : { texture, parentRotations: getParentRotations(element) }
+                    ? {
+                        ...elementData.plane,
+                        texture: {
+                            ...elementData.plane.texture,
+                            ...texture
+                        }
+                    }
+                    : {
+                        texture,
+                        parentRotations: getParentRotations(element)
+                    }
             );
-        }        
+        }
     }
 
     public setElementAnimation(element: HTMLElement, animation: Animation): void {
@@ -212,11 +248,14 @@ class Store {
                                 ...elementData.plane.animation,
                                 ...animation
                             }
-                            : animation 
+                            : animation
                     }
-                    : { animation, parentRotations: getParentRotations(element) }
+                    : {
+                        animation,
+                        parentRotations: getParentRotations(element)
+                    }
             );
-        } 
+        }
     }
 
     public resetAnimation(element: HTMLElement): void {

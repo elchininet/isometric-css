@@ -36,7 +36,7 @@ export const validView = (view: View): boolean => (
         view === VIEW.top ||
         view === VIEW.front ||
         view === VIEW.side
-    )   
+    )
 );
 
 export const validPosition = (position: IsometricPosition): boolean => (
@@ -69,7 +69,7 @@ export const validAnimation = (animation: Animation): boolean => (
     animation &&
     validPosition(animation.position) &&
     validStringByRegExp(animation.easing, EASING_REG_EXP) &&
-    undefinedOrValidNumber(animation.duration) &&    
+    undefinedOrValidNumber(animation.duration) &&
     undefinedOrValidNumber(animation.repeat) &&
     undefinedOrValidBoolean(animation.bounce)
 );

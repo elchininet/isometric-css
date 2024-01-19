@@ -40,9 +40,7 @@ export class Styles {
     };
 
     private get sheet(): CSSStyleSheet | null {
-        return this._style
-            ? this._style.sheet
-            : null;
+        return this._style?.sheet || null;
     }
 
     private getTransform(
@@ -54,10 +52,12 @@ export class Styles {
         const matrix = getViewMatrix(
             view,
             parentRotations,
-            rotation            
+            rotation
         );
 
-        if (!matrix) return null;
+        if (!matrix) {
+            return null;
+        }
 
         const m1 = round(matrix[0][0]);
         const m2 = round(matrix[1][0]);
@@ -106,13 +106,16 @@ export class Styles {
                 plane.parentRotations
             );
             const finalCoords = isometricToPoint(
-                { ...initialPosition, ...plane.animation.position },
+                {
+                    ...initialPosition,
+                    ...plane.animation.position
+                },
                 plane.parentRotations
             );
             return {
                 from: {
                     left: `${initialCoords.x}px`,
-                    top: `${initialCoords.y}px` 
+                    top: `${initialCoords.y}px`
                 },
                 to: {
                     left: `${finalCoords.x}px`,
@@ -127,7 +130,7 @@ export class Styles {
         const transform = this.getTransform(
             plane.view,
             plane.parentRotations,
-            plane.rotation            
+            plane.rotation
         );
 
         const rule: Rule = transform
@@ -145,13 +148,15 @@ export class Styles {
                     plane.animation && keyframesName
                 )
             )
-                ? { ...this.baseDeclarations }
+                ? {
+                    ...this.baseDeclarations
+                }
                 : {};
 
         if (plane.position) {
             const position = isometricToPoint(
                 plane.position,
-                plane.parentRotations                
+                plane.parentRotations
             );
             rule.left = `${position.x}px`;
             rule.top = `${position.y}px`;
@@ -259,10 +264,10 @@ export class Styles {
         this.sheet.insertRule(`@keyframes ${selector} {\n${declaration}\n}`);
     }
 
-    public remove(selector: string): void {     
-        Array.prototype.some.call(this.sheet.cssRules, (rule: CSSStyleRule | CSSKeyframesRule, index: number): boolean => {           
+    public remove(selector: string): void {
+        Array.prototype.some.call(this.sheet.cssRules, (rule: CSSStyleRule | CSSKeyframesRule, index: number): boolean => {
             if (
-                'name' in rule &&                
+                'name' in rule &&
                 rule.name === selector
             ) {
                 this.sheet.deleteRule(index);
@@ -274,7 +279,7 @@ export class Styles {
             ) {
                 this.sheet.deleteRule(index);
                 return true;
-            }         
+            }
             return false;
         });
     }
