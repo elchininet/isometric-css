@@ -51,10 +51,8 @@ export const getAnimation = (
             
             const animation: Animation = {
                 position,
-                repeat: repeat && +repeat > 0
-                    ? +repeat
-                    : 0,
-                bounce: bounce && bounce.trim() === 'true'
+                repeat: +repeat || 0,
+                bounce: bounce?.trim() === 'true'
             };
 
             if (easing && EASING_REG_EXP.test(easing.trim())) {
@@ -67,7 +65,7 @@ export const getAnimation = (
             
             return animation;
         }
-    }    
+    }
     return null;
 };
 
@@ -77,13 +75,11 @@ export const getPlaneFromElement = (element: HTMLElement): Plane => {
     const view = dataset.view
         ? dataset.view as View
         : null;
-    const right = +(dataset.right || 0);
-    const left = +(dataset.left || 0);
-    const top = +(dataset.top || 0);
-    const rotationAxis = dataset.rotationAxis
-        ? dataset.rotationAxis as Axis
-        : null;
-    const rotationValue = +(dataset.rotationValue || 0);
+    const right = +dataset.right || 0;
+    const left = +dataset.left || 0;
+    const top = +dataset.top || 0;
+    const rotationAxis = dataset.rotationAxis as Axis || null;
+    const rotationValue = +dataset.rotationValue || 0;
     const textureUrl = dataset.texture;
     const textureSize = dataset.textureSize || 'cover';
     const texturePixelated = dataset.texturePixelated === 'true';
@@ -117,7 +113,7 @@ export const getPlaneFromElement = (element: HTMLElement): Plane => {
         plane.texture = {
             url: textureUrl,
             size: textureSize,
-            pixelated: texturePixelated            
+            pixelated: texturePixelated
         };
     }
 

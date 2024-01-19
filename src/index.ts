@@ -11,9 +11,9 @@ import Store from '@classes/store';
 export const IsometricCSS = {
 
     processDOM(): void {
-        Array.prototype.forEach.call(document.querySelectorAll<HTMLElement>(`.${NAMESPACE}`), (element: HTMLElement): void => {
-            Store.addElement(element);           
-        });        
+        document.querySelectorAll<HTMLElement>(`.${NAMESPACE}`).forEach((element: HTMLElement): void => {
+            Store.addElement(element);
+        });
     },
 
     processElement(element: HTMLElement): void {
@@ -61,7 +61,7 @@ export const IsometricCSS = {
 export * from '@constants';
 export * from '@types';
 
-/* istanbul ignore next */ 
+/* istanbul ignore next */
 if (
     typeof window !== TYPE_UNDEFINED &&
     typeof document !== TYPE_UNDEFINED

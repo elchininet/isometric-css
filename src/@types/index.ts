@@ -1,7 +1,7 @@
 import { VIEW, AXIS } from '@constants';
 
-export type View = keyof typeof VIEW;
-export type Axis = keyof typeof AXIS;
+export type View = `${VIEW}`;
+export type Axis = `${AXIS}`;
 
 export type Fallbacks = Record<string, string | number>[];
 
