@@ -17,7 +17,14 @@ export const UsingTheLibrary = () => {
                 Let's start installing the library:
             </Paragraph>
             <Code language="bash">
+                ## Using npm
                 npm install isometric-css --save
+
+                ## Using pnpm
+                pnpm add isometric-css
+
+                ## Using yarn
+                yarn add isometric-css
             </Code>
             <Paragraph>
                 If you are working with modules to generate a final bundle, you just need to import the library. If you are planning to use the library with declarative data attributes in the HTML code, just import the module:
@@ -52,7 +59,7 @@ export const UsingTheLibrary = () => {
                         ...
                         <script src="wherever/you/installed/index-file-renamed.js"></script>
                     </body>
-                `}        
+                `}
             </Code>
             <Paragraph>
                 After that, you will have a global <em>IsometricCSS</em> object that will holds all the methods.

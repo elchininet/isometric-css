@@ -38,7 +38,7 @@ export const CodeExamplePage = () => {
                       height: 50px;
                       width: 50px;
                     }
-                `} 
+                `}
             </Code>
             <Paragraph>
                 Now, let’s create our HTML markup adding to each element that should be transformed the <em>isometric</em> class and the data attributes with the information of these transformations. Elements with the <em>isometric</em> class and without the <em>data-view</em> parameter are taken as groups:
@@ -77,7 +77,7 @@ export const CodeExamplePage = () => {
                         ></div>
                       </div>
                     </div>
-                `} 
+                `}
             </Code>
             <Paragraph>
                 After the page-load, all the elements will be transformed resulting in the next:

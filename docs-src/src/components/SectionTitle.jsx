@@ -11,6 +11,6 @@ export const SectionTitle = (props) => {
                 { children }
             </Tag>
             { separator && <Separtor /> }
-        </Fragment>       
+        </Fragment>
     );
 };

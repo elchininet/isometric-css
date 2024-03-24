@@ -6,7 +6,7 @@ export const Table = (props) => {
             <table className="table" width="100%">
                 { props.children }
             </table>
-        </div>        
+        </div>
     );
 };
 

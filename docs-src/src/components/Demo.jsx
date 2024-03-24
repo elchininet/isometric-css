@@ -26,7 +26,7 @@ export const Demo = () => {
                 )
             );
 
-        }, 50);        
+        }, 50);
 
     }, []);
 
@@ -64,11 +64,11 @@ export const Demo = () => {
                                 left: 400
                             }}
                         />
-                        <FenceSide right={10} left={10} /> 
+                        <FenceSide right={10} left={10} />
                         <FenceFront right={10} left={220}/>
                         <Houses right={45} left={40} />
                         <FenceFront right={435} left={220}/>
-                        <FenceSide right={10} left={220} />                            
+                        <FenceSide right={10} left={220} />
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ export const Logo = (props) => {
         ? Object.entries(animation).reduce((anim, entry) => {
             return `${anim} ${entry[0]}: ${entry[1]}`;
         }, '')
-        : ''; 
+        : '';
 
     return (
         <div
