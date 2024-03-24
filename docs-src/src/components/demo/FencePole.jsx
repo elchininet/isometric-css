@@ -23,7 +23,7 @@ export const FencePole = (props) => {
                 className="isometric fence-pole-top"
                 data-view="top"
                 data-top="26"
-            />            
+            />
         </div>
     );
 };

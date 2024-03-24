@@ -28,7 +28,7 @@ export const FenceSideBars = (props) => {
                 className="isometric fence-side"
                 data-view="top"
                 data-top="20"
-            />            
+            />
         </div>
     );
 };

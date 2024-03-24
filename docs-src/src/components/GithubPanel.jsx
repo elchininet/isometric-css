@@ -7,6 +7,6 @@ export const GithubPanel = () => {
             <GithubButton type="github" />
             <GithubButton type="fork" />
             <GithubButton type="star" />
-        </div> 
+        </div>
     );
 };

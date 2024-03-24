@@ -125,7 +125,7 @@ export const TableDataset = () => {
                 data-animation
               </TableColumn>
               <TableColumn>
-                position<sup>1</sup> 
+                position<sup>1</sup>
               </TableColumn>
               <TableColumn>
                 Final position of the animation
@@ -136,7 +136,7 @@ export const TableDataset = () => {
                 data-animation-duration
               </TableColumn>
               <TableColumn>
-                number<sup>2</sup> 
+                number<sup>2</sup>
               </TableColumn>
               <TableColumn>
                 Animation duration in milliseconds

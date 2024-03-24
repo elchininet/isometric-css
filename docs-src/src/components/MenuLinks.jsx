@@ -22,7 +22,7 @@ const linksData = [
     {
         link: '/code-example',
         label: 'Code example'
-    }    
+    }
 ];
 
 export const MenuLinks = () => {

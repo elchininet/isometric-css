@@ -25,14 +25,14 @@ export const KnowingTheBasicsPage = () => {
                 When an isometric plane is created with this library, it will be placed relatively to the top-left corner of its container, which in isometric terms corresponds to the center of the isometric {'{'}0 right, 0 left, 0 top{'}'}. You can see in the above graphic the default position of each plane.
             </Paragraph>
             <Paragraph>
-                After the plane is in its default position, if you need to move it, you shall use a coordinate system based on three axis (right, left, and top). Due to the nature of an isometric projection, two planes in different isometric coordinates will share the same two dimensional coordinates. For example, a plane placed in the {'{'}0, 0, 0{'}'} coordinates, will share the same position as a plane in the {'{'}100, 100, 100{'}'} coordinates. 
+                After the plane is in its default position, if you need to move it, you shall use a coordinate system based on three axis (right, left, and top). Due to the nature of an isometric projection, two planes in different isometric coordinates will share the same two dimensional coordinates. For example, a plane placed in the {'{'}0, 0, 0{'}'} coordinates, will share the same position as a plane in the {'{'}100, 100, 100{'}'} coordinates.
             </Paragraph>
             <Paragraph>
                 Check the next graphic in which each plane will be moved to a diferent position. Let's assume that each plane has a width and height of 100px.
             </Paragraph>
             <Graphic>
                 <Graphics.PlanesSteps />
-            </Graphic> 
+            </Graphic>
             <Paragraph>
                 In <em>Step 1</em>, the front plane has been moved 100px to the right; in <em>Step 2</em>, the side plane has been moved 100px to the left; and in <em>Step 3</em>, the top plane has been moved 100px to the top. The result it is shown at the end.
             </Paragraph>

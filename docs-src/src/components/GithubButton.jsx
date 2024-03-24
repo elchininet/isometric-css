@@ -31,8 +31,8 @@ export const GithubButton = (props) => {
             className="github-button"
             href={ BUTTONS[type].url }
         >
-            { BUTTONS[type].component }           
-            <span>{ BUTTONS[type].label }</span>            
+            { BUTTONS[type].component }
+            <span>{ BUTTONS[type].label }</span>
         </Link>
     );
 

@@ -15,7 +15,7 @@ export const Menu = () => {
                 />
             </Link>
             <GithubPanel />
-            <MenuLinks />         
+            <MenuLinks />
         </nav>
     );
 };

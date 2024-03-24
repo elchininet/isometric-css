@@ -34,7 +34,7 @@ export const BigBalcony = (props) => {
                 data-texture={front}
                 data-texture-pixelated="true"
                 data-right="8"
-            />            
+            />
         </div>
     );
 };
