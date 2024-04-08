@@ -70,7 +70,7 @@ export class Styles {
 
         switch(view) {
             case VIEW.top:
-               return `${transform} ${this.tranformAfterTop}`;
+                return `${transform} ${this.tranformAfterTop}`;
             case VIEW.front:
                 return `${transform} ${this.transformAfterFront}`;
             case VIEW.side:
