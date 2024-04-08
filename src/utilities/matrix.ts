@@ -16,12 +16,11 @@ export const multiplyMatrix = (m1: Matrix, m2: Matrix): Matrix => (
     m1.map((row, i): number[] => (
         m2[0].map((_: number, j: number): number =>
             row.reduce((acc: number, _: number, n: number): number =>
-                acc + m1[i][n] * m2[n][j],
-                0
+                acc + m1[i][n] * m2[n][j], 0
             )
         )
-    )
-));
+    ))
+);
 
 export const multiplyMatrices = (...m: Matrix[]): Matrix => {
     let result: Matrix;
