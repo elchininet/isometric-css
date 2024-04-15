@@ -36,7 +36,6 @@
     "test:lint": "eslint \"src/**/*.ts\"",
     "test:unit": "jest --verbose",
     "test:all": "pnpm test:ts && pnpm test:lint && pnpm test:unit",
-    "preinstall": "npx -y only-allow pnpm",
     "prepare": "pnpm build",
     "prepublishOnly": "pnpm test:all",
     "version": "git add .",
