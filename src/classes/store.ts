@@ -262,6 +262,8 @@ class Store {
         if (this.hasAnimation(element)) {
             const classes = element.className;
             element.className = '';
+            // Force layout reflow using element.offsetWidth
+            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             element.offsetWidth;
             element.className = classes;
         }
