@@ -1,0 +1,7 @@
+@use 'vars';
+
+@mixin mobile {
+    @media (max-width: #{vars.$mobile-breakpoint}) {
+        @content;
+    }
+}

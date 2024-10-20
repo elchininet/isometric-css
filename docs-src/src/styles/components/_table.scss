@@ -1,3 +1,5 @@
+@use '../variables' as *;
+
 .table {
     border: 1px solid $gray-dark;
     border-collapse: collapse;

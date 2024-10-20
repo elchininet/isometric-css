@@ -1,4 +1,5 @@
 @use 'sass:math';
+@use '../variables' as *;
 
 $chevron: 24px;
 $half-chevron: math.div($chevron, 2);
