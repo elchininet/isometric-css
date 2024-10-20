@@ -1,3 +1,5 @@
+@use '../variables' as *;
+
 .github-panel {
     border-bottom: 1px solid $gray;
     box-sizing: border-box;
