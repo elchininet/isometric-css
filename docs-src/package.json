@@ -30,11 +30,11 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.1.0",
-    "@testing-library/user-event": "^14.5.2",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.0",
     "@vitejs/plugin-react": "^4.3.4",
     "rimraf": "^6.0.1",
-    "sass": "^1.83.1",
+    "sass": "^1.83.4",
     "vite": "^6.0.7",
     "vite-plugin-svgr": "^4.3.0"
   }
