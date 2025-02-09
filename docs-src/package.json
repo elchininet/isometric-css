@@ -34,8 +34,8 @@
     "@testing-library/user-event": "^14.6.1",
     "@vitejs/plugin-react": "^4.3.4",
     "rimraf": "^6.0.1",
-    "sass": "^1.83.4",
-    "vite": "^6.0.11",
+    "sass": "^1.84.0",
+    "vite": "^6.1.0",
     "vite-plugin-svgr": "^4.3.0"
   }
 }
