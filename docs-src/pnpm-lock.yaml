@@ -6,8 +6,6 @@ settings:
 
 overrides:
   prismjs@<1.30.0: '>=1.30.0'
-  '@babel/runtime@<7.26.10': '>=7.26.10'
-  '@babel/helpers@<7.26.10': '>=7.26.10'
 
 importers:
 
