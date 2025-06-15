@@ -272,7 +272,7 @@ describe('Test methods', (): void => {
 
         let style = getComputedStyle(element);
 
-        expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
+        expect(style).toHaveProperty('background-image', 'url("/images/test-image.png")');
         expect(style).toHaveProperty('background-size', 'cover');
         expect(style).toHaveProperty('image-rendering', '');
 
@@ -287,7 +287,7 @@ describe('Test methods', (): void => {
 
         style = getComputedStyle(element);
 
-        expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
+        expect(style).toHaveProperty('background-image', 'url("/images/test-image.png")');
         expect(style).toHaveProperty('background-size', '50px 50px');
         expect(style).toHaveProperty('image-rendering', '');
 
@@ -301,7 +301,7 @@ describe('Test methods', (): void => {
 
         style = getComputedStyle(element);
 
-        expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
+        expect(style).toHaveProperty('background-image', 'url("/images/test-image.png")');
         expect(style).toHaveProperty('background-size', '100px 100px');
         expect(style).toHaveProperty('image-rendering', 'crisp-edges');
 
@@ -321,7 +321,7 @@ describe('Test methods', (): void => {
 
         style = getComputedStyle(element);
 
-        expect(style).toHaveProperty('background-image', 'url(/images/test-image2.png)');
+        expect(style).toHaveProperty('background-image', 'url("/images/test-image2.png")');
         expect(style).toHaveProperty('background-size', '100px 100px');
         expect(style).toHaveProperty('image-rendering', 'crisp-edges');
 

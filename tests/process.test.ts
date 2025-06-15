@@ -119,7 +119,7 @@ describe('Test process elements', (): void => {
 
         style = getComputedStyle(element);
 
-        expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
+        expect(style).toHaveProperty('background-image', 'url("/images/test-image.png")');
         expect(style).toHaveProperty('background-size', 'cover');
         expect(style).toHaveProperty('image-rendering', '');
 
@@ -135,7 +135,7 @@ describe('Test process elements', (): void => {
 
         style = getComputedStyle(element);
 
-        expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
+        expect(style).toHaveProperty('background-image', 'url("/images/test-image.png")');
         expect(style).toHaveProperty('background-size', '50px 50px');
         expect(style).toHaveProperty('image-rendering', '');
 
@@ -152,7 +152,7 @@ describe('Test process elements', (): void => {
 
         style = getComputedStyle(element);
         
-        expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
+        expect(style).toHaveProperty('background-image', 'url("/images/test-image.png")');
         expect(style).toHaveProperty('background-size', 'cover');
         expect(style).toHaveProperty('image-rendering', 'crisp-edges');
 

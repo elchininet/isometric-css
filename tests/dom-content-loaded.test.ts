@@ -42,7 +42,7 @@ describe('Test DOMContentLoaded', (): void => {
 
         expect(style).toHaveProperty('left', `${HSQRT3 * 100}px`);
         expect(style).toHaveProperty('top', '-50px');
-        expect(style).toHaveProperty('background-image', 'url(/images/test-image.png)');
+        expect(style).toHaveProperty('background-image', 'url("/images/test-image.png")');
         expect(style).toHaveProperty('background-size', '50px 50px');
         expect(style).toHaveProperty('image-rendering', 'crisp-edges');
         expect(style).toHaveProperty('animation-name', 'isometric-1hprtht');
