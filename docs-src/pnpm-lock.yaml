@@ -42,7 +42,7 @@ importers:
         version: 14.6.1(@testing-library/dom@10.1.0)
       '@vitejs/plugin-react':
         specifier: ^5.0.2
-        version: 5.0.2(vite@7.1.4(sass@1.92.1))
+        version: 5.0.2(vite@7.1.5(sass@1.92.1))
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
@@ -50,11 +50,11 @@ importers:
         specifier: ^1.92.1
         version: 1.92.1
       vite:
-        specifier: ^7.1.4
-        version: 7.1.4(sass@1.92.1)
+        specifier: ^7.1.5
+        version: 7.1.5(sass@1.92.1)
       vite-plugin-svgr:
         specifier: ^4.5.0
-        version: 4.5.0(rollup@4.50.1)(vite@7.1.4(sass@1.92.1))
+        version: 4.5.0(rollup@4.50.1)(vite@7.1.5(sass@1.92.1))
 
 packages:
 
@@ -1213,8 +1213,8 @@ packages:
     peerDependencies:
       vite: '>=2.6.0'
 
-  vite@7.1.4:
-    resolution: {integrity: sha512-X5QFK4SGynAeeIt+A7ZWnApdUyHYm+pzv/8/A57LqSGcI88U6R6ipOs3uCesdc6yl7nl+zNO0t8LmqAdXcQihw==}
+  vite@7.1.5:
+    resolution: {integrity: sha512-4cKBO9wR75r0BeIWWWId9XK9Lj6La5X846Zw9dFfzMRw38IlTk2iCcUt6hsyiDRcPidc55ZParFYDXi0nXOeLQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -1772,7 +1772,7 @@ snapshots:
 
   '@types/unist@2.0.11': {}
 
-  '@vitejs/plugin-react@5.0.2(vite@7.1.4(sass@1.92.1))':
+  '@vitejs/plugin-react@5.0.2(vite@7.1.5(sass@1.92.1))':
     dependencies:
       '@babel/core': 7.28.3
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.3)
@@ -1780,7 +1780,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.34
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 7.1.4(sass@1.92.1)
+      vite: 7.1.5(sass@1.92.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -2310,18 +2310,18 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  vite-plugin-svgr@4.5.0(rollup@4.50.1)(vite@7.1.4(sass@1.92.1)):
+  vite-plugin-svgr@4.5.0(rollup@4.50.1)(vite@7.1.5(sass@1.92.1)):
     dependencies:
       '@rollup/pluginutils': 5.2.0(rollup@4.50.1)
       '@svgr/core': 8.1.0
       '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0)
-      vite: 7.1.4(sass@1.92.1)
+      vite: 7.1.5(sass@1.92.1)
     transitivePeerDependencies:
       - rollup
       - supports-color
       - typescript
 
-  vite@7.1.4(sass@1.92.1):
+  vite@7.1.5(sass@1.92.1):
     dependencies:
       esbuild: 0.25.9
       fdir: 6.5.0(picomatch@4.0.3)
