@@ -25,8 +25,8 @@
     "outdent": "^0.8.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.0",
-    "react-syntax-highlighter": "^16.1.0"
+    "react-router-dom": "^7.13.1",
+    "react-syntax-highlighter": "^16.1.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
