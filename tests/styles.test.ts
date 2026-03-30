@@ -53,7 +53,7 @@ describe('Test stylesheet', (): void => {
         expect(styleElements.length).toBe(1);
         expect(styleElements[0].sheet).toBeInstanceOf(CSSStyleSheet);
 
-        const sheet = styleElements[0].sheet;
+        const sheet = styleElements[0].sheet!;
 
         expect(sheet.cssRules.length).toBe(1);
 
@@ -146,11 +146,11 @@ describe('Test stylesheet', (): void => {
 
         expect(elementA.classList.length).toBe(0);
 
-        const styleElement = document.querySelector<HTMLStyleElement>('[data-isometric]');
+        const styleElement = document.querySelector<HTMLStyleElement>('[data-isometric]')!;
 
         expect(styleElement).not.toBeNull();
 
-        const sheet = styleElement.sheet;
+        const sheet = styleElement.sheet!;
 
         expect(sheet.cssRules.length).toBe(0);
 

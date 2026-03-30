@@ -44,6 +44,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@rollup/plugin-terser": "^1.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.5.0",
     "eslint": "^10.1.0",
@@ -51,10 +52,11 @@
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
     "rollup": "^4.60.0",
-    "rollup-plugin-ts": "^3.4.5",
+    "rollup-plugin-dts": "^6.4.1",
+    "rollup-plugin-tsconfig-paths": "^1.5.2",
     "ts-jest": "^29.4.6",
     "tslib": "^2.8.1",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.2",
     "typescript-eslint": "^8.57.2"
   },
   "pnpm": {

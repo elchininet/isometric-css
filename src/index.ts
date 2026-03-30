@@ -58,7 +58,6 @@ export const IsometricCSS = {
 
 };
 
-export * from '@constants';
 export * from '@types';
 
 /* istanbul ignore next */

@@ -11,7 +11,7 @@ import {
     PROPS_REG_EXP,
     EASING_REG_EXP
 } from '@constants';
-import { validNumber } from '@utilities/validator';
+import { isUndefined, validNumber } from '@utilities/validator';
 
 export const getParentRotations = (element: HTMLElement): Rotation[] => {
     const rotations: Rotation[] = [];
@@ -51,7 +51,7 @@ export const getAnimation = (
             
             const animation: Animation = {
                 position,
-                repeat: +repeat || 0,
+                repeat: Number(repeat) || 0,
                 bounce: bounce?.trim() === 'true'
             };
 
@@ -59,7 +59,7 @@ export const getAnimation = (
                 animation.easing = easing.trim();
             }
 
-            if (validNumber(duration)) {
+            if (!isUndefined(duration) && validNumber(duration)) {
                 animation.duration = +duration;
             }
             
@@ -75,11 +75,11 @@ export const getPlaneFromElement = (element: HTMLElement): Plane => {
     const view = dataset.view
         ? dataset.view as View
         : null;
-    const right = +dataset.right || 0;
-    const left = +dataset.left || 0;
-    const top = +dataset.top || 0;
+    const right = Number(dataset.right) || 0;
+    const left = Number(dataset.left) || 0;
+    const top = Number(dataset.top) || 0;
     const rotationAxis = dataset.rotationAxis as Axis || null;
-    const rotationValue = +dataset.rotationValue || 0;
+    const rotationValue = Number(dataset.rotationValue) || 0;
     const textureUrl = dataset.texture;
     const textureSize = dataset.textureSize || 'cover';
     const texturePixelated = dataset.texturePixelated === 'true';

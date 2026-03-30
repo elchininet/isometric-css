@@ -1,18 +1,21 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "module": "commonjs",
-    "target": "es5",
-    "moduleResolution": "node",
-    "declaration": true,
+    "outDir": "./",
+    "module": "esnext",
+    "target": "es6",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "declaration": false,
     "noImplicitAny": true,
     "removeComments": true,
-    "baseUrl": "./src",
+    "skipLibCheck": true,
+    "types": ["node", "jest"],
+    "rootDir": "./src",
     "paths": {
-      "@types": ["@types"],
-      "@constants": ["constants"],
-      "@classes/*": ["classes/*"],
-      "@utilities/*": ["utilities/*"]
+      "@types": ["./src/@types"],
+      "@constants": ["./src/constants"],
+      "@classes/*": ["./src/classes/*"],
+      "@utilities/*": ["./src/utilities/*"]
     }
   },
   "include": ["src/**/*.ts"],

@@ -19,8 +19,8 @@ import { getViewMatrix } from '@utilities/matrix';
 
 export class Styles {
 
-    private _globalStyle: HTMLStyleElement = null;
-    private _style: HTMLStyleElement = null;
+    private _globalStyle!: HTMLStyleElement;
+    private _style!: HTMLStyleElement;
     
     private scale = round(SCALE);
     private P50 = '50%';
@@ -73,14 +73,14 @@ export class Styles {
                 return `${transform} ${this.tranformAfterTop}`;
             case VIEW.front:
                 return `${transform} ${this.transformAfterFront}`;
-            case VIEW.side:
+            default:
                 return `${transform} ${this.transformAfterSide}`;
         }
 
     }
 
     private insertGlobalStyles(): void {
-        this._globalStyle.sheet.insertRule(
+        this._globalStyle!.sheet!.insertRule(
             `[data-animation][data-animation-running="false"] {
                 animation-play-state: paused;
             }`
@@ -126,9 +126,9 @@ export class Styles {
         return null;
     }
 
-    private getRule(plane: Plane, keyframesName: string): Rule {
+    private getRule(plane: Plane, keyframesName: string | undefined): Rule {
         const transform = this.getTransform(
-            plane.view,
+            plane.view!,
             plane.parentRotations,
             plane.rotation
         );
@@ -223,10 +223,10 @@ export class Styles {
         const keyframes = this.getKeyframes(plane);
         const declarationKeyframes = keyframes
             ? this.getDeclarationString(keyframes)
-            : null;
+            : undefined;
         const keyframesName = declarationKeyframes
             ? this.getSelector(declarationKeyframes)
-            : null;
+            : undefined;
 
         const rule = this.getRule(plane, keyframesName);
 
@@ -257,27 +257,27 @@ export class Styles {
 
     public insert(selector: string, declaration: string): void {
         if (!this.sheet) this.init();
-        this.sheet.insertRule(`.${selector} {\n${declaration}\n}`);
+        this.sheet!.insertRule(`.${selector} {\n${declaration}\n}`);
     }
 
     public insertKeyframes(selector: string, declaration: string): void {
-        this.sheet.insertRule(`@keyframes ${selector} {\n${declaration}\n}`);
+        this.sheet!.insertRule(`@keyframes ${selector} {\n${declaration}\n}`);
     }
 
     public remove(selector: string): void {
-        Array.prototype.some.call(this.sheet.cssRules, (rule: CSSStyleRule | CSSKeyframesRule, index: number): boolean => {
+        Array.prototype.some.call(this.sheet!.cssRules, (rule: CSSStyleRule | CSSKeyframesRule, index: number): boolean => {
             if (
                 'name' in rule &&
                 rule.name === selector
             ) {
-                this.sheet.deleteRule(index);
+                this.sheet!.deleteRule(index);
                 return true;
             }
             if (
                 'selectorText' in rule &&
                 rule.selectorText.slice(1) === selector
             ) {
-                this.sheet.deleteRule(index);
+                this.sheet!.deleteRule(index);
                 return true;
             }
             return false;
