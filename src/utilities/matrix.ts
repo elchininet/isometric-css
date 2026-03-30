@@ -23,13 +23,13 @@ export const multiplyMatrix = (m1: Matrix, m2: Matrix): Matrix => (
 );
 
 export const multiplyMatrices = (...m: Matrix[]): Matrix => {
-    let result: Matrix;
+    let result: Matrix | null = null;
     for (const matrix of m) {
         result = result
             ? multiplyMatrix(result, matrix)
             : matrix;
     }
-    return result;
+    return result!;
 };
 
 export const rotateX = (r: number): Matrix => {

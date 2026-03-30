@@ -44,7 +44,7 @@ class Store {
 
         element.classList.remove(selector);
 
-        const elements = this._classes.get(selector);
+        const elements = this._classes.get(selector)!;
 
         const index = elements.findIndex((e: HTMLElement): boolean => e === element);
 
@@ -61,7 +61,7 @@ class Store {
 
     private removeKeyframes(element: HTMLElement, keyframesName: string): void {
 
-        const elements = this._keyframes.get(keyframesName);
+        const elements = this._keyframes.get(keyframesName)!;
 
         const index = elements.findIndex((e: HTMLElement): boolean => e === element);
 

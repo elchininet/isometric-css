@@ -11,19 +11,20 @@ import {
     Animation
 } from '@types';
 
+export const isUndefined = (input: unknown): input is undefined => input === undefined;
 export const validNumber = (input: unknown): boolean => !isNaN(+`${input}`);
-export const validString = (input: unknown): boolean =>
-    input &&
+export const validString = (input: unknown): input is string => (
+    !!input &&
     typeof input === 'string' &&
-    input.trim().length > 0;
-export const validNumberNonZero = (input: unknown): boolean => validNumber(input) && +input !== 0;
-export const validUndefined = (input: unknown): boolean => typeof input === 'undefined';
-export const validBoolean = (input: boolean): boolean => typeof input === 'boolean';
-export const undefinedOrValidString = (input: string): boolean => validUndefined(input) || validString(input);
-export const undefinedOrValidBoolean = (input: boolean): boolean => validUndefined(input) || validBoolean(input);
-export const undefinedOrValidNumber = (input: number): boolean => validUndefined(input) || validNumber(input);
-export const validStringByRegExp = (input: string, regexp: RegExp): boolean => (
-    validUndefined(input) ||
+    input.trim().length > 0
+);
+export const validNumberNonZero = (input: unknown): boolean => validNumber(input) && Number(input) !== 0;
+export const validBoolean = (input: unknown): input is boolean => typeof input === 'boolean';
+export const undefinedOrValidString = (input: unknown): boolean => isUndefined(input) || validString(input);
+export const undefinedOrValidBoolean = (input: unknown): boolean => isUndefined(input) || validBoolean(input);
+export const undefinedOrValidNumber = (input: unknown): input is (undefined | number) => isUndefined(input) || validNumber(input);
+export const validStringByRegExp = (input: unknown, regexp: RegExp): boolean => (
+    isUndefined(input) ||
     (
         validString(input) &&
         regexp.test(input)
@@ -59,7 +60,7 @@ export const validRotation = (rotation: Rotation): boolean => (
 );
 
 export const validTexture = (texture: Texture): boolean => (
-    texture &&
+    !isUndefined(texture) &&
     validString(texture.url) &&
     undefinedOrValidString(texture.size) &&
     undefinedOrValidBoolean(texture.pixelated)

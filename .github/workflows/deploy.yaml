@@ -8,8 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    container:
-      image: node:20
     permissions:
       id-token: write
       contents: read
@@ -24,7 +22,7 @@ jobs:
       - name: Set-up Node
         uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           cache: 'pnpm'
           registry-url: 'https://registry.npmjs.org'
       - name: Update npm

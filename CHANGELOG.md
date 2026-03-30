@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.0.0] - 2026-03-30
+
+- Migrated to `TypeScript 6`, so the target of the library is now `es6` instead of the previous `es5`
+- Removed the export of the project constants
+- Some refactors have been needed to make the project compatible with `TypeScript 6` but they should not affect the functionality of the plugin
+
 ## [2.2.3] - 2021-06-06
 
 - Fix a bug related to data animation properties parser
