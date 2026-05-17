@@ -1,12 +1,11 @@
 {
-  "name": "docs-src",
+  "name": "demo",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "vite",
-    "clean": "rimraf ../docs",
-    "build": "vite build && npm run clean && cp -r ./dist/. ../docs && cp 404.html ../docs/404.html"
+    "build": "vite build"
   },
   "browserslist": {
     "production": [

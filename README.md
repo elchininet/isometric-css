@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/elchininet/isometric-css">
-        <img src="https://raw.githubusercontent.com/elchininet/isometric-css/master/docs-src/src/images/isometric-css.png" width="550" title="isometric-css" />
+        <img src="https://raw.githubusercontent.com/elchininet/isometric-css/master/demo/src/images/isometric-css.png" width="550" title="isometric-css" />
     </a>
     <br>
     A lightweight JavaScript library to build isometric projections through declarative HTML attributes
@@ -20,5 +20,5 @@
 https://elchininet.github.io/isometric-css/
 
 <a href="https://elchininet.github.io/isometric-css/">
-    <img src="https://raw.githubusercontent.com/elchininet/isometric-css/master/docs-src/src/images/isometric.png" width="838" title="isometric-css" />
+    <img src="https://raw.githubusercontent.com/elchininet/isometric-css/master/demo/src/images/isometric.png" width="838" title="isometric-css" />
 </a>

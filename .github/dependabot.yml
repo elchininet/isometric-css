@@ -16,7 +16,7 @@ updates:
       - dependencies
     versioning-strategy: increase
   - package-ecosystem: "npm"
-    directory: "/docs-src/"
+    directory: "/demo/"
     schedule:
       interval: "weekly"
       day: "sunday"
