@@ -36,6 +36,8 @@
     "test:lint": "eslint \"src/**/*.ts\"",
     "test:unit": "jest --verbose",
     "test:all": "pnpm test:ts && pnpm test:lint && pnpm test:unit",
+    "demo:start": "pnpm --filter docs-src start",
+    "demo:build": "pnpm --filter docs-src build",
     "prepare": "pnpm build",
     "prepublishOnly": "pnpm test:all",
     "version": "git add .",

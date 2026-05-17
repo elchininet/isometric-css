@@ -1,2 +1,6 @@
 allowBuilds:
+  '@parcel/watcher': false
   unrs-resolver: false
+packages:
+  - "."
+  - "docs-src"
