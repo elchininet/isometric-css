@@ -10,28 +10,12 @@ updates:
     commit-message:
       prefix: "[Dependencies]"
     groups:
-      dependencies-dev:
-        dependency-type: "development"
-    labels:
-      - dependencies
-    versioning-strategy: increase
-  - package-ecosystem: "npm"
-    directory: "/demo/"
-    schedule:
-      interval: "weekly"
-      day: "sunday"
-      time: "09:00"
-      timezone: "Europe/Amsterdam"
-    commit-message:
-      prefix: "[Demo Dependencies]"
-    groups:
       dependencies-prod:
         dependency-type: "production"
       dependencies-dev:
         dependency-type: "development"
     labels:
       - dependencies
-      - demo
     versioning-strategy: increase
   - package-ecosystem: "github-actions"
     directory: "/"
