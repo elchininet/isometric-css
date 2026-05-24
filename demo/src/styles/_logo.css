@@ -1,10 +1,10 @@
-@use 'variables' as *;
+@import './variables/index.css';
 
 .logo {
     max-width: 300px;
     width: 100%;
 
-    @include mobile {
+    @mixin mobile {
         flex-shrink: 0;
         max-width: 270px;
     }

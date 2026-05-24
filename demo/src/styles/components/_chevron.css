@@ -1,9 +1,10 @@
-@use 'sass:math';
-@use '../variables' as *;
+@import '../variables/index.css';
 
-$chevron: 24px;
-$half-chevron: math.div($chevron, 2);
 $cthick: 2px;
+$chevron: 24px;
+$half-chevron: calc($chevron / 2);
+$chevron-bottom: calc(-1 * $half-chevron + $cthick);
+$chevron-top: calc($half-chevron - $cthick);
 $animation: 0.25s ease-in-out;
 
 .chevron {
@@ -35,11 +36,11 @@ $animation: 0.25s ease-in-out;
         }
 
         &::before {
-            transform: translateY(-1 * $half-chevron + $cthick);
+            transform: translateY($chevron-bottom);
         }
 
         &::after {
-            transform: translateY($half-chevron - $cthick);
+            transform: translateY($chevron-top);
         }
 
     }
@@ -58,7 +59,7 @@ $animation: 0.25s ease-in-out;
         }
     }
 
-    @include mobile {
+    @mixin mobile {
         display: block;
     }
 }

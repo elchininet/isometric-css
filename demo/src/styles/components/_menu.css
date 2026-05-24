@@ -1,4 +1,4 @@
-@use '../variables' as *;
+@import '../variables/index.css';
 
 .menu {
     background-color: $light;
@@ -11,7 +11,7 @@
     width: 300px;
     z-index: 100;
 
-    @include mobile {
+    @mixin mobile {
         align-items: center;
         flex-direction: row;    
         height: 80px;

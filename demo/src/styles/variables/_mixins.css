@@ -1,0 +1,7 @@
+@import './_vars.css';
+
+@define-mixin mobile {
+    @media (max-width: $mobile-breakpoint) {
+        @mixin-content;
+    }
+}

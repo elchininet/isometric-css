@@ -1,4 +1,4 @@
-@use 'variables' as *;
+@import './variables/index.css';
 
 .container {
     box-sizing: border-box;
@@ -7,7 +7,7 @@
     max-width: 1000px;
     width: 100%;
 
-    @include mobile {
+    @mixin mobile {
         padding: 0 20px;
     }
 }

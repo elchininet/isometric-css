@@ -1,4 +1,4 @@
-@use '../variables' as *;
+@import '../variables/index.css';
 
 .github-panel {
     border-bottom: 1px solid $gray;
@@ -13,7 +13,7 @@
         background-color: transparent;
     }
 
-    @include mobile {
+    @mixin mobile {
         align-items: center;
         border-bottom: none;
         flex-grow: 1;
