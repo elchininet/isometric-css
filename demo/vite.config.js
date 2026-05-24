@@ -8,13 +8,6 @@ export default defineConfig({
         svgr(),
         react()
     ],
-    css: {
-        preprocessorOptions: {
-            scss: {
-                api: 'modern-compiler'
-            }
-        }
-    },
     build: {
         assetsInlineLimit: 0,
     },

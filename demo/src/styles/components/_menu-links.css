@@ -1,4 +1,4 @@
-@use '../variables' as *;
+@import '../variables/index.css';
 
 .menu-links {
     flex-grow: 1;
@@ -17,7 +17,7 @@
         }
     }
 
-    @include mobile {
+    @mixin mobile {
         background: $light;
         border-top: 1px solid $gray-dark;
         height: calc(100vh - 80px);

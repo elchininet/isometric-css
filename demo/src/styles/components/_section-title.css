@@ -1,9 +1,9 @@
-@use '../variables' as *;
+@import '../variables/index.css';
 
 .h1 {
     padding: 20px 50px 0;
 
-    @include mobile {
+    @mixin mobile {
         padding: 20px 20px 0;
     }
 }

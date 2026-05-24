@@ -1,4 +1,4 @@
-@use '../variables' as *;
+@import '../variables/index.css';
 
 .separator {
     border: 1px solid $gray-dark;

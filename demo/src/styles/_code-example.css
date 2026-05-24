@@ -1,4 +1,4 @@
-@use 'variables' as *;
+@import './variables/index.css';
 
 .res-height {
     height: 240px;
@@ -15,7 +15,7 @@
         right: 50px;
         top: 0;
 
-        @include mobile {
+        @mixin mobile {
             left: 20px;
             right: 20px;
         }
@@ -27,7 +27,7 @@
     position: relative;
     top: 20%;
 
-    @include mobile {
+    @mixin mobile {
         transform-origin: 0 0;
         transform: scale(0.9);
     }
