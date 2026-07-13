@@ -1,6 +1,11 @@
 allowBuilds:
   '@parcel/watcher': false
   unrs-resolver: false
+overrides:
+  '@babel/core@<=7.29.0': ^7.29.1
+  js-yaml@<3.15.0: ^3.15.0
+  js-yaml@>=4.0.0 <=4.1.1: ^4.1.2
+  ws@>=8.0.0 <8.21.0: ^8.21.0
 packages:
   - "."
   - "demo"
