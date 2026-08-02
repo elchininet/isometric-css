@@ -1,4 +1,6 @@
-const { compilerOptions: { paths } } = require('./tsconfig');
+import tsconfig from './tsconfig.json' with { type: 'json' };
+
+const { compilerOptions: { paths } } = tsconfig;
 const reg = /(.*)\/\*/;
 const aliases = Object.keys(paths).reduce(
     (obj, a) => {
@@ -12,7 +14,7 @@ const aliases = Object.keys(paths).reduce(
     {}
 );
 
-module.exports = {
+export default {
     roots: ['<rootDir>/tests'],
     moduleNameMapper: aliases,
     transform: {
