@@ -49,18 +49,18 @@
     "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-typescript": "^12.3.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "^26.1.2",
-    "eslint": "^10.8.0",
-    "globals": "^17.8.0",
+    "@types/node": "^26.2.0",
+    "eslint": "^10.8.1",
+    "globals": "^17.9.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "rollup": "^4.62.4",
-    "rollup-plugin-dts": "^6.4.1",
+    "rollup-plugin-dts": "^6.5.1",
     "rollup-plugin-tsconfig-paths": "^1.5.2",
     "ts-jest": "^29.4.12",
     "tslib": "^2.8.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.65.0"
+    "typescript-eslint": "^8.66.0"
   },
   "packageManager": "pnpm@11.15.0"
 }
