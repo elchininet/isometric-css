@@ -32,7 +32,7 @@
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.8",
     "@vitejs/plugin-react": "^6.1.2",
-    "autoprefixer": "^10.6.1",
+    "autoprefixer": "^10.6.2",
     "postcss-calc": "^11.2.3",
     "postcss-import": "^17.0.1",
     "postcss-mixins": "^12.1.2",
