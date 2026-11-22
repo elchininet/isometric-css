@@ -46,14 +46,15 @@ export const UsingTheLibrary = () => {
             <Code>
                 {outdent`
                     // Importing the library methods module using ES6
-                    import { IsometricCSS } from 'isometric-css';
+                    import library from 'isometric-css';
+                    const { IsometricCSS } = library;
 
                     // Importing the library methods module using common-js
                     const { IsometricCSS } = require('isometric-css');
                 `}
             </Code>
             <Paragraph>
-                If you want to import the library directly in the browser, just copy the <em>index.js</em> file loacated in the <em>dist</em> folder to a directory in your project, and add a reference to it in the HTML:
+                If you want to import the library directly in the browser, just copy the <em>index.cjs</em> file loacated in the <em>dist</em> folder to a directory in your project changing its extension to <em>.js</em>, and add a reference to it in the HTML:
             </Paragraph>
             <Code language="markup">
                 {outdent`

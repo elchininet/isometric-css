@@ -3,5 +3,4 @@ node_modules/
 **/.DS_Store
 /demo/dist
 /coverage/
-/index.d.ts
-/index.js
+/dist/index.d.ts
