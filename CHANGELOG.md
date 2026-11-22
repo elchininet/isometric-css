@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.0.1] - 2026-11-22
+
+- Fix imports in ESM and CommonJS
+
 ## [3.0.0] - 2026-03-30
 
 - Migrated to `TypeScript 6`, so the target of the library is now `es6` instead of the previous `es5`

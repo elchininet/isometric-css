@@ -16,7 +16,7 @@ export default [
         input: "src/index.ts",
         output: [
             {
-                file: "index.js",
+                file: "dist/index.cjs",
                 format: "umd",
                 name: "isometric-css"
             }
@@ -27,7 +27,7 @@ export default [
         input: "src/index.ts",
         output: [
             {
-                file: "index.d.ts",
+                file: "dist/index.d.ts",
                 format: "es"
             }
         ]

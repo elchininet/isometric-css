@@ -18,11 +18,11 @@
   ],
   "type": "module",
   "license": "Apache-2.0",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts",
   "files": [
-    "index.d.ts",
-    "index.js"
+    "dist/index.d.ts",
+    "dist/index.cjs"
   ],
   "repository": {
     "type": "git",
