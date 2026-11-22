@@ -28,12 +28,12 @@
     "react-syntax-highlighter": "^16.1.2"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/jest-dom": "^8.0.0",
     "@testing-library/react": "^16.3.3",
-    "@testing-library/user-event": "^14.6.10",
+    "@testing-library/user-event": "^14.6.13",
     "@vitejs/plugin-react": "^6.3.0",
-    "autoprefixer": "^10.6.2",
-    "postcss-calc": "^11.2.3",
+    "autoprefixer": "^10.7.0",
+    "postcss-calc": "^11.3.0",
     "postcss-import": "^17.0.1",
     "postcss-mixins": "^12.1.2",
     "postcss-nested": "^9.0.1",
