@@ -10,7 +10,7 @@
     "removeComments": true,
     "skipLibCheck": true,
     "types": ["node", "jest"],
-    "rootDir": "./src",
+    "rootDir": "./",
     "paths": {
       "@types": ["./src/@types"],
       "@constants": ["./src/constants"],
@@ -18,6 +18,6 @@
       "@utilities/*": ["./src/utilities/*"]
     }
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
   "exclude": ["node_modules"]
 }
